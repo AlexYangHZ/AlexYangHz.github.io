@@ -29,10 +29,10 @@ module.exports = [
       needComments: true,
       // 其他的 Vssue 配置
       autoCreateIssue: true,
-      clientId: "adb9fb0ac1159e00ce7f",
-      clientSecret: "27da8dc85f808c2bd1b6e44da5ae69c4ddf17d8d",
-      owner: "eryajf",
-      repo: "vdoing-template",
+      clientId: "Ov23liuCfAV5qA2UqYSG",
+      clientSecret: "d31b09e680e1a214d87a370f75bea114c78ff1f4",
+      owner: "AlexYangHZ",
+      repo: "AlexYangHz.github.io",
     },
   ],
   [
