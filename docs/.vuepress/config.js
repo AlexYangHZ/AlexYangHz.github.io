@@ -6,7 +6,8 @@ module.exports = {
   theme: 'vdoing', // 使用npm包主题
   title: "Alex Yang",
   description: 'Alex Yang Things',
-  base: '/', // 格式：'/<仓库名>/'， 默认'/'
+  base: '/AlexYangHz.github.io/', // 格式：'/<仓库名>/'， 默认'/'
+  repo: 'AlexYangHz.github.io',
   markdown: {
     lineNumbers: true, // 代码行号
   },
