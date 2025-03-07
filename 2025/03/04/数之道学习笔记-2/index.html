@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>数之道学习笔记-2-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="算法,模型,">
+<meta name="description" content="AI">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/算法">算法</a></li>
+            
+            <li><a href="/tags/模型">模型</a></li>
+            
+            
+        </ul>
+        
+        <h1>数之道学习笔记-2</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Science/" target="_blank" >Science</a>
+                    
+                </div>
+                <p>2025-03-04 14:52:26</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h3 id="机器学习常用算法和模型"><a href="#机器学习常用算法和模型" class="headerlink" title="机器学习常用算法和模型"></a>机器学习常用算法和模型</h3><h4 id="Clustering-Analysis，聚类分析"><a href="#Clustering-Analysis，聚类分析" class="headerlink" title="&#x3D; Clustering Analysis，聚类分析"></a>&#x3D; Clustering Analysis，聚类分析</h4><p>​		一种无监督学习（Unsupervised Learning）方法，用于将数据集中的对象划分为若干组（称为<strong>簇</strong>，Cluster），使得同一簇内的对象彼此相似，而不同簇之间的对象差异较大。聚类分析的目标是发现数据中的内在结构，而不需要预先标记的类别信息。<strong>聚类目标</strong>：最大化簇内相似性，最小化簇间相似性。</p>
+<ul>
+<li>相似性常用度量方法：<ul>
+<li>欧几里得距离（Euclidean Distance）</li>
+<li>曼哈顿距离（Manhattan Distance）</li>
+<li>余弦相似度（Cosine Similarity）</li>
+<li>Jaccard相似系数（Jaccard Similarity）</li>
+</ul>
+</li>
+</ul>
+<p><strong>常见聚类算法</strong></p>
+<p>1、基于划分的聚类</p>
+<ul>
+<li><strong>K-Means</strong>，K均值算法：将数据划分为 K<em>K</em> 个簇，每个簇由其质心（Centroid）表示。优点：简单、高效，缺点：需要预先指定 K<em>K</em> 值，对初始质心敏感，不适合非凸形状的簇。</li>
+<li><strong>K-Medoids</strong>：类似于K-Means，但使用实际数据点作为簇中心（Medoid），而不是质心，对噪声和异常值更鲁棒</li>
+</ul>
+<img src="/2025/03/04/%E6%95%B0%E4%B9%8B%E9%81%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/image-20250304150025443.png" class="" title="image-20250304150025443">
+
+<p>2、基于层次的聚类</p>
+<ul>
+<li><strong>凝聚层次聚类（Agglomerative Hierarchical Clustering）</strong>：自底向上：将每个数据点视为一个簇，逐步合并最相似的簇，直到满足停止条件。有单链、全链和平均链三种合并策略。优点：不需要预先指定簇数，可以生成层次结构。缺点：计算复杂度高，不适合大规模数据。</li>
+<li><strong>分裂层次聚类（Divisive Hierarchical Clustering）</strong>：自顶向下：将所有数据点视为一个簇，逐步分裂为更小的簇。</li>
+</ul>
+<p>3、基于密度的聚类</p>
+<ul>
+<li><strong>DBSCAN（Density-Based Spatial Clustering of Applications with Noise）</strong>：基于数据点的密度分布，将高密度区域划分为簇，低密度区域视为噪声。优点：不需要预先指定簇数，能识别任意形状的簇，对噪声鲁棒。缺点：对参数 \epsilon<em>ϵ</em>（邻域半径）和 \text{minPts}minPts 敏感。</li>
+<li><strong>OPTICS（Ordering Points To Identify the Clustering Structure）</strong>：改进版DBSCAN，通过生成可达图（Reachability Plot）来识别不同密度的簇。</li>
+</ul>
+<img src="/2025/03/04/%E6%95%B0%E4%B9%8B%E9%81%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/image-20250304150106572.png" class="" title="image-20250304150106572">
+
+<p>4、基于模型的聚类</p>
+<ul>
+<li><strong>高斯混合模型（Gaussian Mixture Model, GMM）</strong>：假设数据由多个高斯分布混合生成，通过最大化似然函数来估计模型参数。优点：可以生成概率簇，适合复杂分布。缺点：计算复杂度高，对初始值敏感。</li>
+</ul>
+<p>5、基于网格的聚类</p>
+<ul>
+<li><strong>STING（Statistical Information Grid）</strong>：将数据空间划分为网格单元，基于统计信息进行聚类。优点：适合大规模数据，计算效率高。缺点：对网格粒度敏感。</li>
+</ul>
+<p>6、基于图的聚类</p>
+<ul>
+<li><strong>谱聚类（Spectral Clustering）</strong>：基于图的拉普拉斯矩阵进行聚类，适合非凸形状的簇。优点：能处理复杂结构。缺点：计算复杂度高。</li>
+</ul>
+<p>聚类分析是一种强大的数据分析工具，能够从无标签数据中发现潜在的结构和模式，以下应用场景：</p>
+<ul>
+<li><strong>市场细分</strong>：将客户划分为不同的群体，以便制定个性化营销策略。</li>
+<li><strong>图像分割</strong>：将图像中的像素划分为不同区域。</li>
+<li><strong>生物信息学</strong>：基因表达数据分析，蛋白质功能分类。</li>
+<li><strong>社交网络分析</strong>：发现社区结构。</li>
+<li><strong>异常检测</strong>：识别异常数据点。</li>
+</ul>
+<h5 id="Mean-Shift，均值漂移算法，不需要提前确定K值，但数据量大时，计算速度缓慢"><a href="#Mean-Shift，均值漂移算法，不需要提前确定K值，但数据量大时，计算速度缓慢" class="headerlink" title="* Mean Shift，均值漂移算法，不需要提前确定K值，但数据量大时，计算速度缓慢"></a>* Mean Shift，均值漂移算法，不需要提前确定K值，但数据量大时，计算速度缓慢</h5><img src="/2025/03/04/%E6%95%B0%E4%B9%8B%E9%81%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/image-20250304150258693.png" class="" title="image-20250304150258693">
+
+<h5 id="AGNES，集聚分层聚类算法"><a href="#AGNES，集聚分层聚类算法" class="headerlink" title="* AGNES，集聚分层聚类算法"></a>* AGNES，集聚分层聚类算法</h5><img src="/2025/03/04/%E6%95%B0%E4%B9%8B%E9%81%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/image-20250304150357468.png" class="" title="image-20250304150357468">
+
+<h4 id="ANN，神经网络算法"><a href="#ANN，神经网络算法" class="headerlink" title="&#x3D; ANN，神经网络算法"></a>&#x3D; ANN，神经网络算法</h4><p>是一种模拟生物神经网络结构和功能的计算模型，广泛应用于机器学习、数据挖掘、图像识别、自然语言处理等领域。</p>
+<img src="/2025/03/04/%E6%95%B0%E4%B9%8B%E9%81%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/image-20250304152009515.png" class="" title="image-20250304152009515">
+
+<ul>
+<li><p>基本原理：ANN中的神经元接收输入信号，经过加权求和、激活函数处理后产生输出。</p>
+<ul>
+<li>输入层（Input Layer）：接收外部输入数据。</li>
+<li>隐藏层（Hidden Layer）：对输入数据进行特征提取和转换。</li>
+<li>输出层（Output Layer）：产生最终的预测结果。</li>
+</ul>
+</li>
+<li><p>神经元工作原理：神经元是ANN的基本计算单元，其工作过程如下：</p>
+<ol>
+<li><p><strong>加权求和</strong>：每个输入信号乘以一个权重（Weight），然后将所有加权输入相加，再加上一个偏置项（Bias）。</p>
+<img src="/2025/03/04/%E6%95%B0%E4%B9%8B%E9%81%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/image-20250304151333058.png" class="" title="image-20250304151333058">
+
+<p>其中，<em>wi</em> 是权重，<em>xi</em> 是输入，<em>b</em> 是偏置。</p>
+</li>
+<li><p><strong>激活函数</strong>：将加权求和的结果通过一个非线性函数（如Sigmoid、ReLU、Tanh等）进行处理，以引入非线性能力。</p>
+<p><em>y</em>&#x3D;<em>f</em>(<em>z</em>)</p>
+</li>
+</ol>
+<img src="/2025/03/04/%E6%95%B0%E4%B9%8B%E9%81%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/image-20250304151434149.png" class="" title="image-20250304151434149">
+</li>
+<li><p>训练过程：ANN通过训练过程学习输入数据与输出结果之间的映射关系。训练过程主要包括以下步骤：</p>
+<ul>
+<li><p><strong>前向传播（Forward Propagation）</strong>：输入数据从输入层传递到输出层，经过每一层的加权求和和激活函数处理，最终得到预测输出。</p>
+</li>
+<li><p><strong>损失函数（Loss Function）</strong>：用于衡量预测输出与真实标签之间的差异。常见的损失函数包括均方误差（MSE）、交叉熵损失（Cross-Entropy）等。</p>
+</li>
+<li><p><strong>反向传播（Backpropagation）</strong>：通过计算损失函数对每个权重的梯度，从输出层向输入层反向传播，更新权重以最小化损失函数。</p>
+</li>
+<li><p><strong>优化算法</strong>：使用优化算法（如梯度下降、Adam、SGD等）根据梯度更新权重。</p>
+</li>
+</ul>
+</li>
+<li><p>应用场景：</p>
+<ul>
+<li><strong>图像识别</strong>：通过CNN识别图像中的物体、人脸等。</li>
+<li><strong>自然语言处理</strong>：通过RNN或Transformer架构处理文本数据，如机器翻译、情感分析。</li>
+<li><strong>时间序列预测</strong>：用于股票价格预测、天气预报等。</li>
+<li><strong>医疗诊断</strong>：通过DNN分析医学影像或病历数据，辅助医生诊断疾病。</li>
+</ul>
+</li>
+<li><p>优点：</p>
+<ul>
+<li>能够自动学习数据中的复杂模式。</li>
+<li>对噪声和不完整数据具有一定的鲁棒性。</li>
+<li>可以处理多种类型的数据（如图像、文本、时间序列）。</li>
+</ul>
+</li>
+<li><p>缺点：</p>
+<ul>
+<li>训练过程需要大量数据和计算资源。</li>
+<li>模型结构复杂，难以解释。</li>
+<li>容易过拟合，需要通过正则化等方法进行控制。</li>
+</ul>
+</li>
+</ul>
+<h4 id="CNN，卷积神经网络"><a href="#CNN，卷积神经网络" class="headerlink" title="&#x3D; CNN，卷积神经网络"></a>&#x3D; CNN，卷积神经网络</h4><p>​		一种深度学习模型，专门用于处理具有网格结构的数据，如图像（二维网格）和时间序列（一维网格）。CNN通过卷积层（Convolutional Layer）提取数据的局部特征，并利用池化层（Pooling Layer）降低特征维度，从而实现高效的数据处理和特征学习。CNN在计算机视觉、自然语言处理等领域取得了巨大成功，尤其是图像识别、目标检测和图像分割等任务。</p>
+<p>​		卷积操作通过一个小的滤波器（Filter，也称为卷积核）在输入数据上滑动，计算滤波器与局部区域的加权和，从而生成新的特征图（Feature Map）。这种操作能够捕捉数据中的局部模式（如边缘、纹理等），并且对数据的平移具有不变性（Translation Invariance）。CNN的另一个重要特性是<strong>参数共享（Parameter Sharing）</strong>。在卷积操作中，同一个滤波器的权重在输入数据的不同位置共享，这大大减少了模型的参数数量，提高了计算效率。</p>
+<img src="/2025/03/04/%E6%95%B0%E4%B9%8B%E9%81%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/image-20250304152547030.png" class="" title="image-20250304152547030">
+
+<p><strong>1、CNN的主要组成部分</strong></p>
+<ul>
+<li><p><strong>卷积层（Convolutional Layer）</strong>：负责提取输入数据的局部特征</p>
+<ul>
+<li><strong>滤波器（Filter&#x2F;Kernel）</strong>：一个小型的二维矩阵，用于在输入数据上滑动并计算卷积。</li>
+<li><strong>卷积操作</strong>：滤波器在输入数据上滑动（步长为<strong>stride</strong>），计算滤波器与局部区域的逐元素乘积，并将结果求和，生成新的特征图。</li>
+<li><strong>填充（Padding）</strong>：为了保持特征图的尺寸，可以在输入数据的边缘添加零值（Zero-Padding），从而允许滤波器在边缘位置进行卷积。</li>
+<li><strong>激活函数</strong>：卷积操作的结果通常通过非线性激活函数（如ReLU）处理，以引入非线性能力。</li>
+</ul>
+<p>例如，假设输入是一个大小为 7×7 的图像，滤波器大小为 3×3，步长为1，没有填充（No Padding）。那么输出特征图的大小为5x5：</p>
+</li>
+</ul>
+<img src="/2025/03/04/%E6%95%B0%E4%B9%8B%E9%81%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/image-20250304152848265.png" class="" title="image-20250304152848265">
+
+<ul>
+<li><p><strong>池化层（Pooling Layer）</strong>：用于降低特征图的维度，减少计算量，同时保留重要特征</p>
+<ul>
+<li><strong>最大池化（Max Pooling）</strong>：在局部区域内取最大值。</li>
+<li><strong>平均池化（Average Pooling）</strong>：在局部区域内取平均值。</li>
+</ul>
+</li>
+<li><p><strong>全连接层（Fully Connected Layer）</strong>：全连接层位于CNN的末端，将卷积层和池化层提取的二维特征图展平为一维向量，并通过多层全连接网络进行分类或回归。全连接层的每个神经元与前一层的所有神经元相连，负责将局部特征组合成全局特征，最终输出预测结果。</p>
+</li>
+<li><p><strong>激活函数（Activation Function）</strong>：CNN中常用的激活函数包括ReLU（Rectified Linear Unit）、Sigmoid和Tanh。ReLU是最常用的激活函数，因为它能够有效缓解梯度消失问题，并且计算效率高：</p>
+<img src="/2025/03/04/%E6%95%B0%E4%B9%8B%E9%81%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-2/image-20250304153059036.png" class="" title="image-20250304153059036">
+</li>
+<li><p><strong>损失函数（Loss Function）</strong>：CNN的训练过程通过损失函数衡量预测结果与真实标签之间的差异。常见的损失函数包括</p>
+<ul>
+<li><strong>交叉熵损失（Cross-Entropy Loss）</strong>：用于分类任务。</li>
+<li><strong>均方误差（MSE）</strong>：用于回归任务。</li>
+</ul>
+</li>
+<li><p><strong>优化算法（Optimization Algorithm）</strong>：CNN的训练通过反向传播算法（Backpropagation）和优化算法（如SGD、Adam）更新网络参数，以最小化损失函数。</p>
+</li>
+</ul>
+<p><strong>2、CNN的工作流程</strong></p>
+<ul>
+<li><strong>前向传播（Forward Propagation）</strong><ul>
+<li>输入数据（如图像）进入网络。</li>
+<li>通过卷积层和激活函数提取局部特征。</li>
+<li>使用池化层降低特征图的维度。</li>
+<li>将特征图展平为一维向量。</li>
+<li>通过全连接层进行分类或回归，得到预测结果。</li>
+</ul>
+</li>
+<li><strong>反向传播（Backpropagation）</strong><ul>
+<li>计算损失函数的值。</li>
+<li>通过链式法则计算损失函数对每个参数的梯度。</li>
+<li>使用优化算法更新网络参数。</li>
+</ul>
+</li>
+</ul>
+<p><strong>3、CNN的典型架构</strong></p>
+<ul>
+<li><strong>LeNet-5</strong>：最早的CNN之一，由Yann LeCun提出，主要用于手写数字识别（MNIST数据集）</li>
+<li><strong>AlexNet</strong>：2012年的ImageNet竞赛中取得了突破性成果，奠定了CNN在图像识别领域的地位</li>
+<li><strong>VGGNet</strong>：由牛津大学的Visual Geometry Group提出，其特点是使用多个小卷积核（如 3×3）代替大卷积核</li>
+<li><strong>ResNet（残差网络）</strong>：ResNet通过引入残差连接（Residual Connection）解决了深度网络训练中的梯度消失和梯度爆炸问题。ResNet的核心思想是通过跳跃连接（Skip Connection）将输入直接传递到后面的层，从而简化网络的训练。ResNet可以构建非常深的网络（如ResNet-50、ResNet-101等）</li>
+<li><strong>Inception（GoogLeNet）</strong>：Inception网络通过使用Inception模块（包含多个不同尺寸的卷积核和池化操作）提高了网络的宽度和深度，同时减少了参数数量。Inception网络在计算效率和性能之间取得了良好的平衡。</li>
+</ul>
+<p><strong>4、CNN的应用场景</strong></p>
+<ul>
+<li><strong>图像识别与分类</strong>：如识别物体、场景、人脸等。</li>
+<li><strong>目标检测</strong>：通过CNN检测图像中的多个目标及其位置（如YOLO、SSD等）。</li>
+<li><strong>图像分割</strong>：将图像分割为多个区域，用于医学影像分析等。</li>
+<li><strong>自然语言处理</strong>：通过一维卷积处理文本数据（如文本分类、情感分析）。</li>
+<li><strong>视频分析</strong>：将CNN应用于视频帧的处理，用于动作识别等。</li>
+</ul>
+<p><strong>5、CNN的优点</strong></p>
+<ul>
+<li><strong>强大的特征提取能力</strong>：能够自动学习数据中的局部特征，无需手动设计特征。</li>
+<li><strong>对平移不变性</strong>：卷积操作对输入数据的平移具有一定的鲁棒性。</li>
+<li><strong>计算效率高</strong>：通过参数共享和卷积操作减少了参数数量。</li>
+<li><strong>适应性强</strong>：适用于多种类型的数据（如图像、文本、视频）。</li>
+</ul>
+<p><strong>6、CNN的i缺点</strong></p>
+<ul>
+<li><strong>需要大量数据</strong>：CNN的训练需要大量的标注数据。</li>
+<li><strong>计算资源需求高</strong>：虽然计算效率高，但训练和推理过程仍然需要强大的计算设备（如GPU）。</li>
+<li><strong>模型复杂</strong>：网络结构复杂，难以解释模型的决策过程。</li>
+<li><strong>过拟合风险</strong>：在数据量不足或网络过深时，容易出现过拟合。</li>
+</ul>
+<img src="/image/szd2.png"/>
+
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2025/03/05/%E6%95%B0%E4%B9%8B%E9%81%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>数之道学习笔记-3</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2025/03/03/AI%E4%B8%93%E5%AE%B6%E4%B9%8B%E8%B7%AF-2-DeepSeek-v3-r1/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>AI专家之路-2-DeepSeek-v3-r1</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

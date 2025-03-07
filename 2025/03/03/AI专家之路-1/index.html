@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>AI专家之路-1-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="算法,模型,">
+<meta name="description" content="AI">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/算法">算法</a></li>
+            
+            <li><a href="/tags/模型">模型</a></li>
+            
+            
+        </ul>
+        
+        <h1>AI专家之路-1</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Science/" target="_blank" >Science</a>
+                    
+                </div>
+                <p>2025-03-03 11:10:51</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h3 id="AI专家之路-1"><a href="#AI专家之路-1" class="headerlink" title="AI专家之路-1"></a>AI专家之路-1</h3><blockquote>
+<p>OpenAI将AI到AGI（通用人工智能）的过程分为五个level（等级）：聊天机器人Chatbots、推理者Reasoners、智能体Agents、创新者Innovators、组织Organizations。</p>
+</blockquote>
+<h4 id="Basic-Knowledge"><a href="#Basic-Knowledge" class="headerlink" title="Basic Knowledge"></a>Basic Knowledge</h4><img src="/2025/03/03/AI%E4%B8%93%E5%AE%B6%E4%B9%8B%E8%B7%AF-1/image-20250303111501464.png" class="" title="image-20250303111501464">
+
+<h5 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h5><p><strong>NLP：</strong>主要目标：理解人类语言，机器法医，自动摘要和信息提取，语音识别和合成，情感分析，问答系统开发。</p>
+<p><strong>机器学习：</strong>使计算机系统能够通过经验自动改进的科学。从数据中学习，通过监督学习、无监督学习和强化学习手段，应用于预测分析、图像识别、推荐系统等。</p>
+<p><strong>深度学习：</strong>属于机器学习的一个基于人工神经网络的子集。其特点是使用多层神经网络处理复杂数据，能自动学习特征，处理非结构数据，应用于计算机视觉、自然语言和语音识别等。是机器学习的一种高级形式，需要更大的数据集和更强的计算能力，在处理复杂任务时表现更好。</p>
+<p><strong>Transformer架构：</strong>一种用于处理序列数据的深度学习模型，2017年由Google提出，在自然语言处理领域取得了巨大成功，并逐渐扩展至其他领域。</p>
+<ul>
+<li><p>核心特征：基于注意力机制，屏蔽了传统的循环或卷积结构，并行处理能力强，训练速度快，能捕捉长距离依赖关系。</p>
+</li>
+<li><p>主要组成：编码器、解码器、多头自注意力机制、前馈神经网络、位置编码，输入序列经过编码器处理，解码器利用编码器输出和自身前面的输出生成新的序列</p>
+</li>
+<li><p>优势：可以并行计算，效率高，能有效处理长序列，在多种NLP任务中表现出色</p>
+</li>
+<li><p>应用：机器翻译，文本摘要，问答系统，语音识别等。为现代语言模型（Bert、GPT）等奠定了基础。</p>
+</li>
+</ul>
+<img src="/2025/03/03/AI%E4%B8%93%E5%AE%B6%E4%B9%8B%E8%B7%AF-1/image-20250303111859857.png" class="" title="image-20250303111859857">
+
+
+
+<p><strong>提示词工程</strong>：指为大型语言模型（如GPT-3和GPT-4等）设计和优化提示词，以便生成所需的输出。</p>
+<ul>
+<li><p>提示词的要素：指令，上下文，输入数据，输出知识</p>
+</li>
+<li><p>可执行的任务：文本概括，信息提取，问答，文本分类，对话，代码生成，推理</p>
+</li>
+</ul>
+<p><strong>预训练模型（Pre-trained Models）：</strong> 是指在大型数据集上预先训练过的机器学习模型，这些模型在特定任务上已经学习了丰富的特征表示，可以用来作为其他相关任务的基础。</p>
+<ul>
+<li><p>概念：利用大量无标注数据进行预训练，然后在小规模的有标注数据上进行微调（Fine-Turning）。使模型学习到通用特征，在微调阶段使模型适应特定任务。</p>
+</li>
+<li><p>优势：利用大量无标注数据进行训练，减少对标注的依赖，提升数据效率；大小模型分离训练，降低计算成本，表现也更好。</p>
+</li>
+<li><p>主要策略：自监督学习，迁移学习，多任务学习</p>
+</li>
+<li><p>应用领域：NLP，如BERT、GPT、T5（Text-to-Text Transfer Transformer）；计算机视觉，ResNET，VGG，ViT；音频处理，WaveNet，DeepSpeech</p>
+</li>
+</ul>
+<p><strong>模型微调（Fine-Tuning）</strong>：是一种机器学习技术，旨在对预训练模型进行进一步调整，以便在特定任务上达到最佳性能。</p>
+<ul>
+<li><p>微调过程：冻结一部分预训练模型参数，防止参数在微调过程中发生变化；然后调整剩余参数，以便使模型能够更好执行特定任务。步骤如下：</p>
+<ul>
+<li><p>选择BERT&#x2F;GPT-3&#x2F;ResNet等模型，准备微调数据并适当预处理</p>
+</li>
+<li><p>根据任务需求配置模型结构和参数，如冻结部分、学习率等</p>
+</li>
+<li><p>用特定数据对模型训练，调整参数以优化性能，并评估模型的性能，再次微调</p>
+</li>
+</ul>
+</li>
+<li><p>重要性：提高性能，减少数据需求，加快训练速度。预训练提供了强大的语言基础，而微调则实现了具体应用中的高性能和专业化。</p>
+</li>
+</ul>
+<p><strong>生成式检索增强（RAG）</strong>：一种结合了信息检索和生成模型的架构，旨在通过检索相关文档来增强生成模型的能力。RAG模型可以在需要生成长文本、回答复杂问题或处理知识密集型任务时表现出色.</p>
+<p>RAG将检索模型和生成模型结合在一起，通过检索相关文档提供背景知识，从而增强生成模型的输出质量。</p>
+<ul>
+<li><p>检索器（Retriever）：一个信息检索模型，用于从预先构建的文档库中检索与输入查询相关的文档。检索器通常使用双塔（dual-tower）架构，其中一个塔对输入查询进行编码，另一个塔对文档进行编码，通过计算它们的相似度来进行检索。</p>
+</li>
+<li><p>生成器（Generator）：一个生成模型，如GPT或BERT，利用检索到的文档和输入查询生成答案。生成器通过将输入查询和检索到的文档一起输入，生成最终的输出文本。</p>
+</li>
+<li><p>优势：知识更丰富，结合更高效，更灵活</p>
+</li>
+<li><p>应用领域：开放域问答，文本生成，知识密集型任务</p>
+</li>
+</ul>
+<p><strong>向量数据库（VectorDatabase）：</strong>一种专门用于存储、管理和查询高维向量数据的数据库系统。向量数据库广泛应用于机器学习、推荐系统、自然语言处理、计算机视觉等领域，因为这些领域的数据通常以高维向量形式</p>
+<ul>
+<li><p>主要功能：高纬向量存储，相似性搜索（KNN，Range Search），索引构建（LSH，HNSW,IVF），能处理百万到亿级别数据</p>
+</li>
+<li><p>应用领域：推荐系统，图像和视频检索，自然语言处理，用户画像，异常检测</p>
+</li>
+</ul>
+<p><strong>智能体（Agent）</strong>：在计算机科学和人工智能领域，Agent（智能体）是指能够自主感知环境、做出决策并执行动作的实体。智能体可以在软件、机器人、自主系统等各种形式中存在。</p>
+<ul>
+<li><p>主要特征：自主性，感知能力，决策能力，行动能力，适应性，目标导向</p>
+</li>
+<li><p><strong>Single-Agent</strong>：感知环境，做出决策，执行动作，用于解决相对简单活独立的任务，通过与环境的交互来实现预定目标。应用于机器人导航，自动驾驶，游戏AI，智能助理等领域</p>
+<ul>
+<li>感知（Perception）：通过传感器或其他手段获取环境信息</li>
+</ul>
+<ul>
+<li><p>决策（Decision Making）：基于感知信息和内部状态，进行推理和决策</p>
+</li>
+<li><p>执行（Action Execution）：通过执行器执行决定的动作。</p>
+</li>
+<li><p>学习（Learning）（可选）：通过经验和反馈不断优化自身策略和行为</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Multi-Agent：</strong>由多个相互作用的智能体组成，相互协作或竞争，以完成复杂任务。适用于需要协调和合作的大规模分布式问题。应用于智能交通系统，无人机编队，分布式控制系统，电子商务等。</p>
+<ul>
+<li><p>Agent交互（Agent Interaction）：通过通信机制进行信息交换。</p>
+</li>
+<li><p>合作与竞争（Cooperation and Competition）：</p>
+</li>
+<li><p>协调（Coordination）：通过协议和策略进行协调，避免冲突和资源争夺。</p>
+</li>
+<li><p>组织（Organization）：形成组织结构（如团队或联盟）来更高效地完成任务。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>通用模型&amp;推理模型</strong>：通用模型可以理解为文科生，推理模型则是理科生。</p>
+<img src="/2025/03/03/AI%E4%B8%93%E5%AE%B6%E4%B9%8B%E8%B7%AF-1/image-20250303112610065.png" class="" title="image-20250303112610065">
+
+<p>l <strong>监督学习（Supervised Learning）：</strong>通过人类标注数据（问答对），学习如何生成回答</p>
+<p>l <strong>奖励模型（Reward Model）：</strong>根据人类反馈（评分或排名），建立模型评估回答的质量</p>
+<p>l <strong>强化学习（Performance Learning）：</strong>通过PRO算法（Proximal Policy Optimization），在与用户交互中，不断优化策略，选择最好回答</p>
+<p>l <strong>人类反馈（Human Feedback）：</strong>训练核心动力，帮助理解什么是好的、差的回答</p>
+<p><strong>Scaling Law（缩放定律）</strong></p>
+<p><strong>1、预训练阶段：Scaling Law接近极限。</strong>在预训练阶段，目前业界共识是Scaling Law已经接近极限。主要问题在于缺乏新的高质量数据。在这种情况下，盲目增加模型参数可能导致过拟合，也就是说，模型对于见过的数据表现很好，但泛化能力反而下降，从而影响模型的整体性能。例如，OpenAI在开发GPT-5时遇到的困难，也反映了这一挑战。尽管如此，研究者们仍在努力推进。</p>
+<p><strong>2、后训练阶段：Scaling Law优势显现。</strong>在后训练阶段（post-training），Scaling Law的优势变得更加明显。无论是传统的监督微调（SFT），还是基于人类反馈的强化学习（RL），都能看到这种优势。最新的DeepSeek和其他模型系列已经开始采用基于强化学习的后训练范式，显示出良好的规模效应。</p>
+<p>值得注意的是，在后训练阶段，目前所需的算力还相对较少，平均仅占预训练阶段的1%不到。当然，这一比例正在逐渐增加。据业内人士推测，R1的后训练算力占比已经接近10%。如果能进一步扩大后训练的规模效应，那么模型的整体性能有望得到进一步提升。</p>
+<p>然而，在后训练阶段，大模型仍面临一些挑战，比如，怎么定义reward，这是做好强化学习的关键；以及获取高质量的数据，特别是专业问答和CoT（Chain of Thought，思维链）数据。目前，学术界和产业界正在探索人工标注和合成数据的方法来解决这些问题。</p>
+<p><strong>3、推理阶段：延长推理时间，提升性能。</strong>在推理阶段，Scaling Law同样有所体现，比如在上文提到的Test-Time Compute上。模型的输出过程本质上是一个计算过程。如果允许模型有更长的思考时间，它可以通过反复尝试和自我修正来优化答案。例如，模型可能一开始给出简单的答案，但在中间发现错误并进行调整，最终得出更准确的结果。这种方法能够显著提高模型输出的准确性，也是Scaling Law的一个具体表现。</p>
+<img src="/image/aiexpert-1.jpg"/>
+
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2025/03/03/AI%E4%B8%93%E5%AE%B6%E4%B9%8B%E8%B7%AF-2-DeepSeek-v3-r1/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>AI专家之路-2-DeepSeek-v3-r1</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2025/02/28/We-will-all-lost/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>We will all lose, but it&#39;s okey</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

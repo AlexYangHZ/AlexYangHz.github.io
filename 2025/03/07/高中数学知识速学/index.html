@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>高中数学知识速学-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="算法,模型,">
+<meta name="description" content="AI">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/算法">算法</a></li>
+            
+            <li><a href="/tags/模型">模型</a></li>
+            
+            
+        </ul>
+        
+        <h1>高中数学知识速学</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Science/" target="_blank" >Science</a>
+                    
+                </div>
+                <p>2025-03-07 20:12:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="高中数学知识速学"><a href="#高中数学知识速学" class="headerlink" title="高中数学知识速学"></a>高中数学知识速学</h1><h2 id="1-集合、数列"><a href="#1-集合、数列" class="headerlink" title="1 集合、数列"></a>1 集合、数列</h2><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305110903746.png" class="" title="image-20250305110903746">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305110946074.png" class="" title="image-20250305110946074">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305111111791.png" class="" title="image-20250305111111791">
+
+<h3 id="等差数列"><a href="#等差数列" class="headerlink" title="等差数列"></a>等差数列</h3><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305111217966.png" class="" title="image-20250305111217966">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305111418908.png" class="" title="image-20250305111418908">
+
+<h3 id="等比数列"><a href="#等比数列" class="headerlink" title="等比数列"></a>等比数列</h3><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305111337157.png" class="" title="image-20250305111337157">
+
+
+
+<h2 id="2-函数、二次函数、指数对数幂函数"><a href="#2-函数、二次函数、指数对数幂函数" class="headerlink" title="2 函数、二次函数、指数对数幂函数"></a>2 函数、二次函数、指数对数幂函数</h2><h3 id="区间概念"><a href="#区间概念" class="headerlink" title="区间概念"></a>区间概念</h3><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305111740817.png" class="" title="image-20250305111740817">
+
+<h3 id="增函数和减函数"><a href="#增函数和减函数" class="headerlink" title="增函数和减函数"></a>增函数和减函数</h3><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305111820343.png" class="" title="image-20250305111820343">
+
+<h3 id="奇函数和偶函数"><a href="#奇函数和偶函数" class="headerlink" title="奇函数和偶函数"></a>奇函数和偶函数</h3><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305111941078.png" class="" title="image-20250305111941078">
+
+<p>奇函数f(-x) &#x3D; -f(x)，关于原点对称；偶函数f(-x) &#x3D; f(x)，关于y轴对称</p>
+<h3 id="一次函数-y-kx-b，线性函数"><a href="#一次函数-y-kx-b，线性函数" class="headerlink" title="一次函数 y &#x3D; kx+b，线性函数"></a>一次函数 y &#x3D; kx+b，线性函数</h3><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305112227331.png" class="" title="image-20250305112227331">
+
+<h3 id="二次函数，抛物线"><a href="#二次函数，抛物线" class="headerlink" title="二次函数，抛物线"></a>二次函数，抛物线</h3><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305150759895.png" class="" title="image-20250305150759895">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305150837316.png" class="" title="image-20250305150837316">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305150917025.png" class="" title="image-20250305150917025">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305151008712.png" class="" title="image-20250305151008712">
+
+<h3 id="指数，指数函数"><a href="#指数，指数函数" class="headerlink" title="指数，指数函数"></a>指数，指数函数</h3><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305151539925.png" class="" title="image-20250305151539925">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305151345610.png" class="" title="image-20250305151345610">
+
+<h3 id="对数，对数函数"><a href="#对数，对数函数" class="headerlink" title="对数，对数函数"></a>对数，对数函数</h3><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305151617428.png" class="" title="image-20250305151617428">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305151648362.png" class="" title="image-20250305151648362">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305151718976.png" class="" title="image-20250305151718976">
+
+<h3 id="反函数"><a href="#反函数" class="headerlink" title="反函数"></a>反函数</h3><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305151814701.png" class="" title="image-20250305151814701">
+
+<h3 id="幂函数"><a href="#幂函数" class="headerlink" title="幂函数"></a>幂函数</h3><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250305152013234.png" class="" title="image-20250305152013234">
+
+
+
+<h2 id="3-立体几何、点线面关系、-平面解析几何、圆锥曲线"><a href="#3-立体几何、点线面关系、-平面解析几何、圆锥曲线" class="headerlink" title="3 立体几何、点线面关系、 平面解析几何、圆锥曲线"></a>3 立体几何、点线面关系、 平面解析几何、圆锥曲线</h2><h3 id="空间几何"><a href="#空间几何" class="headerlink" title="空间几何"></a>空间几何</h3><p>棱柱： 上下两个互相平行的面。有斜棱柱，直棱柱，正棱柱和平行六面体</p>
+<p>棱锥棱台：</p>
+<p>圆柱，圆锥，圆台，球：</p>
+<p>投影：</p>
+<p>三视图：主视图，左视图，俯视图</p>
+<h4 id="几何体的表面积和体积"><a href="#几何体的表面积和体积" class="headerlink" title="几何体的表面积和体积"></a>几何体的表面积和体积</h4><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306092319520.png" class="" title="image-20250306092319520">
+
+<h3 id="点线面关系"><a href="#点线面关系" class="headerlink" title="点线面关系"></a>点线面关系</h3><h4 id="1）平面的基本性质和推论"><a href="#1）平面的基本性质和推论" class="headerlink" title="1）平面的基本性质和推论"></a>1）平面的基本性质和推论</h4><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306092534830.png" class="" title="image-20250306092534830">
+
+<h4 id="2）空间的垂直关系"><a href="#2）空间的垂直关系" class="headerlink" title="2）空间的垂直关系"></a>2）空间的垂直关系</h4><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306092658026.png" class="" title="image-20250306092658026">
+
+<h3 id="平面解析几何"><a href="#平面解析几何" class="headerlink" title="平面解析几何"></a>平面解析几何</h3><h4 id="1）直角坐标系"><a href="#1）直角坐标系" class="headerlink" title="1）直角坐标系"></a>1）直角坐标系</h4><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306092954134.png" class="" title="image-20250306092954134">
+
+<h4 id="2）两点距离公式和中点公式"><a href="#2）两点距离公式和中点公式" class="headerlink" title="2）两点距离公式和中点公式"></a>2）两点距离公式和中点公式</h4><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306093112382.png" class="" title="image-20250306093112382">
+
+<h4 id="3）直线方程-y-kx-b"><a href="#3）直线方程-y-kx-b" class="headerlink" title="3）直线方程 y &#x3D; kx + b"></a>3）直线方程 y &#x3D; kx + b</h4><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306093328373-17412248119141.png" class="" title="image-20250306093328373">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306093412612.png" class="" title="image-20250306093412612">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306093629882.png" class="" title="image-20250306093629882">
+
+<h4 id="4）圆的方程"><a href="#4）圆的方程" class="headerlink" title="4）圆的方程"></a>4）圆的方程</h4><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306093705801.png" class="" title="image-20250306093705801">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306093743348.png" class="" title="image-20250306093743348">
+
+<h4 id="5）直线与圆、圆与圆的关系"><a href="#5）直线与圆、圆与圆的关系" class="headerlink" title="5）直线与圆、圆与圆的关系"></a>5）直线与圆、圆与圆的关系</h4><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306093956318.png" class="" title="image-20250306093956318">
+
+<h3 id="圆锥曲线"><a href="#圆锥曲线" class="headerlink" title="圆锥曲线"></a>圆锥曲线</h3><h4 id="椭圆"><a href="#椭圆" class="headerlink" title="椭圆"></a>椭圆</h4><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306094242776.png" class="" title="image-20250306094242776">
+
+<h4 id="双曲线"><a href="#双曲线" class="headerlink" title="双曲线"></a>双曲线</h4><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306094350650.png" class="" title="image-20250306094350650">
+
+<h4 id="抛物线"><a href="#抛物线" class="headerlink" title="抛物线"></a>抛物线</h4><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306094555826.png" class="" title="image-20250306094555826">
+
+<h2 id="4-算法初步、逻辑用语"><a href="#4-算法初步、逻辑用语" class="headerlink" title="4 算法初步、逻辑用语"></a>4 算法初步、逻辑用语</h2><p>算法：程序框图</p>
+<h3 id="逻辑用语"><a href="#逻辑用语" class="headerlink" title="逻辑用语"></a>逻辑用语</h3><h4 id="常用逻辑用语"><a href="#常用逻辑用语" class="headerlink" title="常用逻辑用语"></a>常用逻辑用语</h4><p>命题：能判断真假的语句叫做命题。要么是真，要么是假，不能模棱两可</p>
+<h5 id="量词："><a href="#量词：" class="headerlink" title="量词："></a>量词：</h5><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306095049414.png" class="" title="image-20250306095049414">
+
+<p>且与或：</p>
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306095246505.png" class="" title="image-20250306095246505">
+
+<p>非（否定）：</p>
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306095458099.png" class="" title="image-20250306095458099">
+
+<h4 id="充分条件、必要条件"><a href="#充分条件、必要条件" class="headerlink" title="充分条件、必要条件"></a>充分条件、必要条件</h4><p>如A&#x3D;&gt;B，则A是B的充分条件，B是A的必要条件</p>
+<p>如C&lt;&#x3D;&gt;D，则C是D的充要条件，D是C的充要条件</p>
+<h4 id="命题四种形式"><a href="#命题四种形式" class="headerlink" title="命题四种形式"></a>命题四种形式</h4><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306095848753.png" class="" title="image-20250306095848753">
+
+<h2 id="5-三角函数、平面向量、三角变换、正余弦"><a href="#5-三角函数、平面向量、三角变换、正余弦" class="headerlink" title="5 三角函数、平面向量、三角变换、正余弦"></a>5 三角函数、平面向量、三角变换、正余弦</h2><h3 id="三角函数"><a href="#三角函数" class="headerlink" title="三角函数"></a>三角函数</h3><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306185556161.png" class="" title="image-20250306185556161">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306185757995.png" class="" title="image-20250306185757995">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306190017737.png" class="" title="image-20250306190017737">
+
+<h3 id="平面向量"><a href="#平面向量" class="headerlink" title="平面向量"></a>平面向量</h3><p>向量：具有大小和方向的量。</p>
+<p>向量的加减法，数乘向量，单位向量，向量的直角坐标运算，平面向量的数量积</p>
+<p>向量的长度，距离和夹角公式</p>
+<h3 id="三角恒等变换"><a href="#三角恒等变换" class="headerlink" title="三角恒等变换"></a>三角恒等变换</h3><h4 id="三叫函数的积化和差与和差化积"><a href="#三叫函数的积化和差与和差化积" class="headerlink" title="三叫函数的积化和差与和差化积"></a>三叫函数的积化和差与和差化积</h4><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306190938547.png" class="" title="image-20250306190938547">
+
+<h4 id="两角和的正切"><a href="#两角和的正切" class="headerlink" title="两角和的正切"></a>两角和的正切</h4><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306191051265.png" class="" title="image-20250306191051265">
+
+<h3 id="正弦定理"><a href="#正弦定理" class="headerlink" title="正弦定理"></a>正弦定理</h3><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306191230844.png" class="" title="image-20250306191230844">
+
+<img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306191335710.png" class="" title="image-20250306191335710">
+
+<h3 id="余弦定理"><a href="#余弦定理" class="headerlink" title="余弦定理"></a>余弦定理</h3><img src="/2025/03/07/%E9%AB%98%E4%B8%AD%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86%E9%80%9F%E5%AD%A6/image-20250306191425573.png" class="" title="image-20250306191425573">
+
+<h2 id="6-统计、概率"><a href="#6-统计、概率" class="headerlink" title="6 统计、概率"></a>6 统计、概率</h2><h2 id="7-导数、复数"><a href="#7-导数、复数" class="headerlink" title="7 导数、复数"></a>7 导数、复数</h2><p>来源：【[速成零基础高中数学合集]20个视频整理版 必修和选修一 知识点整理讲解】 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ua4y1Y7yX/?p=8&share_source=copy_web&vd_source=4bbce1829495fde2f31b5349c79e3deb">https://www.bilibili.com/video/BV1ua4y1Y7yX/?p=8&amp;share_source=copy_web&amp;vd_source=4bbce1829495fde2f31b5349c79e3deb</a></p>
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+
+    
+    <a href="/2025/03/05/%E6%95%B0%E4%B9%8B%E9%81%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-3/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>数之道学习笔记-3</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"02b3c","clientSecret":"adfc7b4","repo":"gimment","owner":"duneng","admin":"duneng"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+
