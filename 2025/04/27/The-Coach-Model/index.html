@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>The Coach Model(V1)-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="ideas,">
+<meta name="description" content="Weekly">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/ideas">ideas</a></li>
+            
+            
+        </ul>
+        
+        <h1>The Coach Model(V1)</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Weekly/" target="_blank" >Weekly</a>
+                    
+                </div>
+                <p>2025-04-27 09:25:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="The-Coach-Model-V1"><a href="#The-Coach-Model-V1" class="headerlink" title="The Coach Model(V1)"></a>The Coach Model(V1)</h1><h2 id="Two-types-of-people-needed-to-be-coached"><a href="#Two-types-of-people-needed-to-be-coached" class="headerlink" title="Two types of people needed to be coached"></a>Two types of people needed to be coached</h2><h3 id="Wendy"><a href="#Wendy" class="headerlink" title="Wendy"></a>Wendy</h3><p>Wendy shared with me about her conversations with a neighbor who was involved in a difficult marriage. She listened well and was very empathic. The neighbor felt heard and cared for, but didn’t seem to change or move forward. Week after week the neighbor brought the same problems. Wendy wondered how she could adjust the conversation to help her neighbor take some kind of action toward a more satisfying marriage.</p>
+<h3 id="Sam"><a href="#Sam" class="headerlink" title="Sam"></a>Sam</h3><p>A man I know was notorious, according to his wife and co-workers, for offering solutions immediately upon hearing a problem. In his mind, if a person chose to share a problem with him, then obviously they expected him to suggest a solution. He thought he was being helpful. Others felt the opposite. They thought he didn’t listen, wasn’t empathetic, and didn’t care about them.	</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>These two people were strong in different parts of the conversation process. Wendy was an excellent empathic listener and needed to learn how to help people move toward action. My other friend jumped straight to action steps and needed to learn to listen, explore, and help people find their own solutions. The COACH Model helps both of these types of people to grow in the areas in which they are not naturally gifted.</p>
+<h2 id="The-COACH-Model"><a href="#The-COACH-Model" class="headerlink" title="The COACH Model"></a>The COACH Model</h2><p>![image-20250422093035248](We-will-all-lost (copy)&#x2F;image-20250422093035248.png)</p>
+<p>​		</p>
+<p><strong>C, Connect:</strong> Connecting with the person to build trust and following-up on previous coaching conversations</p>
+<p><strong>O, Outcom:</strong> The intended result which the coachee would like to achieve</p>
+<p><strong>A, Awareness:</strong> More discoveries, insights and increased perspective about the coachee.</p>
+<p><strong>C, Course:</strong> With the awareness, help cochee move into action steps.</p>
+<p><strong>H, Highlights:</strong> Reinforce insights and important points thus strenghtening cochee’s learning.</p>
+<p>​		</p>
+<h3 id="C-Connect"><a href="#C-Connect" class="headerlink" title="C, Connect"></a>C, Connect</h3><p><strong>How Coaching Builds Trust?</strong></p>
+<ul>
+<li>Supporting rather than cotrolling</li>
+<li>Encourageing ideas rather than sharing them</li>
+<li>Yielding responsibility rather than taking it</li>
+<li>Processing decisions rather than making them</li>
+<li>Believing in the person rather than trying to fix them</li>
+<li>Keeping appointments and honoring confidentiality</li>
+</ul>
+<p><strong>Begin with small talks</strong></p>
+<p>How are you? To actknowledge the status of cochee, and talk a while accord to cochee’s response.</p>
+<h3 id="O-Outcome"><a href="#O-Outcome" class="headerlink" title="O, Outcome"></a>O, Outcome</h3><blockquote>
+<p>“The formulation of the problem is often more essential than its solution…”</p>
+<p>—Albert Einstein</p>
+</blockquote>
+<p><strong>The importance of outcome:</strong> to be clear on the intended result, keep both focus on what to achieve or explore, can be measured whether the conversation has accomplished its purpose</p>
+<p><strong>Who decides the outcome? A ‘coachee’ centered discussion</strong></p>
+<p>In coaching, coachees are considered to be the experts on their lives, and are trusted to think, decide, and act.</p>
+<p>Example Outcome Questions:</p>
+<blockquote>
+<p>What result would you like to take away from our conversation?</p>
+</blockquote>
+<blockquote>
+<p>What would you like to work on?</p>
+</blockquote>
+<blockquote>
+<p>What would make today’s conversation meaningful for you?</p>
+</blockquote>
+<p>Use questions to explore, clarify, and focus the coachee’s topic, problem, or goal.</p>
+<p>Once the coachee can sort out what’s happening inside them, they often can quickly address the “how-to” part of the solution.</p>
+<p>By understanding what’s behind the specific topic, the coach can understand the coachee’s motivations, reasoning, and assumptions.</p>
+<p>All goals have a number of motivations behind them. People tend to reveal what they want, not what motivates them to want it, which is often what they really desire in the first place. Clarifying motivations often reveal the coachee’s ultimate goal and is a powerful tool to use in helping the coachee to move forward.</p>
+<p><strong>Three steps to confirm the outcome</strong></p>
+<h4 id="1-Determining-the-Outcome-Ask-What"><a href="#1-Determining-the-Outcome-Ask-What" class="headerlink" title="1 Determining the Outcome: Ask What!"></a>1 Determining the Outcome: Ask What!</h4><h4 id="2-Sharpen-the-Outcome-Use-questions-to-explore-clarify-and-focus"><a href="#2-Sharpen-the-Outcome-Use-questions-to-explore-clarify-and-focus" class="headerlink" title="2 Sharpen the Outcome: Use questions to explore, clarify and focus"></a>2 Sharpen the Outcome: Use questions to explore, clarify and focus</h4><h5 id="1-Exploring-Questions-Examine-the-topic-understand-motivations-reasoning-and-assumptions"><a href="#1-Exploring-Questions-Examine-the-topic-understand-motivations-reasoning-and-assumptions" class="headerlink" title="1) Exploring Questions: Examine the topic, understand motivations, reasoning and assumptions"></a>1) Exploring Questions: Examine the topic, understand motivations, reasoning and assumptions</h5><blockquote>
+<p>If you could accomplish that, what would it do for you?</p>
+</blockquote>
+<blockquote>
+<p>What’s going on in you that is keeping you from doing this?</p>
+</blockquote>
+<blockquote>
+<p>Let’s back up a minute, what are some of the issues behind this situation?</p>
+</blockquote>
+<blockquote>
+<p>What’s the big picture here, what do you want to achieve?</p>
+</blockquote>
+<blockquote>
+<p>What would achieving this do for you?</p>
+</blockquote>
+<h5 id="2-Clarifying-Questions-For-you-understand-the-means-and-for-coachee-to-promote-greater-clarity"><a href="#2-Clarifying-Questions-For-you-understand-the-means-and-for-coachee-to-promote-greater-clarity" class="headerlink" title="2) Clarifying Questions: For you understand the means and for coachee to promote greater clarity"></a>2) Clarifying Questions: For you understand the means and for coachee to promote greater clarity</h5><blockquote>
+<p>What do you mean by “act like a team”?</p>
+</blockquote>
+<blockquote>
+<p>Could you give an example of “community”?</p>
+</blockquote>
+<blockquote>
+<p>What would being “successful” look like to you?</p>
+</blockquote>
+<h5 id="3-Focusing-Questions-Narrow-the-coaching-topic-to-something-which-is-manageable-and-achievable"><a href="#3-Focusing-Questions-Narrow-the-coaching-topic-to-something-which-is-manageable-and-achievable" class="headerlink" title="3) Focusing Questions: Narrow the coaching topic to something which is manageable and achievable"></a>3) Focusing Questions: Narrow the coaching topic to something which is manageable and achievable</h5><blockquote>
+<p>hat’s a big topic, what part of that would you like to focus on today?</p>
+</blockquote>
+<blockquote>
+<p>What aspect of that problem would you like to work on right now?</p>
+</blockquote>
+<blockquote>
+<p>What part of this topic would be most helpful for you to address this week?</p>
+</blockquote>
+<h4 id="3-Confirm-the-Outcome-Test-understanding-by-coachee’s-restate"><a href="#3-Confirm-the-Outcome-Test-understanding-by-coachee’s-restate" class="headerlink" title="3 Confirm the Outcome: Test understanding by coachee’s restate"></a>3 Confirm the Outcome: Test understanding by coachee’s restate</h4><blockquote>
+<p>Just so we’re clear, would you please restate what you’d like to achieve today?</p>
+<p>So, is that what you’d like to focus our conversation on today?</p>
+<p>Just to check my understanding, today you’d like to leave with X, Y, and Z. Is that correct?</p>
+</blockquote>
+<h3 id="A-Awareness"><a href="#A-Awareness" class="headerlink" title="A, Awareness"></a>A, Awareness</h3><p> Coachees make discoveries about themselves, their situation, their potential, their actions, their inaction, their assumptions, their values—the list goes on and on. The thrill of discovery produces new thoughts, emotions, perspectives, and determination.</p>
+<p>Coaching takes a different approach. The focus is not on new information or knowledge, but rather on a new perspective. A shift in perspective—seeing what we already “know” with new eyes—can lead to the discovery of new roads. A narrow perspective tends to limit thinking. The more perspective, the more accurately a person will see his or her situation.</p>
+<p>We find new roads by increasing our perspective—seeing the same world in new ways, through new eyes.</p>
+<p>“The real voyage of discovery consists not in seeking new landscapes but in having new eyes.”<br>—Marcel Proust</p>
+<blockquote>
+<p>Knowledge is past;</p>
+</blockquote>
+<blockquote>
+<p>Questions are future.</p>
+</blockquote>
+<blockquote>
+<p>Knowledge is static;</p>
+</blockquote>
+<blockquote>
+<p>Questions are dynamic.</p>
+</blockquote>
+<blockquote>
+<p>Knowledge is rigid;</p>
+</blockquote>
+<blockquote>
+<p>Questions are flexible.</p>
+</blockquote>
+<blockquote>
+<p>Knowledge limits options;</p>
+</blockquote>
+<blockquote>
+<p>Questions create possibilities.</p>
+</blockquote>
+<blockquote>
+<p>Knowledge requires adaptation;</p>
+</blockquote>
+<blockquote>
+<p>Questions call for innovation.</p>
+</blockquote>
+<blockquote>
+<p>Knowledge is a location;</p>
+</blockquote>
+<blockquote>
+<p>Questions are a journey.</p>
+</blockquote>
+<blockquote>
+<p>Knowledge can be superior;</p>
+</blockquote>
+<blockquote>
+<p>Questions require humility.</p>
+</blockquote>
+<blockquote>
+<p>Knowledge knows;</p>
+</blockquote>
+<blockquote>
+<p>Questions learn.</p>
+</blockquote>
+<h4 id="How-To-Ask-Powerful-Questions"><a href="#How-To-Ask-Powerful-Questions" class="headerlink" title="How To Ask Powerful Questions?"></a>How To Ask Powerful Questions?</h4><h5 id="Coachee-or-Me-—-For-the-benefit-of-other-person"><a href="#Coachee-or-Me-—-For-the-benefit-of-other-person" class="headerlink" title="Coachee or Me?  — For the benefit of other person."></a>Coachee or Me?  — For the benefit of other person.</h5><blockquote>
+<p>Coach-focused question: Tell me about the conflict. (The coachee knows about the conflict, thus the question is for the coach.)</p>
+</blockquote>
+<blockquote>
+<p>Coachee-focused question: What would excellent resolution of this conflict look like?</p>
+</blockquote>
+<h5 id="Forward-or-Backward-—-Forward-moving-not-backward-looking"><a href="#Forward-or-Backward-—-Forward-moving-not-backward-looking" class="headerlink" title="Forward or Backward? — Forward-moving not backward-looking."></a>Forward or Backward? — Forward-moving not backward-looking.</h5><p>One of the key differences between therapy and coaching is that a counselor or therapist seeks to discover issues in a person’s past that are preventing them from moving forward in their life.</p>
+<p>While both counselors and coaches use many of the same dialogue techniques, coaching begins in the present and is future oriented. Coachees are basically psychologically and emotionally healthy and want to move ahead. If you suspect a coachee has a psychological disorder such as depression, addictions, eating disorders, or suicidal tendencies, you must refer the coachee to a qualified counselor or therapist so he or she can get the help they need.</p>
+<blockquote>
+<p>Backward-looking question: Why did you organize it that way? (The coach wants the history, but it may not be needed.)</p>
+</blockquote>
+<blockquote>
+<p>Forward-looking question: What approach is your intuition telling you to take?</p>
+</blockquote>
+<h5 id="Building-or-Correcting-—-Stimulate-discovery-toward-action-and-do-not-subtly-attempt-to-correct-the-coachee"><a href="#Building-or-Correcting-—-Stimulate-discovery-toward-action-and-do-not-subtly-attempt-to-correct-the-coachee" class="headerlink" title="Building or Correcting? — Stimulate discovery toward action and do not subtly attempt to correct the coachee"></a>Building or Correcting? — Stimulate discovery toward action and do not subtly attempt to correct the coachee</h5><p>We can easily break trust with the coachee if they sense that we are judging them. These judgments can leak through in the form of questions that you hope will help the coachee realize his errors. The coachee’s natural reaction is to close up, become defensive, and justify their actions. The coachee can also feel manipulated. They view your questions as an attempt to “fix” them rather than as honest inquiry. Also, some coachees may believe that you actually have the answer for them and that you are holding back. This does not promote trust or self-discovery.</p>
+<p>Don’t focus your questions on correcting the coachee, but rather on ways that will allow the coachee to build. Throughout a coaching conversation the coachee builds understanding, perspective, options, solutions, and actions.</p>
+<blockquote>
+<p>Correcting question: Why haven’t you delegated this to someone else? (Coach is thinking, “You should have delegated this a long time ago.”)</p>
+</blockquote>
+<blockquote>
+<p>Building question: What help do you need from here? (Just using the word “delegation” will provide a suggestion, if not a judgment. Leave it open with “help” and see what the coachee thinks of.)</p>
+</blockquote>
+<h3 id="C-Course"><a href="#C-Course" class="headerlink" title="C, Course"></a>C, <strong>Course</strong></h3><blockquote>
+<p>“It is not difficult to know a thing; what is difficult is to know how to use what you know.”</p>
+<p>—Han Fei Tzu </p>
+</blockquote>
+<p> Without action steps, discoveries and insights are just good ideas.</p>
+<p> A step-by-step approach, using small relevant action steps, better supports a coachee as she tries to reach her goals.</p>
+<p>Instead, create small, forward-moving action steps that build on one another. This method usually gets us to our goals faster.</p>
+<p>Every action step is actually made up of a number of smaller actions steps—thoughts, decisions, and actions. </p>
+<p><strong>Coaching Action Steps</strong></p>
+<p>The various techniques for coaching action steps can be combined into a three-step dialogue. By coaching action steps, we help the coachee to think through what actions would be relevant, what they will do, how they will do it, and by when. Planning these things prior to attempting action steps provides a much greater chance of a positive result.</p>
+<ol>
+<li><strong>Ask for Action Steps</strong></li>
+</ol>
+<p>Depending on the flow of the conversation you may first ask for options, or go straight to commitment to action steps.</p>
+<blockquote>
+<p>What action will you take to move forward?</p>
+</blockquote>
+<blockquote>
+<p>What else would you like to do?</p>
+</blockquote>
+<p>Prompt from different angles. For example,</p>
+<blockquote>
+<p>Who could help you?</p>
+</blockquote>
+<blockquote>
+<p>Earlier you mentioned X, is this something you’d like to do?</p>
+</blockquote>
+<blockquote>
+<p>What could you do from a spiritual perspective?</p>
+</blockquote>
+<ol start="2">
+<li><strong>SMARTen Up the Action Steps</strong></li>
+</ol>
+<p>Coach towards SMART action steps. This includes dividing any too-large action steps into several smaller steps to tap into the power of small wins.</p>
+<ol start="3">
+<li><strong>Confirm the Action Steps</strong></li>
+</ol>
+<p>Confirm the action steps and make sure that you and the coachee have them written down. This step makes following-up on action steps much easier.</p>
+<blockquote>
+<p>How do you feel about these action steps? [Coach around any hesitations.]</p>
+</blockquote>
+<blockquote>
+<p>Just to make sure we’re on the same page, what are your action steps?</p>
+</blockquote>
+<h3 id="H-Highlights"><a href="#H-Highlights" class="headerlink" title="H, Highlights"></a>H, <strong>Highlights</strong></h3><p>As Albert Einstein said, “If you can’t explain it simply, you don’t understand it well enough.”</p>
+<p>Literally, we build our brains by repeating things.</p>
+<p> Summarizing learning and then sharing it with others cements the learning, rewiring our brains in the process.</p>
+<p>Highlights are for the coachee to summarize, not the coach.</p>
+<p>But, coaching is about drawing out, not putting in. It is our job to draw out what the coachee learned and found valuable, not what we think was valuable.</p>
+<h2 id="Following-up"><a href="#Following-up" class="headerlink" title="Following-up"></a>Following-up</h2><p>“What progress did you make on your action step?”</p>
+<h3 id="What"><a href="#What" class="headerlink" title="What?"></a>What?</h3><p>The What? step is designed to raise the coachee’s awareness and make her conscious of her thoughts, emotions, and behaviors before and during the action step. This requires the coachee to dig below the surface to identify many aspects of what happened.</p>
+<blockquote>
+<p>Do: What did you do? Or not do?</p>
+</blockquote>
+<blockquote>
+<p>Think: What did you think about as you did it?</p>
+</blockquote>
+<blockquote>
+<p>Feel: What feelings did you have during the experience?</p>
+</blockquote>
+<blockquote>
+<p>Effect: What were the effects of having taken these actions?</p>
+</blockquote>
+<h3 id="So-What"><a href="#So-What" class="headerlink" title="So What?"></a>So What?</h3><p>Look for logical connections between thoughts, emotions, actions and their effects. The effects are the immediate results related to the action step itself, and process includes the new thoughts, behaviors, and experiences involved in accomplishing it.</p>
+<p>Encourage the coachee to summarize his or her observations, insights or learning for the purpose of reinforcing it and making it easier to remember. Insights and discoveries more often come from the process, yet coachees often overlook this area.</p>
+<blockquote>
+<p>What did you learn? Relearn?</p>
+</blockquote>
+<blockquote>
+<p>What benefits did you receive from this experience?</p>
+</blockquote>
+<blockquote>
+<p>How do you feel about yourself?</p>
+</blockquote>
+<blockquote>
+<p>What are the implications of doing this action?</p>
+</blockquote>
+<h3 id="Now-What"><a href="#Now-What" class="headerlink" title="Now What?"></a>Now What?</h3><p>Now we want to reinforce that learning by extending it into other areas of his life.</p>
+<blockquote>
+<p>How can you extend the learning?</p>
+</blockquote>
+<blockquote>
+<p>Where else could you apply what you’ve learned?</p>
+</blockquote>
+<blockquote>
+<p>How do you want to do things differently in the future?</p>
+</blockquote>
+<p>Following-up on incomplete action steps is a chance for the coachee to increase self-awareness and learning, as well as to make corrections leading to successful completion of their goals.</p>
+<h2 id="Next-Steps"><a href="#Next-Steps" class="headerlink" title="Next Steps"></a>Next Steps</h2><p>“Nothing changes without personal transformation.”</p>
+<p>— W. Edwards Deming</p>
+<h1 id="Coach-to-Coach"><a href="#Coach-to-Coach" class="headerlink" title="Coach to Coach"></a>Coach to Coach</h1><p>#1 Really soul search about what it is you love to do and why you love to do it. Once you figure out that intersection of your passion and your purpose</p>
+<p>#2 And when you are unclear, you lack the power and drive to achieve them. I believe the pursuit of your best never lets you rest. The old coach was really opening his mind and guiding him to imagine more possibilities. Maybe that was also a part of what coaching was all about. Then you should give him a blank piece of paper for him to write down what excites him and his big goal.</p>
+<p>#3 It was the importance of praising in public and criticizing in private</p>
+<p>#4 They take a simple idea and try to make it too complex. Then they do nothing.</p>
+<p>#5 Coach, to take you somewhere, you want to go when you can’t get there yourself.</p>
+<p>A coach’s job is to help someone get where they want to go, not to do anything or put up any roadblocks or resistance to stop them from the destination. Knowledge really doesn’t mean squat. Success in life is all about taking some action</p>
+<p>#6 Life is just one big practice session where you should always be looking to learn new things and get better. Better to spend your energy on what you have left than what you have lost. A coach should always make sure that the goal of any interaction is to leave the person better than before you met them.</p>
+<p>#7 A great coach learns to point his finger differently to be a credit maker and a blame taker. As a coach, when things are going good, it’s because of cochee’s actions; and when things are going bad, it’s coach’s fault.</p>
+<p>#8 Is there anything I can do to make it easier?</p>
+<p>#9 There are always people out there who turn their greatest weakness into their greatest strength</p>
+<p>#10 The only way to get good at this stuff is to do it. Amateurs do things enough times just to get them right. Professionals do things so many times they can’t get them wrong.</p>
+<p>#11 <em>The best way for a coach to become stronger is to lift someone else up</em></p>
+<p>#12 Make the most important thing the most important thing. You can’t control whether you win or lose all the time. But you can</p>
+<p>always control your effort and enthusiasm. I’m just asking you to focus on those and give all you got.</p>
+<h1 id="The-Coach-Model-V2"><a href="#The-Coach-Model-V2" class="headerlink" title="The Coach Model(V2)"></a>The Coach Model(V2)</h1><h2 id="Avoid-to-be-two-types-of-coach"><a href="#Avoid-to-be-two-types-of-coach" class="headerlink" title="Avoid to be two types of coach"></a>Avoid to be two types of coach</h2><ol>
+<li><p>Excellent empathic listener: Did’t change or move foward -&gt; Help to move toward action.</p>
+</li>
+<li><p>Solutions offer: Jumped straightly to action steps. -&gt; Listen, explore and help to find their own solutions.</p>
+</li>
+</ol>
+<h2 id="The-Mini-Coach-Model"><a href="#The-Mini-Coach-Model" class="headerlink" title="The Mini Coach Model"></a>The Mini Coach Model</h2><h4 id="C-Connect-build-trust"><a href="#C-Connect-build-trust" class="headerlink" title="C, Connect: build trust"></a>C, Connect: build trust</h4><ul>
+<li>How are you ? Begin with small talks, ackknowledge the status</li>
+<li>Support vs controll, encourage vs share, yield vs take, process vs make, believe vs try to fix</li>
+</ul>
+<h4 id="O-Outcome-the-coachee-want-to-achieve"><a href="#O-Outcome-the-coachee-want-to-achieve" class="headerlink" title="O, Outcome: the coachee want to achieve"></a>O, Outcome: the coachee want to achieve</h4><ul>
+<li>Be clear on the intended result, what to achieve or explore can be measured. Trust on cochee to think, decide and act</li>
+<li>Use questions to explore, clarify and focus the topic, problem or goal; Understand motivations, reasoning and assumptions</li>
+<li>Sharpen and confirm the outcome by coachee’s restate</li>
+</ul>
+<h4 id="A-Awareness-more-discoveries-insights-and-perspectives"><a href="#A-Awareness-more-discoveries-insights-and-perspectives" class="headerlink" title="A, Awareness: more discoveries, insights and perspectives"></a>A, Awareness: more discoveries, insights and perspectives</h4><ul>
+<li>New discoveries about coachee’s situation, potential, actions, inactions, assumptions and values, to produce new thoughts, emotions, perspectives and determination</li>
+<li>For the beneift of coachee, forward-moving and building rather than correcting.</li>
+<li>Focus on a new perspective rather than on new information or knowledge.</li>
+</ul>
+<h4 id="C-Course-move-into-action-steps"><a href="#C-Course-move-into-action-steps" class="headerlink" title="C, Course: move into action steps"></a>C, Course: move into action steps</h4><ul>
+<li>Without action steps, discoveries and insights are just good ideas.</li>
+<li>Ask for action stpes, SMARTen Up and Confirm</li>
+</ul>
+<h4 id="H-Highlights-reinforce-insights-and-key-points"><a href="#H-Highlights-reinforce-insights-and-key-points" class="headerlink" title="H, Highlights: reinforce insights and key points."></a>H, Highlights: reinforce insights and key points.</h4><ul>
+<li>For the coachee to summarize, sharing and rewiring. </li>
+<li>Drawing out rather than putting in, the coachee found valuable, not what we think was valuable</li>
+</ul>
+<h2 id="Following-up-1"><a href="#Following-up-1" class="headerlink" title="Following-up"></a>Following-up</h2><h4 id="What-1"><a href="#What-1" class="headerlink" title="What?"></a>What?</h4><ul>
+<li>Raise the coachee’s awareness and make her conscious of thoughts, emotions and behaviors</li>
+</ul>
+<h4 id="So-What-1"><a href="#So-What-1" class="headerlink" title="So What?"></a>So What?</h4><ul>
+<li>Look for logical connections between thoughts, emotions actions and effects.</li>
+</ul>
+<h4 id="Now-What-1"><a href="#Now-What-1" class="headerlink" title="Now What?"></a>Now What?</h4><ul>
+<li>Reinforce that learning by extending it into other areas.</li>
+</ul>
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2025/04/28/tech/UDP_Protocol/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>UDP Protocol</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2025/04/27/ai/From-function-to-netural-network/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>From Function to Netural Network</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"Ov23lijMO8Y1d5CxdOnz","clientSecret":"77a460fa3d181dd6d26faa420511e0fec5a8d49b","repo":"https://github.com/AlexYangHZ/gtalk","owner":"AlexYangHZ","admin":"AlexYangHZ"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

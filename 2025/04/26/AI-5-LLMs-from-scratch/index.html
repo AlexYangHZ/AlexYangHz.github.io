@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>AI-5-LLMs-from-scratch-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="算法,模型,">
+<meta name="description" content="AI">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/算法">算法</a></li>
+            
+            <li><a href="/tags/模型">模型</a></li>
+            
+            
+        </ul>
+        
+        <h1>AI-5-LLMs-from-scratch</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Science/" target="_blank" >Science</a>
+                    
+                </div>
+                <p>2025-04-26 13:09:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="AI-5-LLMs-from-scratch"><a href="#AI-5-LLMs-from-scratch" class="headerlink" title="AI-5-LLMs-from-scratch"></a>AI-5-LLMs-from-scratch</h1><h2 id="1-Three-main-steps-of-construct-a-LLM"><a href="#1-Three-main-steps-of-construct-a-LLM" class="headerlink" title="1 Three main steps of construct a LLM"></a>1 Three main steps of construct a LLM</h2>
+
+<h3 id="Step-1-1-Text-analysis"><a href="#Step-1-1-Text-analysis" class="headerlink" title="Step 1-1 Text analysis"></a>Step 1-1 Text analysis</h3><h4 id="1-Text-split-into-individual-word-elements"><a href="#1-Text-split-into-individual-word-elements" class="headerlink" title="1) Text split into individual word elements"></a>1) Text split into individual word elements</h4>
+
+<h4 id="2-Construct-the-word-dictionary"><a href="#2-Construct-the-word-dictionary" class="headerlink" title="2) Construct the word dictionary"></a>2) Construct the word dictionary</h4>
+
+<h4 id="3-BEP-algorithm"><a href="#3-BEP-algorithm" class="headerlink" title="3)BEP algorithm"></a>3)BEP algorithm</h4>
+
+
+
+<h4 id="4-Embedding-Layer"><a href="#4-Embedding-Layer" class="headerlink" title="4) Embedding Layer"></a>4) Embedding Layer</h4><p>在大模型（如GPT、BERT等）的训练过程中，将词元（Token）的ID转换为嵌入向量（Embedding Vector）是输入处理的核心步骤。这一过程通过<strong>嵌入层（Embedding Layer）</strong>实现，其核心思想是将离散的词元符号映射到连续的向量空间，从而能够被神经网络处理。以下是详细的原理和步骤：</p>
+<p>【大模型靠啥理解文字？通俗解释：词嵌入embedding】 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bfoQYCEHC/?share_source=copy_web&vd_source=4bbce1829495fde2f31b5349c79e3deb">https://www.bilibili.com/video/BV1bfoQYCEHC/?share_source=copy_web&amp;vd_source=4bbce1829495fde2f31b5349c79e3deb</a></p>
+<hr>
+<h5 id="1-词元ID与词汇表"><a href="#1-词元ID与词汇表" class="headerlink" title="1. 词元ID与词汇表"></a><strong>1. 词元ID与词汇表</strong></h5><ul>
+<li><p><strong>词元（Token）</strong>：文本被分词后的最小单位（如单词、子词或字符）。</p>
+</li>
+<li><p><strong>词汇表（Vocabulary）</strong>：所有可能词元的集合，每个词元被分配一个唯一的整数ID。<br>例如，词汇表可能是 <code>&#123;&quot;the&quot;: 0, &quot;cat&quot;: 1, &quot;sat&quot;: 2, ...&#125;</code>，词汇表大小记为 <code>V</code>。</p>
+</li>
+<li><p><strong>词元ID</strong>：输入文本经过分词后，每个词元被替换为其在词汇表中的ID，形成一个整数序列。<br>例如，句子 <code>&quot;the cat sat&quot;</code> 转换为 <code>[0, 1, 2]</code>。</p>
+</li>
+</ul>
+<hr>
+<h5 id="2-嵌入层（Embedding-Layer）"><a href="#2-嵌入层（Embedding-Layer）" class="headerlink" title="2. 嵌入层（Embedding Layer）"></a><strong>2. 嵌入层（Embedding Layer）</strong></h5><p>嵌入层本质上是一个可学习的查找表（Lookup Table），其功能是将词元ID映射为稠密的连续向量。具体过程如下：</p>
+<h6 id="1-嵌入矩阵的初始化"><a href="#1-嵌入矩阵的初始化" class="headerlink" title="(1) 嵌入矩阵的初始化"></a><strong>(1) 嵌入矩阵的初始化</strong></h6><ul>
+<li><p><strong>嵌入矩阵（Embedding Matrix）</strong>：<br>形状为 <code>(V, d)</code>，其中：</p>
+<ul>
+<li><code>V</code> 是词汇表大小（总词元数），</li>
+<li><code>d</code> 是嵌入向量的维度（如512、768等超参数）。</li>
+</ul>
+</li>
+<li><p><strong>初始化方式</strong>：<br>嵌入矩阵通常通过随机初始化（如正态分布或均匀分布），并在训练过程中通过梯度下降更新参数。</p>
+</li>
+</ul>
+<h6 id="2-查表操作（Lookup）"><a href="#2-查表操作（Lookup）" class="headerlink" title="(2) 查表操作（Lookup）"></a><strong>(2) 查表操作（Lookup）</strong></h6><ul>
+<li><p><strong>输入</strong>：一个形状为 <code>(batch_size, sequence_length)</code> 的整数张量（每个元素是词元ID）。<br>例如，批量大小为3、序列长度为4的输入可能为：</p>
+<figure class="highlight lua"><table><tr><td class="code"><pre><code class="hljs lua"><span class="hljs-string">[[5, 23, 0, 42],</span><br><span class="hljs-string"> [17, 8, 102, 12],</span><br><span class="hljs-string"> [3, 64, 11, 9]]</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>输出</strong>：一个形状为 <code>(batch_size, sequence_length, d)</code> 的浮点数张量。<br>每个词元ID通过嵌入矩阵查表，替换为对应的 <code>d</code> 维向量。<br>例如，词元ID <code>5</code> 被替换为嵌入矩阵第5行的向量。</p>
+</li>
+</ul>
+<hr>
+<h5 id="3-数学表示"><a href="#3-数学表示" class="headerlink" title="3. 数学表示"></a><strong>3. 数学表示</strong></h5><ul>
+<li>假设词元ID为整数 <code>i</code>（满足 <code>0 ≤ i &lt; V</code>），嵌入矩阵为 <code>E ∈ R^(V×d)</code>，则对应的嵌入向量为：<br>[<br>\text{Embedding}(i) &#x3D; E[i, :] \in R^d<br>]</li>
+<li><strong>示例</strong>：<br>若 <code>E</code> 是 <code>10000×768</code> 的矩阵，词元ID <code>42</code> 对应的嵌入向量是 <code>E[42]</code>（长度为768的向量）。</li>
+</ul>
+<hr>
+<h5 id="4-为何需要嵌入向量？"><a href="#4-为何需要嵌入向量？" class="headerlink" title="4. 为何需要嵌入向量？"></a><strong>4. 为何需要嵌入向量？</strong></h5><ol>
+<li><strong>从离散到连续</strong>：神经网络无法直接处理离散的符号（如整数ID），需转换为连续向量。</li>
+<li><strong>语义表示</strong>：嵌入向量可以捕捉词元的语义和语法特征（如相似词在向量空间中距离较近）。</li>
+<li><strong>降维</strong>：相比于One-Hot编码（维度为 <code>V</code>，稀疏且高维），嵌入向量维度 <code>d</code> 通常远小于 <code>V</code>（稠密且低维）。</li>
+</ol>
+<hr>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h5><ul>
+<li><strong>核心步骤</strong>：词元ID → 嵌入矩阵查表 → 嵌入向量。</li>
+<li><strong>目的</strong>：将离散符号映射为连续向量，供神经网络处理。</li>
+<li><strong>关键特性</strong>：可学习性（通过训练优化）、低维稠密性、语义捕捉能力。</li>
+<li><strong>扩展应用</strong>：结合位置编码、多模态嵌入（如图像&#x2F;文本联合嵌入）等。</li>
+</ul>
+<p>这一过程是几乎所有现代NLP模型的基石，为后续的注意力机制、前馈网络等提供了可处理的输入形式。</p>
+<h3 id="Step-1-2-Attention-mechansim"><a href="#Step-1-2-Attention-mechansim" class="headerlink" title="Step 1-2 Attention mechansim"></a>Step 1-2 Attention mechansim</h3>
+
+<ul>
+<li>Attention score: multiplying two vectors element-wise and then summing the products</li>
+<li>Normalization: to obtain attention weights that sum up to 1.<ul>
+<li>attn_weights_2_tmp &#x3D; attn_scores_2 &#x2F; attn_scores_2.sum() </li>
+<li>torch.softmax: torch.exp(x) &#x2F; torch.exp(x).sum(dim&#x3D;0)</li>
+</ul>
+</li>
+</ul>
+<p>Bahdanau注意力机制是一种用于序列到序列（seq2seq）模型的关键技术，旨在解决传统编码器-解码器模型中固定长度上下文向量的信息瓶颈问题</p>
+<ul>
+<li><strong>传统seq2seq的局限性</strong>：传统模型将整个输入序列压缩为一个固定长度的上下文向量，导致长序列信息丢失。</li>
+<li><strong>注意力机制的引入</strong>：Bahdanau等人（2015）提出<strong>动态对齐机制</strong>，使解码器在每一步生成输出时，能自适应地关注输入序列的不同部分。</li>
+</ul>
+<h4 id="核心机制"><a href="#核心机制" class="headerlink" title="核心机制"></a><strong>核心机制</strong></h4><h5 id="编码器"><a href="#编码器" class="headerlink" title="编码器"></a><strong>编码器</strong></h5><ul>
+<li><strong>双向RNN</strong>：输入序列通过双向RNN（如GRU&#x2F;LSTM）处理，每个时间步的隐藏状态（前向+后向）拼接，形成包含全局上下文的编码器隐藏状态序列 {h_1, h_2, …, h_T}{<em>h</em>1,<em>h</em>2,…,<em>h**T</em>}。</li>
+</ul>
+<h5 id="解码器"><a href="#解码器" class="headerlink" title="解码器"></a><strong>解码器</strong></h5><ul>
+<li><p><strong>动态上下文生成</strong>：解码器在时间步t<em>t</em>生成输出时，执行以下步骤：</p>
+<ol>
+<li><p><strong>计算注意力分数</strong>：通过<strong>加性注意力（Additive Attention）</strong>衡量解码器当前状态s_{t-1}<em>s**t</em>−1与每个编码器状态h_j<em>h**j</em>的相关性：</p>
+<p>e_{tj} &#x3D; v^T \tanh(W [s_{t-1}; h_j] + b)<em>e<strong>t</strong>j</em>&#x3D;<em>v**T</em>tanh(<em>W</em>[<em>s**t</em>−1;<em>h**j</em>]+<em>b</em>)</p>
+<p>其中v, W, b<em>v</em>,<em>W</em>,<em>b</em>为可学习参数，[;][;]表示拼接。</p>
+</li>
+<li><p><strong>归一化为权重</strong>：通过Softmax将分数转换为权重：</p>
+<p>\alpha_{tj} &#x3D; \frac{\exp(e_{tj})}{\sum_{k&#x3D;1}^T \exp(e_{tk})}<em>α<strong>t</strong>j</em>&#x3D;∑<em>k</em>&#x3D;1<em>T</em>exp(<em>e<strong>t</strong>k</em>)exp(<em>e<strong>t</strong>j</em>)</p>
+</li>
+<li><p><strong>生成上下文向量</strong>：加权求和编码器状态：</p>
+<p>c_t &#x3D; \sum_{j&#x3D;1}^T \alpha_{tj} h_j<em>c**t</em>&#x3D;<em>j</em>&#x3D;1∑<em>T<strong>α</strong>t<strong>j</strong>h**j</em></p>
+</li>
+<li><p><strong>预测输出</strong>：将上下文向量c_t<em>c**t</em>与解码器当前状态s_{t-1}<em>s**t</em>−1拼接，通过全连接层和Softmax生成输出词的概率分布。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="1-自注意力机制的内部工作原理"><a href="#1-自注意力机制的内部工作原理" class="headerlink" title="1)自注意力机制的内部工作原理"></a>1)自注意力机制的内部工作原理</h4><p>​		在自注意力机制中，“自”指的是该机制通过关联单个输入序列中的不同位置来计算注意力权重的能力。它可以评估并学习输入本身各个部分之间的关系和依赖，比如句子中的单词或图像中的像素。</p>
+
+
+<h4 id="2-带可训练权重的自注意力机制"><a href="#2-带可训练权重的自注意力机制" class="headerlink" title="2)带可训练权重的自注意力机制"></a>2)带可训练权重的自注意力机制</h4><p>引入了在模型训练期间更新的权重矩阵, 引入 3 个可训练的权重矩阵 <strong>W</strong><em>q</em>、<strong>W</strong><em>k</em>和 <strong>W</strong><em>v</em>，一步一步地实现自注意力机制.这 3个矩阵用于将嵌入的输入词元 <em>x</em> (<em>i</em>) 分别映射为查询向量、键向量和值向量，如图所示。</p>
+
+
+
+
+<h4 id="3-利用因果注意力隐藏未来词汇"><a href="#3-利用因果注意力隐藏未来词汇" class="headerlink" title="3)利用因果注意力隐藏未来词汇"></a>3)利用因果注意力隐藏未来词汇</h4><p>​		因果机制的作用是调整注意力机制，防止模型访问序列中未来的信息，这在语言建模等任务中尤为重要，因为每个词的预测只能依赖之前出现的词。</p>
+<p>​		对于许多大语言模型任务，你希望自注意力机制在预测序列中的下一个词元时仅考虑当前位置之前的词元。因果注意力（也称为掩码注意力）是一种特殊的自注意力形式。它限制模型在处理任何给定词元时，只能基于序列中的先前和当前输入来计算注意力分数，而标准的自注意力机制可以一次性访问整个输入序列。</p>
+
+
+<h4 id="4-将单头注意力扩展到多头注意力"><a href="#4-将单头注意力扩展到多头注意力" class="headerlink" title="4)将单头注意力扩展到多头注意力"></a>4)将单头注意力扩展到多头注意力</h4><p>​		多头机制涉及将注意力机制分成多个“头”。每个头会学习数据的不同特征，使模型能够在不同的位置同时关注来自不同表示子空间的信息。这能够提升模型在复杂任务中的性能。</p>
+<p>​		“多头”这一术语指的是将注意力机制分成多个“头”，每个“头”独立工作。在这种情况下，单个因果注意力模块可以被看作单头注意力，因为它只有一组注意力权重按顺序处理输入。</p>
+<p>​		多头注意力的主要思想是多次（并行）运行注意力机制，每次使用学到的不同的线性投影——这些投影是通过将输入数据（比如注意力机制中的查询向量、键向量和值向量）乘以权重矩阵得到的。</p>
+
+
+
+
+<h1 id="Chapter-4-Generate-a-GPT-Model"><a href="#Chapter-4-Generate-a-GPT-Model" class="headerlink" title="Chapter 4 Generate a GPT Model"></a>Chapter 4 Generate a GPT Model</h1><h2 id="非线性激活函数-ReLU（修正线性单元）"><a href="#非线性激活函数-ReLU（修正线性单元）" class="headerlink" title="非线性激活函数 ReLU（修正线性单元）"></a>非线性激活函数 ReLU（修正线性单元）</h2><p>ReLU 是神经网络中的一种标准激活函数。如果你不熟悉 ReLU，可以这样来理解：它只是简单地将负输入值设为 0，从而确保层的输出值都是正值，这也解释了为什么结果层的输出中不包含负值。</p>
+<h2 id="具有-GELU-激活函数的前馈神经网络"><a href="#具有-GELU-激活函数的前馈神经网络" class="headerlink" title="具有 GELU 激活函数的前馈神经网络"></a>具有 GELU 激活函数的前馈神经网络</h2><p>GELU 和 SwiGLU 是更为复杂且平滑的激活函数，分别结合了高斯分布和 sigmoid 门控线性单元。与较为简单的 ReLU 激活函数相比，它们能够提升深度学习模型的性能。</p>
+<p>GELU 激活函数可以通过多种方式实现，其精确的定义为 G LU( ) ( E <em>x</em>   <em>x x</em> <em></em> ) ，其中<em></em> ( ) <em>x</em> 是标准高斯分布的累积分布函数。然而，在实际操作中，通常我们会使用一种计算量较小的近似实现（原始的 GPT-2 模型也是使用这种通过曲线拟合得到的近似方法进行训练的）</p>
+
+
+<p><strong>GeLU vs ReLU</strong>GELU 的平滑特性可以在训练过程中带来更好的优化效果，因为它允许模型参数进行更细微的调整。相比之下，ReLU 在零点处有一个尖锐的拐角（参见图 4-8 的右图），有时会使得优化过程更加困难，特别是在深度或复杂的网络结构中。此外，ReLU 对负输入的输出为 0，而 GELU对负输入会输出一个小的非零值。这意味着在训练过程中，接收到负输入的神经元仍然可以参与学习，只是贡献程度不如正输入大。</p>
+
+
+
+
+<p>FeedForward 模块在提升模型学习和泛化能力方面非常关键。虽然该模块的输入和输出维度保持一致，但它通过第一个线性层将嵌入维度扩展到了更高的维度，如图 4-10 所示。扩展之后，应用非线性 GELU 激活函数，然后通过第二个线性变换将维度缩回原始大小。这种设计允许模型探索更丰富的表示空间</p>
+
+
+
+
+
+
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2025/04/27/ai/DeepLearningFromScratch/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>Deep Learning From Scratch</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2025/04/20/%E4%BA%BA%E5%88%B0%E4%B8%AD%E5%B9%B4%E9%9C%80%E8%A6%81%E5%8E%BB%E8%AF%BB%E5%85%BC%E8%81%8C%E5%8D%9A%E5%A3%AB%E5%98%9B/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>人到中年需要去读兼职博士嘛</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"Ov23lijMO8Y1d5CxdOnz","clientSecret":"77a460fa3d181dd6d26faa420511e0fec5a8d49b","repo":"https://github.com/AlexYangHZ/gtalk","owner":"AlexYangHZ","admin":"AlexYangHZ"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+
