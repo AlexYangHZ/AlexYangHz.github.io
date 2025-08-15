@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>FinBert NLP Cosin-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="算法,模型,">
+<meta name="description" content="AI">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/算法">算法</a></li>
+            
+            <li><a href="/tags/模型">模型</a></li>
+            
+            
+        </ul>
+        
+        <h1>FinBert NLP Cosin</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Science/" target="_blank" >Science</a>
+                    
+                </div>
+                <p>2025-06-13 16:06:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="FinBert-NLP-Cosin"><a href="#FinBert-NLP-Cosin" class="headerlink" title="FinBert NLP Cosin"></a>FinBert NLP Cosin</h1><h3 id="步骤-1：安装依赖库"><a href="#步骤-1：安装依赖库" class="headerlink" title="步骤 1：安装依赖库"></a><strong>步骤 1：安装依赖库</strong></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">pip install transformers torch nltk scikit-learn<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="步骤-2：加载-FinBERT-模型和分词器"><a href="#步骤-2：加载-FinBERT-模型和分词器" class="headerlink" title="步骤 2：加载 FinBERT 模型和分词器"></a><strong>步骤 2：加载 FinBERT 模型和分词器</strong></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> transformers <span class="hljs-keyword">import</span> AutoTokenizer, AutoModel<br><span class="hljs-keyword">import</span> torch<br><span class="hljs-keyword">from</span> nltk.tokenize <span class="hljs-keyword">import</span> sent_tokenize<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><span class="hljs-keyword">from</span> sklearn.metrics.pairwise <span class="hljs-keyword">import</span> cosine_similarity<br><br><span class="hljs-comment"># 加载 FinBERT 模型和分词器</span><br>model_name = <span class="hljs-string">&quot;yiyanghkust/finbert-tone&quot;</span><br>tokenizer = AutoTokenizer.from_pretrained(model_name)<br>model = AutoModel.from_pretrained(model_name)<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="步骤-3：定义超长文本分段函数"><a href="#步骤-3：定义超长文本分段函数" class="headerlink" title="步骤 3：定义超长文本分段函数"></a><strong>步骤 3：定义超长文本分段函数</strong></h3><p>将文本分割为不超过 512 token 的段落，保留完整句子结构：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">split_into_paragraphs</span>(<span class="hljs-params">text, tokenizer, max_tokens=<span class="hljs-number">512</span></span>):<br>    <span class="hljs-string">&quot;&quot;&quot;将超长文本按完整句子分割为多个段落，每段不超过 max_tokens&quot;&quot;&quot;</span><br>    sentences = sent_tokenize(text)<br>    paragraphs = []<br>    current_para = []<br>    current_token_count = <span class="hljs-number">0</span><br><br>    <span class="hljs-keyword">for</span> sent <span class="hljs-keyword">in</span> sentences:<br>        <span class="hljs-comment"># 计算当前句子的 token 数</span><br>        sent_tokens = tokenizer.tokenize(sent)<br>        sent_token_count = <span class="hljs-built_in">len</span>(sent_tokens)<br><br>        <span class="hljs-comment"># 如果当前段落加入新句子后超限，则保存当前段落</span><br>        <span class="hljs-keyword">if</span> current_token_count + sent_token_count &gt; max_tokens:<br>            <span class="hljs-keyword">if</span> current_para:<br>                paragraphs.append(<span class="hljs-string">&#x27; &#x27;</span>.join(current_para))<br>                current_para = []<br>                current_token_count = <span class="hljs-number">0</span><br>            <span class="hljs-comment"># 处理单个句子超过 max_tokens 的情况（强制截断）</span><br>            <span class="hljs-keyword">if</span> sent_token_count &gt; max_tokens:<br>                chunk = tokenizer.decode(tokenizer.encode(sent, max_length=max_tokens, truncation=<span class="hljs-literal">True</span>))<br>                paragraphs.append(chunk)<br>                <span class="hljs-keyword">continue</span><br><br>        <span class="hljs-comment"># 添加句子到当前段落</span><br>        current_para.append(sent)<br>        current_token_count += sent_token_count<br><br>    <span class="hljs-comment"># 添加剩余内容</span><br>    <span class="hljs-keyword">if</span> current_para:<br>        paragraphs.append(<span class="hljs-string">&#x27; &#x27;</span>.join(current_para))<br>    <br>    <span class="hljs-keyword">return</span> paragraphs<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="步骤-4：生成段落向量并汇总"><a href="#步骤-4：生成段落向量并汇总" class="headerlink" title="步骤 4：生成段落向量并汇总"></a><strong>步骤 4：生成段落向量并汇总</strong></h3><p>对每个段落生成向量，取平均作为整体文本的表示：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_long_text_embedding</span>(<span class="hljs-params">text, model, tokenizer</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;生成超长文本的语义向量（平均段落向量）&quot;&quot;&quot;</span><br>    paragraphs = split_into_paragraphs(text, tokenizer)<br>    embeddings = []<br>    <br>    <span class="hljs-keyword">for</span> para <span class="hljs-keyword">in</span> paragraphs:<br>        <span class="hljs-comment"># 编码段落</span><br>        inputs = tokenizer(<br>            para, <br>            return_tensors=<span class="hljs-string">&quot;pt&quot;</span>, <br>            padding=<span class="hljs-literal">True</span>, <br>            truncation=<span class="hljs-literal">True</span>, <br>            max_length=<span class="hljs-number">512</span><br>        )<br>        <span class="hljs-keyword">with</span> torch.no_grad():<br>            outputs = model(**inputs)<br>        <span class="hljs-comment"># 取 [CLS] 标记的向量</span><br>        cls_embedding = outputs.last_hidden_state[<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, :].numpy()<br>        embeddings.append(cls_embedding)<br>    <br>    <span class="hljs-comment"># 平均所有段落向量</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> embeddings:<br>        <span class="hljs-keyword">return</span> np.zeros(model.config.hidden_size)  <span class="hljs-comment"># 处理空输入</span><br>    <span class="hljs-keyword">return</span> np.mean(embeddings, axis=<span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="步骤-5：计算余弦相似度"><a href="#步骤-5：计算余弦相似度" class="headerlink" title="步骤 5：计算余弦相似度"></a><strong>步骤 5：计算余弦相似度</strong></h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs Python"><span class="hljs-comment"># 示例超长句子</span><br>sentence1 = <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">Apple Inc. announced a 4-for-1 stock split during its Q3 earnings call, </span><br><span class="hljs-string">citing the desire to make shares more accessible to a broader base of investors. </span><br><span class="hljs-string">The company also reported a 15% year-over-year increase in revenue, driven by </span><br><span class="hljs-string">strong sales of the iPhone 12 and growth in services like Apple Music and iCloud. </span><br><span class="hljs-string">CEO Tim Cook emphasized the company&#x27;s commitment to returning value to shareholders </span><br><span class="hljs-string">through increased dividends and share buybacks.</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br><br>sentence2 = <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">In response to inflationary pressures, the Federal Reserve raised the benchmark </span><br><span class="hljs-string">interest rate by 0.5 percentage points, marking the largest hike in over two decades. </span><br><span class="hljs-string">Chair Jerome Powell indicated that further rate increases are likely throughout the year </span><br><span class="hljs-string">to combat rising consumer prices. Analysts predict this move will impact borrowing costs </span><br><span class="hljs-string">for businesses and consumers, potentially slowing economic growth in the near term.</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br><br><span class="hljs-comment"># 获取整体向量</span><br>embedding1 = get_long_text_embedding(sentence1, model, tokenizer)<br>embedding2 = get_long_text_embedding(sentence2, model, tokenizer)<br><br><span class="hljs-comment"># 计算余弦相似度</span><br>similarity = cosine_similarity([embedding1], [embedding2])[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;FinBERT 余弦相似度: <span class="hljs-subst">&#123;similarity:<span class="hljs-number">.4</span>f&#125;</span>&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="输出示例："><a href="#输出示例：" class="headerlink" title="输出示例："></a><strong>输出示例</strong>：</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">FinBERT 余弦相似度: <span class="hljs-number">0.2185</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="关键说明"><a href="#关键说明" class="headerlink" title="关键说明"></a><strong>关键说明</strong></h3><ol>
+<li><strong>分段策略优化</strong>：<ul>
+<li>优先按完整句子分割，避免在句子中间截断。</li>
+<li>若单句超长（如法律条款），强制截断至 512 tokens。</li>
+</ul>
+</li>
+<li><strong>向量汇总方法</strong>：<ul>
+<li><strong>平均池化</strong>：适用于一般场景，平衡各段落信息。</li>
+<li><strong>加权平均</strong>：可根据段落长度或重要性调整权重（如首尾段落权重更高）。</li>
+</ul>
+</li>
+</ol>
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2025/07/07/ai/%E7%9B%B8%E4%BC%BC%E6%80%A7%E5%B8%B8%E7%94%A8%E5%BA%A6%E9%87%8F%E6%96%B9%E6%B3%95/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>相似性常用度量方法</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2025/06/06/tech/Entropy-Information/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>Entropy Information</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"Ov23lijMO8Y1d5CxdOnz","clientSecret":"77a460fa3d181dd6d26faa420511e0fec5a8d49b","repo":"https://github.com/AlexYangHZ/gtalk","owner":"AlexYangHZ","admin":"AlexYangHZ"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

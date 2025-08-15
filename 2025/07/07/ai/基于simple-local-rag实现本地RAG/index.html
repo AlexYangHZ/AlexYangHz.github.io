@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>基于simple-local-rag实现本地RAG-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="ideas,">
+<meta name="description" content="AI">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/ideas">ideas</a></li>
+            
+            
+        </ul>
+        
+        <h1>基于simple-local-rag实现本地RAG</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Science/" target="_blank" >Science</a>
+                    
+                </div>
+                <p>2025-07-07 10:55:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="基于simple-local-rag实现本地RAG"><a href="#基于simple-local-rag实现本地RAG" class="headerlink" title="基于simple-local-rag实现本地RAG"></a>基于simple-local-rag实现本地RAG</h1><h3 id="1-环境准备与依赖安装"><a href="#1-环境准备与依赖安装" class="headerlink" title="1. 环境准备与依赖安装"></a>1. 环境准备与依赖安装</h3><p>建议使用 Python 3.10+，推荐 GPU 环境（如 RTX 40 系列），以便本地运行 LLM。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> https://github.com/mrdbourke/simple-local-rag.git<br><span class="hljs-built_in">cd</span> simple-local-rag<br>python -m venv .venv<br><span class="hljs-built_in">source</span> .venv/bin/activate<br>pip install -r requirements.txt<br></code></pre></td></tr></table></figure>
+
+<p><strong>主要依赖：</strong></p>
+<ul>
+<li><code>sentence-transformers</code>：文本向量化</li>
+<li><code>transformers</code>、<code>accelerate</code>、<code>bitsandbytes</code>：本地 LLM 推理</li>
+<li><code>PyMuPDF</code>：PDF 解析</li>
+<li><code>faiss</code> 或 <code>numpy</code>：向量检索</li>
+</ul>
+<h3 id="2-Python代码实现"><a href="#2-Python代码实现" class="headerlink" title="2. Python代码实现"></a>2. Python代码实现</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pymupdf  <span class="hljs-comment"># PyMuPDF</span><br><span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm<br><span class="hljs-keyword">from</span> sentence_transformers <span class="hljs-keyword">import</span> SentenceTransformer<br><span class="hljs-keyword">from</span> transformers <span class="hljs-keyword">import</span> AutoTokenizer, AutoModelForCausalLM<br><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">load_pdf</span>(<span class="hljs-params">pdf_path</span>):<br>    doc = pymupdf.<span class="hljs-built_in">open</span>(pdf_path)<br>    pages = []<br>    <span class="hljs-keyword">for</span> i, page <span class="hljs-keyword">in</span> tqdm(<span class="hljs-built_in">enumerate</span>(doc), total=doc.page_count):<br>        text = page.get_text()<br>        pages.append(&#123;<span class="hljs-string">&quot;page&quot;</span>: i, <span class="hljs-string">&quot;text&quot;</span>: text&#125;)<br>    <span class="hljs-keyword">return</span> pages<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">split_text</span>(<span class="hljs-params">text, chunk_size=<span class="hljs-number">300</span></span>):<br>    <span class="hljs-comment"># 简单按字符数切分，可用更智能的分句/分段</span><br>    <span class="hljs-keyword">return</span> [text[i:i+chunk_size] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(text), chunk_size)]<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">search</span>(<span class="hljs-params">query, embeddings, chunks, top_k=<span class="hljs-number">5</span></span>):<br>    query_vec = model.encode([query])[<span class="hljs-number">0</span>]<br>    scores = np.dot(embeddings, query_vec)<br>    top_indices = np.argsort(scores)[-top_k:][::-<span class="hljs-number">1</span>]<br>    <span class="hljs-keyword">return</span> [chunks[i] <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> top_indices]<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">generate_answer</span>(<span class="hljs-params">query, context, max_new_tokens=<span class="hljs-number">256</span></span>):<br>    prompt = <span class="hljs-string">f&quot;已知信息：\n<span class="hljs-subst">&#123;context&#125;</span>\n\n请根据上述内容回答：<span class="hljs-subst">&#123;query&#125;</span>&quot;</span><br>    <span class="hljs-comment">#input_ids = tokenizer(prompt, return_tensors=&quot;pt&quot;).input_ids.cuda()</span><br>    input_ids = tokenizer(prompt, return_tensors=<span class="hljs-string">&quot;pt&quot;</span>).input_ids<br>    output = llm.generate(input_ids, max_new_tokens=max_new_tokens)<br>    <span class="hljs-keyword">return</span> tokenizer.decode(output[<span class="hljs-number">0</span>], skip_special_tokens=<span class="hljs-literal">True</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">rag_qa</span>(<span class="hljs-params">query</span>):<br>    results = search(query, embeddings, chunks)<br>    context = <span class="hljs-string">&quot;\n&quot;</span>.join([r[<span class="hljs-string">&quot;text&quot;</span>] <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> results])<br>    <span class="hljs-keyword">return</span> generate_answer(query, context)<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    pages = load_pdf(<span class="hljs-string">&quot;human-nutrition-text.pdf&quot;</span>)<br>    chunks = []<br>    <span class="hljs-keyword">for</span> page <span class="hljs-keyword">in</span> pages:<br>        <span class="hljs-keyword">for</span> chunk <span class="hljs-keyword">in</span> split_text(page[<span class="hljs-string">&quot;text&quot;</span>]):<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(chunk.strip()) &gt; <span class="hljs-number">50</span>:  <span class="hljs-comment"># 过滤过短片段</span><br>                chunks.append(&#123;<span class="hljs-string">&quot;page&quot;</span>: page[<span class="hljs-string">&quot;page&quot;</span>], <span class="hljs-string">&quot;text&quot;</span>: chunk&#125;)<br><br>    model = SentenceTransformer(<span class="hljs-string">&quot;/home/AlexYang/.cache/modelscope/hub/models/sentence-transformers/all-mpnet-base-v2&quot;</span>)<br>    embeddings = model.encode([c[<span class="hljs-string">&quot;text&quot;</span>] <span class="hljs-keyword">for</span> c <span class="hljs-keyword">in</span> chunks], show_progress_bar=<span class="hljs-literal">True</span>)<br>    embeddings = np.array(embeddings)<br><br>    query = <span class="hljs-string">&quot;蛋白质的主要功能是什么？&quot;</span><br>    results = search(query, embeddings, chunks)<br>    <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> results:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Page <span class="hljs-subst">&#123;r[<span class="hljs-string">&#x27;page&#x27;</span>]&#125;</span>: <span class="hljs-subst">&#123;r[<span class="hljs-string">&#x27;text&#x27;</span>][:<span class="hljs-number">100</span>]&#125;</span>...&quot;</span>)<br><br>    <span class="hljs-comment"># model_id = &quot;meta-llama/Llama-2-7b-chat-hf&quot;  # 需提前下载/授权</span><br>    model_id = <span class="hljs-string">&quot;/home/AlexYang/.cache/modelscope/hub/models/shakechen/Llama-2-7b-chat-hf&quot;</span><br>    tokenizer = AutoTokenizer.from_pretrained(model_id)<br>    llm = AutoModelForCausalLM.from_pretrained(model_id, device_map=<span class="hljs-string">&quot;cpu&quot;</span>, torch_dtype=<span class="hljs-string">&quot;auto&quot;</span>)<br><br>    context = <span class="hljs-string">&quot;\n&quot;</span>.join([r[<span class="hljs-string">&quot;text&quot;</span>] <span class="hljs-keyword">for</span> r <span class="hljs-keyword">in</span> results])<br>    answer = generate_answer(query, context)<br>    <span class="hljs-built_in">print</span>(answer)<br><br>    <span class="hljs-built_in">print</span>(rag_qa(<span class="hljs-string">&quot;水溶性维生素有哪些？&quot;</span>))<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-Dependency-Models-Download"><a href="#3-Dependency-Models-Download" class="headerlink" title="3.Dependency Models Download"></a>3.Dependency Models Download</h3><h4 id="3-1-Llama-2-7b-chat-hf"><a href="#3-1-Llama-2-7b-chat-hf" class="headerlink" title="3.1 Llama-2-7b-chat-hf"></a>3.1 Llama-2-7b-chat-hf</h4><p><a target="_blank" rel="noopener" href="https://www.modelscope.cn/models/shakechen/Llama-2-7b-chat-hf">https://www.modelscope.cn/models/shakechen/Llama-2-7b-chat-hf</a></p>
+<p>pip install modelscope</p>
+<p>modelscope download –model shakechen&#x2F;Llama-2-7b-chat-hf</p>
+<h4 id="3-2-all-mpnet-base-v2"><a href="#3-2-all-mpnet-base-v2" class="headerlink" title="3.2 all-mpnet-base-v2"></a>3.2 all-mpnet-base-v2</h4><p><a target="_blank" rel="noopener" href="https://www.modelscope.cn/models/sentence-transformers/all-mpnet-base-v2">https://www.modelscope.cn/models/sentence-transformers/all-mpnet-base-v2</a></p>
+<p>modelscope download –model sentence-transformers&#x2F;all-mpnet-base-v2</p>
+<h3 id="4-Output-Results"><a href="#4-Output-Results" class="headerlink" title="4. Output Results"></a>4. Output Results</h3><p>&#x2F;home&#x2F;AlexYang&#x2F;miniconda3&#x2F;envs&#x2F;env-rag&#x2F;bin&#x2F;python &#x2F;home&#x2F;AlexYang&#x2F;workspace&#x2F;simple-local-rag&#x2F;simple-local-rag&#x2F;LocalRag.py<br>100%|██████████| 1208&#x2F;1208 [00:01&lt;00:00, 672.50it&#x2F;s]<br>Batches: 100%|██████████| 157&#x2F;157 [23:13&lt;00:00,  8.88s&#x2F;it]<br>Page 1204: Singapore &#x2F;<br>Unsplash License; “Two Women Riding Bikes” David Marcu&#x2F;<br>Unsplash License; “Man wearing…<br>Page 1204:<br>McKenna &#x2F; Creative Commons Attribution 4.0 International<br>62. Exercise 17.2 reused “White x mark i…<br>Page 537: r obese.4<br>The increase in China’s waistline is partly attributed to changes </p>
+<p>The increase in China’s waistline is partly attributed to changes<br>in the traditional die…<br>Page 537: ss, have sanctioned lax social attitudes toward body<br>fat and reinspired the age-old Chinese belief …<br>Page 409: o as translation. The decoding of<br>genetic information to synthesize a protein is the central founda…<br>Loading checkpoint shards: 100%|██████████| 2&#x2F;2 [00:01&lt;00:00,  1.15it&#x2F;s]<br>已知信息：<br>Singapore &#x2F;<br>Unsplash License; “Two Women Riding Bikes” David Marcu&#x2F;<br>Unsplash License; “Man wearing blue shirt standing on white</p>
+<p>surfboard” by Alex Blajan &#x2F; Unsplash License<br>61. Exercise 17.2 reused “White check mark in dark green rounded<br>square”, Emoji from Twitter Emoji project” Twitter, Chris</p>
+<p>McKenna &#x2F; Creative Commons Attribution 4.0 International<br>62. Exercise 17.2 reused “White x mark in dark red rounded<br>    square”, Emoji from Twitter Emoji project” Twitter, Chris<br>    McKenna &#x2F; Creative Commons Attribution 4.0 International<br>63. Exercise 18.1 reused “White Plate” by hrum, Openclipart &#x2F; </p>
+<p>r obese.4<br>The increase in China’s waistline is partly attributed to changes<br>in the traditional diet, more sedentary lives, and a massive increase<br>in motor vehicle use. Moreover, China’s recent famines in the 1950s,<br>which affected the poor and lower classes to a greater extent than<br>the upper cla<br>ss, have sanctioned lax social attitudes toward body<br>fat and reinspired the age-old Chinese belief that excess body fat </p>
+<p>represents health and prosperity.<br>One of the worst statistics regarding overweight and obesity in<br>China is that more than ten million adolescents between ages<br>seventeen and ei<br>o as translation. The decoding of<br>genetic information to synthesize a protein is the central foundation<br>of modern biology.<br>Figure 6.4 Steps for Building a Protein<br>368  |  Defining Protein</p>
+<ol>
+<li>decode genetic information to synthesize a protein。</li>
+</ol>
+<p>因此，蛋白质的主要功能是将基因信息转化为 proteins，以便实现生物体内的各种生物功能。<br>已知信息：<br>These activities are<br>available in the web-based textbook and not available in the<br>downloadable versions (EPUB, Digital PDF, Print_PDF, or<br>Open Document).<br>160  |  Water’s Importance to Vitality</p>
+<p>请根据上述内容回答：水溶性维生素有哪些？</p>
+<p>According to the passage, water is a transportation vehicle for the following substances:</p>
+<p>A. Molecules<br>B. Vitamins<br>C. Minerals<br>D. All of the above</p>
+<p>The answer is (D) All of the above.</p>
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2025/07/07/ai/RAG-Models/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>RAG-Models</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2025/07/07/ai/%E7%9B%B8%E4%BC%BC%E6%80%A7%E5%B8%B8%E7%94%A8%E5%BA%A6%E9%87%8F%E6%96%B9%E6%B3%95/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>相似性常用度量方法</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"Ov23lijMO8Y1d5CxdOnz","clientSecret":"77a460fa3d181dd6d26faa420511e0fec5a8d49b","repo":"https://github.com/AlexYangHZ/gtalk","owner":"AlexYangHZ","admin":"AlexYangHZ"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

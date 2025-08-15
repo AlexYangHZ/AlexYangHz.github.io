@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>RAG Knowledge-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="ideas,">
+<meta name="description" content="AI">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/ideas">ideas</a></li>
+            
+            
+        </ul>
+        
+        <h1>RAG Knowledge</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Science/" target="_blank" >Science</a>
+                    
+                </div>
+                <p>2025-06-04 10:10:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="Retrieval-Augmented-Generation-RAG"><a href="#Retrieval-Augmented-Generation-RAG" class="headerlink" title="Retrieval-Augmented Generation (RAG)"></a>Retrieval-Augmented Generation (RAG)</h1><h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1 Introduction"></a>1 Introduction</h2>
+
+<p>​		</p>
+<ol>
+<li>我们对外部文档建立索引（<strong>Indexing</strong>）；</li>
+<li>根据用户的问题去检索（<strong>Retrieval</strong>）相关的文档；</li>
+<li>将问题和相关的文档输入 LLM 生成（<strong>Generation</strong>）最终答案。</li>
+</ol>
+<p>​		随着大模型融入场景后，回复的准确性、创造力等方面明显有缺陷，所以RAG出现了，用检索的数据限制、引导模型做正确的回复，尽量降低模型的幻觉。</p>
+<p><strong>RAG的挑战和局限</strong></p>
+<ul>
+<li>知识检索的出的内容和问题的匹配度不高。</li>
+<li>RAG的计算成本</li>
+<li>伦理问题，尤其是偏见和透明度问题。</li>
+</ul>
+<h2 id="2-Key-Component"><a href="#2-Key-Component" class="headerlink" title="2 Key Component"></a>2 Key Component</h2><h3 id="检索器"><a href="#检索器" class="headerlink" title="* 检索器"></a>* 检索器</h3><p>​		RAG的核心在于<strong>知识段略的检索质量</strong>，目前大部分都基于相似检索。目前的趋势就是多路召回、结果融合、重排筛选。</p>
+<h4 id="BM25"><a href="#BM25" class="headerlink" title="BM25:"></a>BM25:</h4><p>​		基于术语频率-逆文档频率（TF-IDF）的原理，通过计算查询词在文档中的出现频率来对文档的相关性进行排序。同时还会根据文档的长度和词在整体语料库中的普遍性进行调整.</p>
+<p>​		基于关键字的查询时表现出色，但它在理解查询的深层语义方面是欠缺的。BM25算法捕捉不到单词之间的关联，这使得它在处理需要深入理解上下文的复杂自然语言查询时力不从心。所以本质上只是搜索，简单理解就是“外形越像越越相关”</p>
+<h4 id="DPR（Dense-Passage-Retrieval）"><a href="#DPR（Dense-Passage-Retrieval）" class="headerlink" title="DPR（Dense Passage Retrieval）:"></a>DPR（Dense Passage Retrieval）:</h4><p>​		“向量相似度”。同时embedding知识和问题，然后计算相似度，相似度的算法可能是余弦、L2.优势就是基于语义的召回和查询，很多向量数据库都可以在这里使用。但是实际使用的时候要注意embedding文本长度。</p>
+<p>​		向量相似度局限性: 1) 相似度很难有阈值; 2)跨语言的问题; 3)内容长短的影响;4)预训练的局限性</p>
+<h4 id="REALM（Retrieval-Augmented-Language-Model）"><a href="#REALM（Retrieval-Augmented-Language-Model）" class="headerlink" title="REALM（Retrieval-Augmented Language Model）:"></a>REALM（Retrieval-Augmented Language Model）:</h4><p>​		REALM可以说是DPR的进阶，他融合了传统的BM25这类的分词搜索、基于深度学习的Embedding模型两种检索。概念上类似多路召回，然后做RRF融合		</p>
+<h3 id="生成器"><a href="#生成器" class="headerlink" title="* 生成器"></a>* 生成器</h3><p>​		在检索组件从外部来源提取相关知识后，生成器将这些信息合成为连贯的、上下文适当的响应。大语言模型（LLM）作为生成器的骨干，它确保生成的文本流畅、准确并与原始查询保持一致。</p>
+<h4 id="T5模型"><a href="#T5模型" class="headerlink" title="T5模型:"></a>T5模型:</h4><p>​		T5（文本到文本传输转换器）的方法用途广泛，将每个NLP任务都框定为文本到文本的任务。这种统一的框架允许T5针对广泛的任务进行微调，包括问答、摘要和对话生成。通过将检索与生成相结合，基于T5的RAG模型已被证明在多个基准测试上优于传统的生成模型，如GPT-3和BART，包括自然问题数据集和TriviaQA数据集。此外，T5处理复杂多任务学习的能力使其成为需要处理各种知识密集型任务的RAG系统的热门选择。</p>
+<h4 id="BART模型"><a href="#BART模型" class="headerlink" title="BART模型"></a>BART模型</h4><p>​	BART（双向和自动回归转换器）, BART特别适合涉及从嘈杂输入生成文本的任务，例如摘要和开放域问答。作为去噪自动编码器，BART可以重建损坏的文本序列，使其对于需要从不完整或嘈杂的数据生成连贯的事实输出的任务具有鲁棒性。当与RAG系统中的检索器配对时，BART已被证明可以通过将生成的文本植根于外部知识来提高生成文本的事实准确性。研究表明，基于BART的RAG模型在各种知识密集型任务中实现了最先进的结果，包括对话生成和新闻摘要。</p>
+<h2 id="3-多模态RAG"><a href="#3-多模态RAG" class="headerlink" title="3 多模态RAG"></a>3 多模态RAG</h2><h3 id="基于文本的RAG模型"><a href="#基于文本的RAG模型" class="headerlink" title="* 基于文本的RAG模型"></a>* 基于文本的RAG模型</h3><p>​		依托文本数据，执行检索与生成任务，推动了问答、摘要和对话智能体等应用的发展。BERT和T5等Transformer架构构成了文本RAG模型的基石，运用自注意力机制来捕捉文本内的上下文联系，从而提升检索的精确度和生成的流畅度。</p>
+<h3 id="基于音频的RAG模型"><a href="#基于音频的RAG模型" class="headerlink" title="* 基于音频的RAG模型"></a>* 基于音频的RAG模型</h3><p>​		将检索增强型生成的理念拓展至音频领域，为语音识别、音频摘要和语音界面中的对话智能体等应用开辟了新天地。音频数据常通过Wav2Vec 2.0等预训练模型衍生的嵌入表示来呈现。这些嵌入作为检索和生成组件的输入，使得模型能够有效地处理音频数据。</p>
+<h3 id="基于视频的RAG模型"><a href="#基于视频的RAG模型" class="headerlink" title="* 基于视频的RAG模型"></a>* 基于视频的RAG模型</h3><p>​		基于视频的RAG模型融合视觉与文本信息，增强了视频理解、字幕生成和检索等任务的表现。视频数据通过 I3D TimeSformer 等模型的嵌入表示来呈现。这些嵌入捕捉了时间与空间特征，对于有效的检索和生成至关重要。</p>
+<h3 id="多模态RAG模型"><a href="#多模态RAG模型" class="headerlink" title="* 多模态RAG模型"></a>* 多模态RAG模型</h3><p>​		“检索即生成（Retrieval as generation）”通过结合文本到图像和图像到文本的检索，将检索增强型生成（RAG）框架扩展到了多模态应用。利用大规模的配对图像和文本描述数据集，在用户查询与存储的文本描述相匹配时，能够快速生成图像（“检索即生成”）。</p>
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2025/06/06/tech/Entropy-Information/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>Entropy Information</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2025/06/04/ai/Xinference(DeepSeek)/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>Xinference(DeepSeek)</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"Ov23lijMO8Y1d5CxdOnz","clientSecret":"77a460fa3d181dd6d26faa420511e0fec5a8d49b","repo":"https://github.com/AlexYangHZ/gtalk","owner":"AlexYangHZ","admin":"AlexYangHZ"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

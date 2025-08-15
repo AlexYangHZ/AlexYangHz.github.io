@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>RAG-Models-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="ideas,">
+<meta name="description" content="AI">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/ideas">ideas</a></li>
+            
+            
+        </ul>
+        
+        <h1>RAG-Models</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Science/" target="_blank" >Science</a>
+                    
+                </div>
+                <p>2025-07-07 10:55:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="RAG-Models"><a href="#RAG-Models" class="headerlink" title="RAG Models"></a>RAG Models</h1><p>Model Library <a target="_blank" rel="noopener" href="https://www.modelscope.cn/models">https://www.modelscope.cn/models</a></p>
+<h2 id="all-mpnet-base-v2-sentence-transformers"><a href="#all-mpnet-base-v2-sentence-transformers" class="headerlink" title="all-mpnet-base-v2 (sentence-transformers)"></a>all-mpnet-base-v2 (sentence-transformers)</h2><p>这是一个<a target="_blank" rel="noopener" href="https://www.sbert.net/">sentence-transformers</a>模型：它将句子和段落映射到768维的密集向量空间，可用于聚类或语义搜索等任务。</p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>该项目旨在使用自监督对比学习目标在非常大的句子级别数据集上训练句子嵌入模型。我们使用预训练的<a target="_blank" rel="noopener" href="https://huggingface.co/microsoft/mpnet-base"><code>microsoft/mpnet-base</code></a>模型，并在一个包含10亿句对的数据集上对其进行了微调。我们使用了对比学习目标：给定一个句子对中的句子，模型应该预测出，在我们的数据集中实际与之配对的是从一组随机采样的其他句子中的哪一个。</p>
+<p>我们在由Hugging Face组织的<a target="_blank" rel="noopener" href="https://discuss.huggingface.co/t/open-to-the-community-community-week-using-jax-flax-for-nlp-cv/7104">使用JAX&#x2F;Flax进行NLP &amp; CV的社区周</a>期间开发了这个模型。作为项目的一部分，我们开发了这个模型：<a target="_blank" rel="noopener" href="https://discuss.huggingface.co/t/train-the-best-sentence-embedding-model-ever-with-1b-training-pairs/7354">使用10亿训练对训练最佳句子嵌入模型</a>。得益于高效的硬件基础设施来运行项目（7个TPU v3-8），以及来自Google的Flax、JAX和Cloud团队成员关于高效深度学习框架的支持。</p>
+<h3 id="预期用途"><a href="#预期用途" class="headerlink" title="预期用途"></a>预期用途</h3><p>我们的模型旨在用作句子和短段落编码器。给定输入文本，它输出一个捕捉语义信息的向量。句子向量可用于信息检索、聚类或句子相似性任务。</p>
+<p>默认情况下，超过384个词片段的输入文本会被截断。</p>
+<h3 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h3><h4 id="预训练"><a href="#预训练" class="headerlink" title="预训练"></a>预训练</h4><p>我们使用预训练的<a target="_blank" rel="noopener" href="https://huggingface.co/microsoft/mpnet-base"><code>microsoft/mpnet-base</code></a>模型。有关预训练过程的更详细信息，请参阅模型卡。</p>
+<h4 id="微调"><a href="#微调" class="headerlink" title="微调"></a>微调</h4><p>我们使用对比目标微调模型。形式上，我们计算批次中每个可能句子对之间的余弦相似度。 然后通过与真实配对比较来应用交叉熵损失。</p>
+<h4 id="超参数"><a href="#超参数" class="headerlink" title="超参数"></a>超参数</h4><p>我们在TPU v3-8上训练了我们的模型。我们使用1024的批量大小（每TPU核心128）训练模型共100k步。 我们使用了500的学习率预热。序列长度限制为128个标记。我们使用AdamW优化器， 学习率为2e-5。完整的训练脚本可在当前仓库中访问：<code>train_script.py</code>。</p>
+<h4 id="训练数据"><a href="#训练数据" class="headerlink" title="训练数据"></a>训练数据</h4><p>我们使用来自多个数据集的句子对进行拼接，以微调我们的模型。句子对的总数超过10亿句。 我们根据加权概率从每个数据集中采样，具体的配置详情见 <code>data_config.json</code> 文件。</p>
+<h2 id="Llama-2-7b-chat-hf-shakechen"><a href="#Llama-2-7b-chat-hf-shakechen" class="headerlink" title="Llama-2-7b-chat-hf (shakechen)"></a>Llama-2-7b-chat-hf (shakechen)</h2><p>Llama 2 是一系列预训练和微调的生成文本模型，其规模从70亿到700亿参数不等。此仓库专门针对70亿参数的微调模型，针对对话应用场景进行了优化，并转换为Hugging Face Transformers格式。其他模型的链接可在下方索引中找到。</p>
+<h3 id="模型详情"><a href="#模型详情" class="headerlink" title="模型详情"></a>模型详情</h3><p><em>注意：使用该模型需遵守Meta许可。为了下载模型权重和分词器，请访问<a target="_blank" rel="noopener" href="https://ai.meta.com/resources/models-and-libraries/llama-downloads/">网站</a>并接受我们的许可，然后在此处请求访问。</em></p>
+<p>Meta开发并公开发布了Llama 2系列大型语言模型（LLMs），这是一系列从70亿到700亿参数规模不等的预训练和微调生成文本模型集合。我们微调的LLMs，称为Llama-2-Chat，专为对话场景优化。Llama-2-Chat模型在大多数测试的基准上超越了开源聊天模型，并且在有用性和安全性的人类评估中，与一些流行的闭源模型如ChatGPT和PaLM相当。</p>
+<p><strong>模型开发者</strong> Meta</p>
+<p><strong>变体</strong> Llama 2提供了多种参数规模的版本——70亿、130亿及700亿——以及预训练和微调的变体。</p>
+<p><strong>输入</strong> 模型仅接受文本输入。</p>
+<p><strong>输出</strong> 模型仅生成文本输出。</p>
+<p><strong>模型架构</strong> Llama 2是一个自回归语言模型，采用了优化的变换器架构。微调版本使用监督微调（SFT）和结合人类反馈的强化学习（RLHF）以符合人类对于有用性和安全性的偏好。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>训练数据</th>
+<th>参数量</th>
+<th>内容长度</th>
+<th>GQA</th>
+<th>令牌数</th>
+<th>学习率</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Llama 2</td>
+<td><em>新混合的公开在线数据</em></td>
+<td>70亿</td>
+<td>4k</td>
+<td>❌</td>
+<td>2.0万亿</td>
+<td>3.0×10-4</td>
+</tr>
+<tr>
+<td>Llama 2</td>
+<td><em>新混合的公开在线数据</em></td>
+<td>130亿</td>
+<td>4k</td>
+<td>❌</td>
+<td>2.0万亿</td>
+<td>3.0×10-4</td>
+</tr>
+<tr>
+<td>Llama 2</td>
+<td><em>新混合的公开在线数据</em></td>
+<td>700亿</td>
+<td>4k</td>
+<td>✅</td>
+<td>2.0万亿</td>
+<td>1.5×10-4</td>
+</tr>
+</tbody></table>
+<p><em>Llama 2模型家族。</em> 令牌计数仅指预训练数据。所有模型均以400万令牌的全局批次大小进行训练。更大规模的模型——700B——采用分组查询注意力（GQA）以提高推理可扩展性。</p>
+<p><strong>模型日期</strong> Llama 2于2023年1月至2023年7月间进行训练。</p>
+<p><strong>状态</strong> 这是一个基于离线数据集训练的静态模型。随着社区反馈改善模型安全性，未来版本的微调模型将会发布。</p>
+<p><strong>许可</strong> 可在以下位置获取定制的商业许可：<a target="_blank" rel="noopener" href="https://ai.meta.com/resources/models-and-libraries/llama-downloads/">https://ai.meta.com/resources/models-and-libraries/llama-downloads/</a></p>
+<p><strong>研究论文</strong> <a target="_blank" rel="noopener" href="https://www.modelscope.cn/models/shakechen/Llama-2-7b-chat-hf/file/view/master/arxiv.org%2Fabs%2F2307.09288?status=1">“Llama-2: 开放基础与微调聊天模型”</a></p>
+<h3 id="预ss期用途"><a href="#预ss期用途" class="headerlink" title="预ss期用途"></a>预ss期用途</h3><p><strong>预期使用场景</strong> Llama 2 旨在用于英语环境中的商业和研究用途。微调模型适用于类似助手的聊天场景，而预训练模型可适应多种自然语言生成任务。</p>
+<p>为了获得聊天版本的预期特性和性能，需要遵循特定的格式规范，包括使用 <code>INST</code> 和 <code>&lt;&lt;SYS&gt;&gt;</code> 标签、<code>BOS</code> 和 <code>EOS</code> 标记以及其间必要的空格和换行（我们建议对输入调用 <code>strip()</code> 以避免双空格）。详情请参阅我们在 GitHub 上的参考代码：<a target="_blank" rel="noopener" href="https://github.com/facebookresearch/llama/blob/main/llama/generation.py#L212"><code>chat_completion</code></a>。</p>
+<p><strong>非适用范围</strong> 任何违反适用法律或法规（包括贸易合规法律）的使用方式。在英语以外的其他语言中使用。以及被 Llama 2 的可接受使用政策和许可协议所禁止的任何其他使用方式。</p>
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2025/07/29/ai/Machine-Learning/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>Machine Learning</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2025/07/07/ai/%E5%9F%BA%E4%BA%8Esimple-local-rag%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0RAG/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>基于simple-local-rag实现本地RAG</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"Ov23lijMO8Y1d5CxdOnz","clientSecret":"77a460fa3d181dd6d26faa420511e0fec5a8d49b","repo":"https://github.com/AlexYangHZ/gtalk","owner":"AlexYangHZ","admin":"AlexYangHZ"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

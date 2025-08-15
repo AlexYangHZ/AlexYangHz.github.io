@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>相似性常用度量方法-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="ideas,">
+<meta name="description" content="AI">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/ideas">ideas</a></li>
+            
+            
+        </ul>
+        
+        <h1>相似性常用度量方法</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Science/" target="_blank" >Science</a>
+                    
+                </div>
+                <p>2025-07-07 10:55:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="相似性常用度量方法"><a href="#相似性常用度量方法" class="headerlink" title="相似性常用度量方法"></a>相似性常用度量方法</h1><ul>
+<li><h2 id="欧几里得距离（Euclidean-Distance）"><a href="#欧几里得距离（Euclidean-Distance）" class="headerlink" title="欧几里得距离（Euclidean Distance）"></a>欧几里得距离（Euclidean Distance）</h2></li>
+</ul>
+<p>​		欧几里得距离，也称为欧氏距离或直线距离，是计算空间中<strong>两点之间直线距离</strong>的最常用方法。它得名于古希腊数学家欧几里得，是其几何学中的基础概念。</p>
+<p>​		欧几里得距离是一种基础、直观且强大的相似性（差异性）度量方法，尤其适用于低维空间或经过适当预处理（缩放）的数据。它在 KNN、聚类、推荐系统、图像处理等领域应用广泛。</p>
+<ul>
+<li><strong>核心思想：</strong> 在二维或三维空间中，它就是我们熟悉的“两点之间线段最短”的那个距离。</li>
+<li><strong>几何意义：</strong> 它代表了多维空间中两个点之间的真实最短路径长度。</li>
+<li><strong>相似性度量：</strong> 在数据分析和机器学习中，它被广泛用作衡量两个数据点（或向量）<strong>相似性或差异性</strong>的指标。<strong>距离越小，表示两个点越相似；距离越大，表示两个点越不相似。</strong></li>
+</ul>
+<h3 id="1-计算公式"><a href="#1-计算公式" class="headerlink" title="1. 计算公式"></a>1. 计算公式</h3><h4 id="在-n-维空间中"><a href="#在-n-维空间中" class="headerlink" title="在 n 维空间中"></a>在 n 维空间中</h4><p>假设有两个点 <code>P</code> 和 <code>Q</code>，分别由 n 维向量表示：<br><code>P = (p₁, p₂, p₃, ..., pₙ)</code><br><code>Q = (q₁, q₂, q₃, ..., qₙ)</code></p>
+<p>那么，点 <code>P</code> 和点 <code>Q</code> 之间的欧几里得距离 <code>d(P, Q)</code> 定义为：</p>
+<figure class="highlight erlang"><table><tr><td class="code"><pre><code class="hljs erlang"><span class="hljs-function"><span class="hljs-title">d</span><span class="hljs-params">(P, Q)</span> = √[ <span class="hljs-params">(p₁ - q₁)</span>² + <span class="hljs-params">(p₂ - q₂)</span>² + <span class="hljs-params">(p₃ - q₃)</span>² + ... + <span class="hljs-params">(pₙ - qₙ)</span>² ]</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="简化公式"><a href="#简化公式" class="headerlink" title="简化公式"></a>简化公式</h4><p><code>d(P, Q) = √[ Σᵢ (pᵢ - qᵢ)² ]</code> (其中 <code>i</code> 从 1 到 <code>n</code>)</p>
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> scipy.spatial <span class="hljs-keyword">import</span> distance<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">euclidean_distance_scipy</span>(<span class="hljs-params">point1, point2</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    使用SciPy计算两个点之间的欧几里得距离。</span><br><span class="hljs-string">参数:</span><br><span class="hljs-string">    point1 (array-like): 第一个点的坐标（列表、元组或NumPy数组）</span><br><span class="hljs-string">    point2 (array-like): 第二个点的坐标（列表、元组或NumPy数组）</span><br><span class="hljs-string"></span><br><span class="hljs-string">返回:</span><br><span class="hljs-string">    float: 两点之间的欧几里得距离</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br>distance = distance.euclidean(point1, point2)<br><span class="hljs-keyword">return</span> distance<br><span class="hljs-comment"># 示例用法（同上）</span><br><br>pointA = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br>pointB = [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]<br>distance = euclidean_distance_scipy(pointA, pointB)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;欧几里得距离 (SciPy): <span class="hljs-subst">&#123;distance:<span class="hljs-number">.4</span>f&#125;</span>&quot;</span>)  <span class="hljs-comment"># 输出: 欧几里得距离 (SciPy): 5.1962</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-应用场景"><a href="#2-应用场景" class="headerlink" title="2. 应用场景"></a>2. 应用场景</h3><ol>
+<li><strong>K-最近邻（K-Nearest Neighbors, KNN）：</strong><ul>
+<li>这是最经典的应用。KNN 算法在分类或回归时，需要找到与目标样本最相似的 K 个训练样本。欧几里得距离是衡量样本间相似性（距离）最常用的方法之一。距离最近的邻居被认为最相似，对目标样本的类别或值影响最大。</li>
+</ul>
+</li>
+<li><strong>聚类分析（Clustering）：</strong><ul>
+<li>如 K-Means 聚类算法。算法需要计算每个数据点到各个聚类中心（质心）的距离（通常用欧氏距离），并将点分配到距离最近的质心所在的簇中。迭代过程中也需要用欧氏距离重新计算质心位置（簇内点的均值）。</li>
+</ul>
+</li>
+<li><strong>推荐系统（Recommendation Systems）：</strong><ul>
+<li>在基于内容的推荐或协同过滤中，可以将用户（根据其评分&#x2F;行为向量）或物品（根据其特征向量）视为多维空间中的点。计算用户之间或物品之间的欧氏距离，可以找到相似的用户或物品，从而进行推荐（“喜欢相似物品的用户也可能喜欢这个”，“喜欢这个物品的用户也喜欢那些相似物品”）。</li>
+</ul>
+</li>
+<li><strong>图像处理与计算机视觉：</strong><ul>
+<li>比较图像特征（如颜色直方图、SIFT&#x2F;SURF描述符、深度特征等）之间的距离，用于图像检索（找相似的图片）、图像分类、目标识别等。</li>
+</ul>
+</li>
+<li><strong>异常检测（Anomaly Detection）：</strong><ul>
+<li>如果一个数据点距离大多数正常数据点聚集的中心区域（如簇的质心）的欧氏距离显著大于其他点，则该点可能被视为异常值（Outlier）。</li>
+</ul>
+</li>
+<li><strong>空间地理信息系统（GIS）：</strong><ul>
+<li>计算地图上两个地理位置（经纬度坐标）之间的直线距离。</li>
+</ul>
+</li>
+<li><strong>物理学与工程学：</strong><ul>
+<li>计算物体在空间中的位移、粒子间的距离等。</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-重要注意事项"><a href="#3-重要注意事项" class="headerlink" title="3. 重要注意事项"></a>3. 重要注意事项</h3><ol>
+<li><strong>特征缩放（标准化&#x2F;归一化）：****在计算欧氏距离之前，通常需要对特征进行标准化（Standardization）或归一化（Normalization）</strong>（如 Z-score 标准化、Min-Max 归一化）</li>
+<li><strong>维度灾难：</strong> 在高维空间中（维度非常多），欧几里得距离可能会变得不那么有效，因为所有点之间的距离开始趋近于相似。这时可能需要考虑其他距离度量（如余弦相似度）或降维技术。</li>
+<li><strong>数据类型：</strong> 欧几里得距离主要适用于连续数值型特征。对于类别型特征，需要先进行适当的编码或使用其他适合类别数据的距离度量（如汉明距离、杰卡德距离）。</li>
+<li><strong>稀疏数据：</strong> 对于稀疏的高维向量（如文本的 TF-IDF 向量），余弦相似度通常是比欧几里得距离更好的选择，因为它更关注向量方向而非绝对长度（欧氏距离对向量长度敏感）。</li>
+</ol>
+<ul>
+<li><h2 id="曼哈顿距离（Manhattan-Distance）"><a href="#曼哈顿距离（Manhattan-Distance）" class="headerlink" title="曼哈顿距离（Manhattan Distance）"></a>曼哈顿距离（Manhattan Distance）</h2></li>
+</ul>
+<p>​		曼哈顿距离又称<strong>城市街区距离</strong>、<strong>出租车距离</strong>或<strong>L1距离</strong>，是计算在规则网格（如棋盘格或城市街道）上两点之间的距离。它得名于纽约曼哈顿的街道布局（只能沿着水平和垂直方向移动），计算公式为各维度绝对差之和：</p>
+<figure class="highlight gherkin"><table><tr><td class="code"><pre><code class="hljs gherkin">d(A,B) = Σ|<span class="hljs-string">aᵢ - bᵢ</span>|<br></code></pre></td></tr></table></figure>
+
+<h3 id="核心特点"><a href="#核心特点" class="headerlink" title="核心特点"></a>核心特点</h3><ol>
+<li><strong>几何意义</strong>：只能沿坐标轴方向移动的最短路径长度</li>
+<li><strong>数学特性</strong>：对异常值比欧氏距离更鲁棒（不使用平方）</li>
+<li><strong>计算效率</strong>：比欧氏距离计算更快（避免平方和开方）</li>
+<li><strong>适用维度</strong>：尤其适合高维数据和网格结构</li>
+</ol>
+<h3 id="Python-1"><a href="#Python-1" class="headerlink" title="Python"></a>Python</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">manhattan_distance</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-keyword">return</span> np.<span class="hljs-built_in">sum</span>(np.<span class="hljs-built_in">abs</span>(np.array(a) - np.array(b)))<br><br><span class="hljs-comment"># 示例</span><br>point1 = [<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>]<br>point2 = [<span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">9</span>]<br><span class="hljs-built_in">print</span>(manhattan_distance(point1, point2))  <span class="hljs-comment"># 输出：|1-4|+|3-2|+|5-9| = 3+1+4=8</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><h4 id="1-计算机视觉与图像处理"><a href="#1-计算机视觉与图像处理" class="headerlink" title="1. 计算机视觉与图像处理"></a>1. 计算机视觉与图像处理</h4><ul>
+<li><strong>图像相似性比较</strong>：计算两幅图像像素值的绝对差异</li>
+<li><strong>特征匹配</strong>：在SIFT&#x2F;SURF等特征描述符比较中</li>
+</ul>
+<h4 id="2-推荐系统"><a href="#2-推荐系统" class="headerlink" title="2. 推荐系统"></a>2. 推荐系统</h4><ul>
+<li><strong>用户相似度计算</strong>：当特征差异需要线性处理时</li>
+<li><strong>物品特征比较</strong>：适用于评分差异的绝对值更重要场景</li>
+</ul>
+<h4 id="3-路径规划与机器人导航"><a href="#3-路径规划与机器人导航" class="headerlink" title="3. 路径规划与机器人导航"></a>3. 路径规划与机器人导航</h4><ul>
+<li><strong>网格地图寻路</strong>：计算栅格地图中的移动代价</li>
+<li><strong>机器人路径规划</strong>：在只能直角移动的环境</li>
+</ul>
+<h4 id="4-金融数据分析"><a href="#4-金融数据分析" class="headerlink" title="4. 金融数据分析"></a>4. 金融数据分析</h4><ul>
+<li><strong>资产波动性度量</strong>：计算价格变动的绝对幅度</li>
+<li><strong>风险分析</strong>：评估投资组合的日收益差异</li>
+</ul>
+<h4 id="5-文本分析与NLP"><a href="#5-文本分析与NLP" class="headerlink" title="5. 文本分析与NLP"></a>5. 文本分析与NLP</h4><ul>
+<li><strong>文档特征比较</strong>：当使用词频等计数特征时</li>
+<li><strong>分类器距离度量</strong>：在朴素贝叶斯等算法中</li>
+</ul>
+<h4 id="6-高维数据聚类"><a href="#6-高维数据聚类" class="headerlink" title="6. 高维数据聚类"></a>6. 高维数据聚类</h4><ul>
+<li><strong>K-Medians算法</strong>：使用曼哈顿距离的聚类方法</li>
+<li><strong>异常值检测</strong>：对高维空间的异常点更鲁棒</li>
+</ul>
+<h4 id="7-集成电路设计"><a href="#7-集成电路设计" class="headerlink" title="7. 集成电路设计"></a>7. 集成电路设计</h4><ul>
+<li><strong>电路布线长度</strong>：计算芯片上两点间的金属走线长度</li>
+<li><strong>VLSI设计</strong>：优化元件布局的最小连线距离</li>
+</ul>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><strong>特征缩放必要性</strong>：与欧氏距离一样需要标准化处理</li>
+<li><strong>维度灾难</strong>：高维空间中仍存在相似性问题</li>
+<li><strong>方向敏感性</strong>：对坐标轴旋转敏感（非旋转不变）</li>
+<li><strong>稀疏数据</strong>：比欧氏距离更适合处理稀疏特征</li>
+<li><strong>实现优化</strong>：大数据集可使用矩阵运算加速</li>
+</ol>
+<ul>
+<li><h2 id="余弦相似度（Cosine-Similarity）"><a href="#余弦相似度（Cosine-Similarity）" class="headerlink" title="余弦相似度（Cosine Similarity）"></a>余弦相似度（Cosine Similarity）</h2></li>
+</ul>
+<p>​		余弦相似度是处理高维数据和文本相似性的黄金标准，尤其当数据的绝对大小不如方向重要时。它克服了传统距离度量在高维空间的局限性，成为NLP、推荐系统和信息检索领域的核心度量方法。</p>
+<h3 id="定义与核心概念"><a href="#定义与核心概念" class="headerlink" title="定义与核心概念"></a>定义与核心概念</h3><p>余弦相似度是一种衡量两个向量<strong>方向相似性</strong>的指标，通过计算它们夹角的余弦值来评估相似度：</p>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><code class="hljs lisp">cos(θ) = (<span class="hljs-name">A</span>·B) / (<span class="hljs-name">||</span><span class="hljs-name">A</span><span class="hljs-name">||</span> × ||B||)<br></code></pre></td></tr></table></figure>
+
+<p>其中：</p>
+<ul>
+<li><code>A·B</code> 是向量点积（内积）</li>
+<li><code>||A||</code> 和 <code>||B||</code> 是向量的模（欧几里得范数）</li>
+</ul>
+<h3 id="关键特性"><a href="#关键特性" class="headerlink" title="关键特性"></a>关键特性</h3><ol>
+<li><strong>方向敏感</strong>：只关注向量方向而非大小</li>
+<li><strong>范围固定</strong>：值域为[-1,1]<ul>
+<li><code>1</code>：完全同向（最相似）</li>
+<li><code>0</code>：正交（无关）</li>
+<li><code>-1</code>：完全反向（最不相似）</li>
+</ul>
+</li>
+<li><strong>尺寸不变性</strong>：对向量长度变化不敏感</li>
+<li><strong>高维友好</strong>：特别适合文本等稀疏高维数据</li>
+</ol>
+<h3 id="Python-2"><a href="#Python-2" class="headerlink" title="Python"></a>Python</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">cosine_similarity</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    计算两个向量的余弦相似度</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    a = np.array(a)<br>    b = np.array(b)<br>    <br>    dot_product = np.dot(a, b)  <span class="hljs-comment"># 点积</span><br>    norm_a = np.linalg.norm(a)  <span class="hljs-comment"># A的模</span><br>    norm_b = np.linalg.norm(b)  <span class="hljs-comment"># B的模</span><br>    <br>    <span class="hljs-keyword">return</span> dot_product / (norm_a * norm_b)<br><br><span class="hljs-comment"># 示例</span><br>vector1 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<br>vector2 = [<span class="hljs-number">4</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>]<br><span class="hljs-built_in">print</span>(cosine_similarity(vector1, vector2))  <span class="hljs-comment"># 输出：约0.974</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h3><h4 id="1-文本分析与自然语言处理（最常用）"><a href="#1-文本分析与自然语言处理（最常用）" class="headerlink" title="1. 文本分析与自然语言处理（最常用）"></a>1. 文本分析与自然语言处理（最常用）</h4><ul>
+<li><strong>文档相似度</strong>：比较TF-IDF向量</li>
+<li><strong>搜索引擎</strong>：查询与文档的匹配度</li>
+<li><strong>主题建模</strong>：发现相似主题的文档</li>
+</ul>
+<h4 id="2-推荐系统-1"><a href="#2-推荐系统-1" class="headerlink" title="2. 推荐系统"></a>2. 推荐系统</h4><ul>
+<li><strong>协同过滤</strong>：用户&#x2F;物品相似度计算</li>
+<li><strong>内容推荐</strong>：基于特征向量的相似项目推荐</li>
+</ul>
+<h4 id="3-计算机视觉"><a href="#3-计算机视觉" class="headerlink" title="3. 计算机视觉"></a>3. 计算机视觉</h4><ul>
+<li><strong>图像检索</strong>：比较CNN提取的特征向量</li>
+<li><strong>人脸识别</strong>：衡量人脸嵌入向量的相似度</li>
+</ul>
+<h4 id="4-生物信息学"><a href="#4-生物信息学" class="headerlink" title="4. 生物信息学"></a>4. 生物信息学</h4><ul>
+<li><strong>基因表达分析</strong>：比较基因表达谱</li>
+<li><strong>蛋白质序列比对</strong>：评估序列相似性</li>
+</ul>
+<h4 id="5-语义搜索与词嵌入"><a href="#5-语义搜索与词嵌入" class="headerlink" title="5. 语义搜索与词嵌入"></a>5. 语义搜索与词嵌入</h4><ul>
+<li><strong>Word2Vec&#x2F;GloVe</strong>：计算词语语义相似度</li>
+<li><strong>BERT嵌入</strong>：句子&#x2F;段落级语义匹配</li>
+</ul>
+<h3 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><strong>预处理要求</strong>：<ul>
+<li>文本数据需转换为TF-IDF或词嵌入向量</li>
+<li>所有特征应为数值型</li>
+<li>考虑停用词处理和词干提取</li>
+</ul>
+</li>
+<li><strong>零向量问题</strong>:# 避免除以零错误</li>
+<li><strong>稀疏数据优化</strong>：# 对稀疏矩阵高效计算</li>
+<li><strong>相似度与距离转换</strong>：cosine_distance &#x3D; 1 - cosine_similarity  # 转换为距离度量</li>
+<li><strong>方向性理解</strong>：<ul>
+<li>正值表示相似方向</li>
+<li>负值表示相反方向</li>
+<li>零值表示正交（无相关性）</li>
+</ul>
+</li>
+<li><strong>阈值选择</strong>：<ul>
+<li>信息检索：&gt;0.6通常表示相关文档</li>
+<li>推荐系统：&gt;0.8可作为强推荐依据</li>
+<li>抄袭检测：&gt;0.9可能表示内容重复</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><h2 id="Jaccard相似系数（Jaccard-Similarity）"><a href="#Jaccard相似系数（Jaccard-Similarity）" class="headerlink" title="Jaccard相似系数（Jaccard Similarity）"></a>Jaccard相似系数（Jaccard Similarity）</h2></li>
+</ul>
+<h3 id="定义与核心概念-1"><a href="#定义与核心概念-1" class="headerlink" title="定义与核心概念"></a>定义与核心概念</h3><p>​		Jaccard相似系数是一种用于衡量<strong>两个集合相似度</strong>的指标，特别适用于<strong>二元特征</strong>或<strong>集合数据</strong>。它通过比较交集与并集的大小来计算相似度：</p>
+<p>​	Jaccard相似系数是处理集合数据和二元特征的强大工具，特别适合需要快速比较、忽略频率信息的场景。它在文本分析、推荐系统和生物信息学等领域有不可替代的优势，是数据科学家工具箱中必备的基础相似度度量方法之一。</p>
+<figure class="highlight gherkin"><table><tr><td class="code"><pre><code class="hljs gherkin">J(A,B) = |<span class="hljs-string">A ∩ B</span>|<span class="hljs-string"> / </span>|<span class="hljs-string">A ∪ B</span>|<span class="hljs-string"> = 交集大小 / 并集大小</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="关键特性-1"><a href="#关键特性-1" class="headerlink" title="关键特性"></a>关键特性</h3><ol>
+<li><strong>二元特性</strong>：仅关注元素是否存在，不考虑出现频率</li>
+<li><strong>值域范围</strong>：[0, 1]<ul>
+<li><code>1</code>：完全相同（最相似）</li>
+<li><code>0</code>：完全不同（无共同元素）</li>
+</ul>
+</li>
+<li><strong>非对称处理</strong>：对负匹配（共同缺失）不敏感</li>
+<li><strong>计算高效</strong>：只需统计元素存在性</li>
+</ol>
+<h3 id="Python-3"><a href="#Python-3" class="headerlink" title="Python"></a>Python</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">jaccard_vector</span>(<span class="hljs-params">a, b</span>):<br>    <span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">    计算二元向量的Jaccard相似系数</span><br><span class="hljs-string">    输入：两个相同长度的二元向量（0/1）</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br>    a = np.array(a)<br>    b = np.array(b)<br>    <br>    intersection = np.logical_and(a, b).<span class="hljs-built_in">sum</span>()  <span class="hljs-comment"># 交集元素数</span><br>    union = np.logical_or(a, b).<span class="hljs-built_in">sum</span>()          <span class="hljs-comment"># 并集元素数</span><br>    <br>    <span class="hljs-keyword">return</span> intersection / union <span class="hljs-keyword">if</span> union != <span class="hljs-number">0</span> <span class="hljs-keyword">else</span> <span class="hljs-number">0</span><br><br><span class="hljs-comment"># 示例</span><br>vec1 = [<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]  <span class="hljs-comment"># 存在特征：位置0,2,4</span><br>vec2 = [<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>]  <span class="hljs-comment"># 存在特征：位置0,1,4</span><br><span class="hljs-built_in">print</span>(jaccard_vector(vec1, vec2))  <span class="hljs-comment"># 输出：0.5（交集位置0,4 → 2个，并集位置0,1,2,4 → 4个）</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a>应用场景</h3><h4 id="1-文本挖掘与自然语言处理"><a href="#1-文本挖掘与自然语言处理" class="headerlink" title="1. 文本挖掘与自然语言处理"></a>1. 文本挖掘与自然语言处理</h4><ul>
+<li><strong>文档相似度</strong>：比较词集合（忽略词频）</li>
+<li><strong>抄袭检测</strong>：识别相似内容块</li>
+<li><strong>查询建议</strong>：寻找相似搜索查询</li>
+</ul>
+<h4 id="2-推荐系统-2"><a href="#2-推荐系统-2" class="headerlink" title="2. 推荐系统"></a>2. 推荐系统</h4><ul>
+<li><strong>协同过滤</strong>：基于用户行为集合（购买&#x2F;点击）</li>
+<li><strong>内容推荐</strong>：比较用户兴趣标签</li>
+</ul>
+<h4 id="3-生物信息学"><a href="#3-生物信息学" class="headerlink" title="3. 生物信息学"></a>3. 生物信息学</h4><ul>
+<li><strong>基因功能分析</strong>：比较基因特征集合</li>
+<li><strong>物种分类</strong>：基于共有基因序列</li>
+</ul>
+<h4 id="4-计算机网络安全"><a href="#4-计算机网络安全" class="headerlink" title="4. 计算机网络安全"></a>4. 计算机网络安全</h4><ul>
+<li><strong>恶意软件检测</strong>：比较API调用集合</li>
+<li><strong>入侵检测</strong>：识别相似攻击模式</li>
+</ul>
+<h4 id="5-电子商务"><a href="#5-电子商务" class="headerlink" title="5. 电子商务"></a>5. 电子商务</h4><ul>
+<li><strong>购物篮分析</strong>：寻找相似购买组合</li>
+<li><strong>交叉销售</strong>：识别经常一起购买的商品</li>
+</ul>
+<h4 id="6-图像处理"><a href="#6-图像处理" class="headerlink" title="6. 图像处理"></a>6. 图像处理</h4><ul>
+<li><strong>图像相似度</strong>：比较视觉词袋特征</li>
+<li><strong>重复图片检测</strong>：基于关键点集合</li>
+</ul>
+<h3 id="注意事项-2"><a href="#注意事项-2" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><strong>数据预处理要求</strong>：<ul>
+<li>确保数据表示为集合或二元向量</li>
+<li>分类数据需要独热编码（One-Hot Encoding）</li>
+</ul>
+</li>
+<li><strong>高维数据挑战</strong>：<ul>
+<li>维度极高时考虑LSH（Locality-Sensitive Hashing）</li>
+<li>使用稀疏矩阵存储节省内存</li>
+</ul>
+</li>
+<li><strong>阈值选择建议</strong>：<ul>
+<li>0.7：强相似（如推荐系统）</li>
+<li>0.3-0.7：中等相似</li>
+<li>&lt;0.3：弱相似</li>
+</ul>
+</li>
+</ol>
+<h2 id="四种相似性度量方法的系统对比"><a href="#四种相似性度量方法的系统对比" class="headerlink" title="* 四种相似性度量方法的系统对比"></a>* 四种相似性度量方法的系统对比</h2><h3 id="1-核心特性对比"><a href="#1-核心特性对比" class="headerlink" title="1. 核心特性对比"></a>1. 核心特性对比</h3><table>
+<thead>
+<tr>
+<th align="left">特性</th>
+<th align="left">欧几里得距离</th>
+<th align="left">曼哈顿距离</th>
+<th align="left">余弦相似度</th>
+<th align="left">Jaccard相似系数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>数学本质</strong></td>
+<td align="left">L2范数</td>
+<td align="left">L1范数</td>
+<td align="left">向量夹角余弦</td>
+<td align="left">集合重叠度</td>
+</tr>
+<tr>
+<td align="left"><strong>计算公式</strong></td>
+<td align="left">√Σ(xᵢ-yᵢ)²</td>
+<td align="left">Σ|xᵢ-yᵢ|</td>
+<td align="left">(X·Y)&#x2F;(|X||Y|)</td>
+<td align="left">|A∩B|&#x2F;|A∪B|</td>
+</tr>
+<tr>
+<td align="left"><strong>值域范围</strong></td>
+<td align="left">[0, +∞)</td>
+<td align="left">[0, +∞)</td>
+<td align="left">[-1, 1]</td>
+<td align="left">[0, 1]</td>
+</tr>
+<tr>
+<td align="left"><strong>最佳值含义</strong></td>
+<td align="left">0（完全相同）</td>
+<td align="left">0（完全相同）</td>
+<td align="left">1（完全同向）</td>
+<td align="left">1（集合相同）</td>
+</tr>
+<tr>
+<td align="left"><strong>最差值含义</strong></td>
+<td align="left">+∞（完全不同）</td>
+<td align="left">+∞（完全不同）</td>
+<td align="left">-1（完全反向）</td>
+<td align="left">0（无交集）</td>
+</tr>
+</tbody></table>
+<h3 id="2-数据适应性对比"><a href="#2-数据适应性对比" class="headerlink" title="2. 数据适应性对比"></a>2. 数据适应性对比</h3><table>
+<thead>
+<tr>
+<th align="left">数据类型</th>
+<th align="left">欧几里得距离</th>
+<th align="left">曼哈顿距离</th>
+<th align="left">余弦相似度</th>
+<th align="left">Jaccard相似系数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">连续数值数据</td>
+<td align="left">★★★★★</td>
+<td align="left">★★★★★</td>
+<td align="left">★★★★☆</td>
+<td align="left">✘</td>
+</tr>
+<tr>
+<td align="left">二元特征数据</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">△</td>
+<td align="left">★★★★★</td>
+</tr>
+<tr>
+<td align="left">高维稀疏数据</td>
+<td align="left">★★☆☆☆</td>
+<td align="left">★★★☆☆</td>
+<td align="left">★★★★★</td>
+<td align="left">★★★★★</td>
+</tr>
+<tr>
+<td align="left">文本数据</td>
+<td align="left">★★☆☆☆</td>
+<td align="left">★★☆☆☆</td>
+<td align="left">★★★★★</td>
+<td align="left">★★★★☆</td>
+</tr>
+<tr>
+<td align="left">集合数据</td>
+<td align="left">✘</td>
+<td align="left">✘</td>
+<td align="left">△</td>
+<td align="left">★★★★★</td>
+</tr>
+<tr>
+<td align="left">图像像素数据</td>
+<td align="left">★★★★☆</td>
+<td align="left">★★★★☆</td>
+<td align="left">★★★☆☆</td>
+<td align="left">★★☆☆☆</td>
+</tr>
+</tbody></table>
+<h3 id="3-计算特性对比"><a href="#3-计算特性对比" class="headerlink" title="3. 计算特性对比"></a>3. 计算特性对比</h3><table>
+<thead>
+<tr>
+<th align="left">计算特性</th>
+<th align="left">欧几里得距离</th>
+<th align="left">曼哈顿距离</th>
+<th align="left">余弦相似度</th>
+<th align="left">Jaccard相似系数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">计算复杂度</td>
+<td align="left">中等（需平方和开方）</td>
+<td align="left">低（只需绝对值求和）</td>
+<td align="left">中等（需点积和范数）</td>
+<td align="left">低（只需集合操作）</td>
+</tr>
+<tr>
+<td align="left">对特征缩放的需求</td>
+<td align="left">必须</td>
+<td align="left">必须</td>
+<td align="left">不需要</td>
+<td align="left">不需要</td>
+</tr>
+<tr>
+<td align="left">对异常值的敏感度</td>
+<td align="left">高（平方放大）</td>
+<td align="left">中（线性）</td>
+<td align="left">低</td>
+<td align="left">低</td>
+</tr>
+<tr>
+<td align="left">维度灾难影响</td>
+<td align="left">严重</td>
+<td align="left">中等</td>
+<td align="left">轻微</td>
+<td align="left">轻微</td>
+</tr>
+<tr>
+<td align="left">方向敏感性</td>
+<td align="left">无</td>
+<td align="left">无</td>
+<td align="left">高</td>
+<td align="left">无</td>
+</tr>
+</tbody></table>
+<h3 id="4-典型应用场景对比"><a href="#4-典型应用场景对比" class="headerlink" title="4. 典型应用场景对比"></a>4. 典型应用场景对比</h3><table>
+<thead>
+<tr>
+<th align="left">应用场景</th>
+<th align="left">欧几里得距离</th>
+<th align="left">曼哈顿距离</th>
+<th align="left">余弦相似度</th>
+<th align="left">Jaccard相似系数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">空间距离计算</td>
+<td align="left">★★★★★</td>
+<td align="left">★★★★☆</td>
+<td align="left">✘</td>
+<td align="left">✘</td>
+</tr>
+<tr>
+<td align="left">物理模型</td>
+<td align="left">★★★★★</td>
+<td align="left">★★★☆☆</td>
+<td align="left">✘</td>
+<td align="left">✘</td>
+</tr>
+<tr>
+<td align="left">文本相似度</td>
+<td align="left">★☆☆☆☆</td>
+<td align="left">★☆☆☆☆</td>
+<td align="left">★★★★★</td>
+<td align="left">★★★★☆</td>
+</tr>
+<tr>
+<td align="left">推荐系统</td>
+<td align="left">★★☆☆☆</td>
+<td align="left">★★☆☆☆</td>
+<td align="left">★★★★★</td>
+<td align="left">★★★★☆</td>
+</tr>
+<tr>
+<td align="left">图像识别</td>
+<td align="left">★★★★☆</td>
+<td align="left">★★★☆☆</td>
+<td align="left">★★★★☆</td>
+<td align="left">★★☆☆☆</td>
+</tr>
+<tr>
+<td align="left">购物篮分析</td>
+<td align="left">✘</td>
+<td align="left">✘</td>
+<td align="left">△</td>
+<td align="left">★★★★★</td>
+</tr>
+<tr>
+<td align="left">基因序列比较</td>
+<td align="left">★★☆☆☆</td>
+<td align="left">★★☆☆☆</td>
+<td align="left">★★★☆☆</td>
+<td align="left">★★★★★</td>
+</tr>
+<tr>
+<td align="left">聚类分析</td>
+<td align="left">★★★★☆</td>
+<td align="left">★★★★☆</td>
+<td align="left">★★★★☆</td>
+<td align="left">★★★☆☆</td>
+</tr>
+<tr>
+<td align="left">异常检测</td>
+<td align="left">★★★★☆</td>
+<td align="left">★★★★★</td>
+<td align="left">★★☆☆☆</td>
+<td align="left">★★★☆☆</td>
+</tr>
+</tbody></table>
+<h3 id="5-优缺点对比"><a href="#5-优缺点对比" class="headerlink" title="5. 优缺点对比"></a>5. 优缺点对比</h3><p><strong>欧几里得距离</strong>：</p>
+<ul>
+<li>优点：几何意义直观，物理空间距离的最佳表示</li>
+<li>缺点：对异常值敏感，高维数据效果差，需特征缩放</li>
+</ul>
+<p><strong>曼哈顿距离</strong>：</p>
+<ul>
+<li>优点：计算效率高，对异常值较鲁棒，适合网格数据</li>
+<li>缺点：结果值通常较大，高维仍有维度灾难问题</li>
+</ul>
+<p><strong>余弦相似度</strong>：</p>
+<ul>
+<li>优点：方向敏感，高维稀疏数据表现优异，不受向量大小影响</li>
+<li>缺点：忽略向量大小差异，对零向量敏感，负值解释性弱</li>
+</ul>
+<p><strong>Jaccard相似系数</strong>：</p>
+<ul>
+<li>优点：集合比较的理想方法，计算高效，天然处理二元数据</li>
+<li>缺点：完全忽略元素频率，无法处理连续数值，对元素缺失敏感</li>
+</ul>
+<h3 id="6-选择指南"><a href="#6-选择指南" class="headerlink" title="6. 选择指南"></a>6. 选择指南</h3><ol>
+<li><strong>当处理物理空间距离时</strong>：<ul>
+<li>选择欧几里得距离（真实空间）或曼哈顿距离（网格空间）</li>
+<li>示例：地理位置计算、机器人导航</li>
+</ul>
+</li>
+<li><strong>当处理文本或高维数据时</strong>：<ul>
+<li>首选余弦相似度（考虑方向）</li>
+<li>次要选择Jaccard（仅考虑存在性）</li>
+<li>示例：文档相似度、推荐系统</li>
+</ul>
+</li>
+<li><strong>当处理集合或二元特征时</strong>：<ul>
+<li>首选Jaccard相似系数</li>
+<li>示例：购物篮分析、用户兴趣标签</li>
+</ul>
+</li>
+<li><strong>当需要鲁棒性时</strong>：<ul>
+<li>曼哈顿距离 &gt; 余弦相似度 ≈ Jaccard &gt; 欧几里得距离</li>
+<li>示例：异常检测、金融波动分析</li>
+</ul>
+</li>
+<li><strong>当计算效率关键时</strong>：<ul>
+<li>曼哈顿距离 ≈ Jaccard &gt; 余弦相似度 &gt; 欧几里得距离</li>
+<li>示例：实时推荐、大规模数据处理</li>
+</ul>
+</li>
+</ol>
+<h3 id="7-混合使用示例"><a href="#7-混合使用示例" class="headerlink" title="7. 混合使用示例"></a>7. 混合使用示例</h3><p>在实际应用中，常组合多种度量方法：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs Python"><span class="hljs-comment"># 电商推荐系统示例</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">hybrid_recommendation</span>(<span class="hljs-params">user1, user2</span>):<br>    <span class="hljs-comment"># 用户特征：连续值特征（年龄、消费额）+ 二元特征（购买品类）</span><br>    continuous_features = [age, avg_spend, ...]<br>    binary_features = [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, ...]  <span class="hljs-comment"># 购买品类</span><br>    <br>    <span class="hljs-comment"># 连续特征用曼哈顿距离（鲁棒性好）</span><br>    <span class="hljs-keyword">from</span> scipy.spatial <span class="hljs-keyword">import</span> distance<br>    cont_dist = distance.cityblock(user1.continuous, user2.continuous)<br>    <br>    <span class="hljs-comment"># 二元特征用Jaccard相似度</span><br>    <span class="hljs-keyword">from</span> sklearn.metrics <span class="hljs-keyword">import</span> jaccard_score<br>    bin_sim = jaccard_score(user1.binary, user2.binary)<br>    <br>    <span class="hljs-comment"># 组合相似度（加权平均）</span><br>    total_sim = <span class="hljs-number">0.7</span>*bin_sim + <span class="hljs-number">0.3</span>*(<span class="hljs-number">1</span>/(<span class="hljs-number">1</span>+cont_dist))<br>    <span class="hljs-keyword">return</span> total_sim<br><br><span class="hljs-comment"># 文本处理管道</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">text_similarity</span>(<span class="hljs-params">doc1, doc2</span>):<br>    <span class="hljs-comment"># 选项1：词向量余弦相似度（考虑语义）</span><br>    <span class="hljs-keyword">from</span> sklearn.metrics.pairwise <span class="hljs-keyword">import</span> cosine_similarity<br>    embedding_sim = cosine_similarity([doc1_embedding], [doc2_embedding])[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br>    <br>    <span class="hljs-comment"># 选项2：Jaccard相似度（快速去重）</span><br>    jaccard_sim = jaccard_similarity(<span class="hljs-built_in">set</span>(doc1_words), <span class="hljs-built_in">set</span>(doc2_words))<br>    <br>    <span class="hljs-comment"># 根据需求选择或组合</span><br>    <span class="hljs-keyword">if</span> embedding_sim &gt; <span class="hljs-number">0.8</span>:  <span class="hljs-comment"># 高语义相似</span><br>        <span class="hljs-keyword">return</span> embedding_sim<br>    <span class="hljs-keyword">else</span>:  <span class="hljs-comment"># 可能为表面相似</span><br>        <span class="hljs-keyword">return</span> (embedding_sim + jaccard_sim)/<span class="hljs-number">2</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="总结归纳"><a href="#总结归纳" class="headerlink" title="总结归纳"></a>总结归纳</h3><table>
+<thead>
+<tr>
+<th align="left">维度</th>
+<th align="left">最佳选择</th>
+<th align="left">次佳选择</th>
+<th align="left">应避免</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">物理空间距离</td>
+<td align="left">欧几里得距离</td>
+<td align="left">曼哈顿距离</td>
+<td align="left">余弦&#x2F;Jaccard</td>
+</tr>
+<tr>
+<td align="left">文本语义相似度</td>
+<td align="left">余弦相似度</td>
+<td align="left">Jaccard</td>
+<td align="left">欧氏&#x2F;曼哈顿</td>
+</tr>
+<tr>
+<td align="left">集合数据比较</td>
+<td align="left">Jaccard</td>
+<td align="left">余弦相似度</td>
+<td align="left">欧氏&#x2F;曼哈顿</td>
+</tr>
+<tr>
+<td align="left">高维稀疏数据</td>
+<td align="left">余弦相似度</td>
+<td align="left">Jaccard</td>
+<td align="left">欧氏距离</td>
+</tr>
+<tr>
+<td align="left">异常值多的数据</td>
+<td align="left">曼哈顿距离</td>
+<td align="left">Jaccard</td>
+<td align="left">欧氏距离</td>
+</tr>
+<tr>
+<td align="left">实时计算场景</td>
+<td align="left">曼哈顿&#x2F;Jaccard</td>
+<td align="left">余弦相似度</td>
+<td align="left">欧氏距离</td>
+</tr>
+</tbody></table>
+<p>理解这些度量方法的本质差异和适用场景，能够帮助您在具体问题中选择最合适的相似性计算方法，必要时可以组合多种方法以获得更全面的相似性评估。</p>
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2025/07/07/ai/%E5%9F%BA%E4%BA%8Esimple-local-rag%E5%AE%9E%E7%8E%B0%E6%9C%AC%E5%9C%B0RAG/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>基于simple-local-rag实现本地RAG</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2025/06/13/tech/FinBertNLPCosin/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>FinBert NLP Cosin</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"Ov23lijMO8Y1d5CxdOnz","clientSecret":"77a460fa3d181dd6d26faa420511e0fec5a8d49b","repo":"https://github.com/AlexYangHZ/gtalk","owner":"AlexYangHZ","admin":"AlexYangHZ"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+
