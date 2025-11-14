@@ -320,18 +320,160 @@
 <ul>
 <li><p>监督学习，无监督学习和强化学习的区别</p>
 <ul>
-<li><strong>监督学习（Supervised Learning）：</strong>通过人类标注数据（问答对），学习如何生成回答</li>
-<li><strong>奖励模型（Reward Model）：</strong>根据人类反馈（评分或排名），建立模型评估回答的质量</li>
-<li><strong>强化学习（Performance Learning）：</strong>通过PRO算法（Proximal Policy Optimization），在与用户交互中，不断优化策略，选择最好回答</li>
-<li><strong>人类反馈（Human Feedback）：</strong>训练核心动力，帮助理解什么是好的、差的回答</li>
+<li><p><strong>监督学习（Supervised Learning）：</strong>通过人类标注数据（问答对），学习如何生成回答</p>
+<img src="/2025/07/29/ai/Machine-Learning/image-20250921144508941.png" class="" title="image-20250921144508941">
+</li>
+<li><p>Unsupervised Learning:</p>
+<img src="/2025/07/29/ai/Machine-Learning/image-20250921144611436.png" class="" title="image-20250921144611436">
+</li>
+<li><p><strong>奖励模型（Reward Model）：</strong>根据人类反馈（评分或排名），建立模型评估回答的质量</p>
+</li>
+<li><p><strong>强化学习（Performance Learning）：</strong>通过PRO算法（Proximal Policy Optimization），在与用户交互中，不断优化策略，选择最好回答</p>
+<img src="/2025/07/29/ai/Machine-Learning/image-20250921144638778.png" class="" title="image-20250921144638778">
+</li>
+<li><p><strong>人类反馈（Human Feedback）：</strong>训练核心动力，帮助理解什么是好的、差的回答</p>
+</li>
+<li><p>More Learning Paradims</p>
+<img src="/2025/07/29/ai/Machine-Learning/image-20250921144718590.png" class="" title="image-20250921144718590">
+
+<img src="/2025/07/29/ai/Machine-Learning/image-20250921144741929.png" class="" title="image-20250921144741929"></li>
 </ul>
 </li>
 <li><p>向量数据库和其他数据库的差别及对比</p>
+<p><strong>向量数据库</strong>是一种专门设计用于存储、索引和查询<strong>向量嵌入</strong>（Vector Embeddings）的数据库。</p>
+<ul>
+<li><strong>向量嵌入</strong>：一段数据（如文本、图像、音频、视频）通过机器学习模型（如 OpenAI 的 Embedding 模型、BERT 等）转换后得到的一长串数字（通常是数百到数千维）。这个向量在高维空间中代表了原始数据的语义和上下文信息。语义相近的数据，其向量在空间中的距离也更近。</li>
+<li><strong>核心操作</strong>：向量数据库的核心查询操作是<strong>相似性搜索</strong>（Similarity Search），即给定一个查询向量，在数据库中快速找到与之最相似的 K 个向量（K-Nearest Neighbors, KNN）。</li>
+</ul>
+<h3 id="与传统数据库的核心差别"><a href="#与传统数据库的核心差别" class="headerlink" title="与传统数据库的核心差别"></a>与传统数据库的核心差别</h3><p>传统数据库（包括关系型 SQL 和 NoSQL）是为处理结构化数据和精确匹配而设计的，而向量数据库是为处理高维向量和近似匹配（相似性）而优化的。</p>
+<p>它们最根本的差别在于 <strong>“如何查询数据”</strong>和 <strong>“数据代表了什么”</strong>。</p>
+<table>
+<thead>
+<tr>
+<th align="left">特性维度</th>
+<th align="left">向量数据库</th>
+<th align="left">传统数据库 (SQL&#x2F;NoSQL)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>数据模型</strong></td>
+<td align="left"><strong>向量</strong>： 存储高维向量作为核心数据。元数据可以附加到向量上。</td>
+<td align="left"><strong>结构化数据</strong>： 行&#x2F;列（SQL）、文档、键值对、图等。</td>
+</tr>
+<tr>
+<td align="left"><strong>主要查询方式</strong></td>
+<td align="left"><strong>相似性搜索 &#x2F; 近似最近邻 (ANN) 搜索</strong>： “找到与这个图片最相似的10张图片”。</td>
+<td align="left"><strong>精确匹配 &#x2F; 范围查询</strong>： “找到 <code>WHERE user_id = 123</code> 的所有订单” 或 “找到 <code>WHERE price &gt; 100</code> 的商品”。</td>
+</tr>
+<tr>
+<td align="left"><strong>索引结构</strong></td>
+<td align="left"><strong>专为高维向量优化</strong>： 使用 <strong>HNSW</strong> (分层导航小世界)、<strong>IVF</strong> (倒排文件)、<strong>PQ</strong> (乘积量化) 、<strong>LSH</strong> (局部敏感哈希) 等算法来加速相似性搜索。</td>
+<td align="left"><strong>为标量数据优化</strong>： 使用 <strong>B-Tree</strong>（用于范围查询）、<strong>Hash索引</strong>（用于精确匹配）、<strong>倒排索引</strong>（用于全文搜索）等。</td>
+</tr>
+<tr>
+<td align="left"><strong>查询语言</strong></td>
+<td align="left">通常提供专有的 <strong>API&#x2F;SDK</strong>，以及扩展的 SQL 语法（如 <code>ORDER BY vector_distance(...)</code>）。</td>
+<td align="left"><strong>SQL</strong>（用于关系型）或特定的 <strong>查询 API</strong>（用于 NoSQL，如 MongoDB 的查询文档）。</td>
+</tr>
+<tr>
+<td align="left"><strong>核心能力</strong></td>
+<td align="left"><strong>关联查询</strong>： 根据数据的<strong>含义或内容</strong>进行检索。善于处理“像这样的东西有哪些？”这类问题。</td>
+<td align="left"><strong>精确查询</strong>： 根据数据的<strong>确切值</strong>进行检索。善于处理“某某的具体数据是什么？”这类问题。</td>
+</tr>
+<tr>
+<td align="left"><strong>典型应用场景</strong></td>
+<td align="left">AI 应用：语义搜索、推荐系统、图像&#x2F;音频检索、欺诈检测、大语言模型（LLM）长期记忆等。</td>
+<td align="left">业务应用：交易系统、用户管理、内容管理系统（CMS）、库存管理等。</td>
+</tr>
+<tr>
+<td align="left"><strong>性能考量</strong></td>
+<td align="left">追求<strong>高 QPS</strong>（每秒查询次数）下的<strong>低延迟</strong>相似性搜索。牺牲<strong>100%精确度</strong>以换取<strong>极快的速度</strong>（使用 ANN）。</td>
+<td align="left">追求事务的 <strong>ACID</strong> 属性（原子性、一致性、隔离性、持久性）、查询的准确性和一致性。</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="一个生动的类比"><a href="#一个生动的类比" class="headerlink" title="一个生动的类比"></a>一个生动的类比</h3><p>想象一下你要在图书馆找书：</p>
+<ol>
+<li><p><strong>传统数据库（SQL）</strong>：</p>
+<ul>
+<li>你知道书的<strong>精确书名</strong>或<strong>ISBN号</strong>。图书管理员（数据库）通过精确的索引卡片系统直接走到确切的书架，拿到你要的那本书。</li>
+<li><strong>查询</strong>： “请给我 ISBN 为 <code>978-3-16-148410-0</code> 的书。”</li>
+</ul>
+</li>
+<li><p><strong>全文搜索引擎（如 Elasticsearch）</strong>：</p>
+<ul>
+<li>你想找<strong>包含某些关键词</strong>的书。图书管理员扫描所有书的索引，找到包含这些词的所有书，然后根据相关度排序返回给你。</li>
+<li><strong>查询</strong>： “请给我包含‘机器学习’和‘神经网络’的书。”</li>
+</ul>
+</li>
+<li><p><strong>向量数据库</strong>：</p>
+<ul>
+<li>你想找一本<strong>感觉类似</strong>于《三体》的书。你不知道书名或作者，也无法用准确的关键词描述。图书管理员（向量数据库）理解《三体》的<strong>主题、风格和情感基调</strong>（即它的“嵌入向量”），然后在书库中寻找在“概念空间”里与它最接近的书。</li>
+<li><strong>查询</strong>： “请给我<strong>类似</strong>于《三体》的书。” -&gt; 数据库可能会返回《基地》、《与拉玛相会》等科幻经典。</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="技术架构对比（简化）"><a href="#技术架构对比（简化）" class="headerlink" title="技术架构对比（简化）"></a>技术架构对比（简化）</h3><p><strong>传统数据库查询</strong>：<br><code>SELECT * FROM products WHERE category = &#39;electronics&#39; AND price &lt; 1000;</code></p>
+<ol>
+<li>解析 SQL 语句。</li>
+<li>可能使用 <code>category</code> 和 <code>price</code> 上的索引来快速定位<strong>精确匹配</strong>的行。</li>
+<li>返回结果。</li>
+</ol>
+<p><strong>向量数据库查询</strong>：<br><code>找到与查询向量 [0.12, 0.45, ..., 0.89] 最相似的 10 个向量</code></p>
+<ol>
+<li>接收查询向量。</li>
+<li>使用 <strong>HNSW</strong> 或其他 ANN 索引，在向量空间中进行快速导航和搜索，寻找近邻。<strong>它不会比较每一个向量</strong>，那样成本太高（暴力计算）。</li>
+<li>返回最相似向量对应的原始数据（如图片、文本片段）。</li>
+</ol>
+<hr>
+<h3 id="为什么现在越来越重要？"><a href="#为什么现在越来越重要？" class="headerlink" title="为什么现在越来越重要？"></a>为什么现在越来越重要？</h3><p>向量数据库的兴起直接源于 <strong>AI 的爆发</strong>，尤其是大语言模型（LLM）和生成式 AI。</p>
+<ol>
+<li><strong>大语言模型（LLM）的长期记忆</strong>： LLM 本身有上下文窗口限制。向量数据库可以作为其“外部大脑”，存储海量知识库。用户提问时，先从向量数据库中检索最相关的信息，再连同问题和信息一起发给 LLM，从而生成更准确、更相关的答案。这就是 <strong>RAG（检索增强生成）</strong> 的核心架构。</li>
+<li><strong>多模态AI</strong>： 一切（文本、图像、视频、音频）都可以被编码成向量。向量数据库提供了一个统一的方式来处理和关联所有这些不同类型的数据。</li>
+<li><strong>高效的相似性搜索</strong>： 在亿级数据中做暴力相似性搜索（逐一遍历）是极其缓慢的。向量数据库的专用索引使其变得实时可行。</li>
+</ol>
+<h3 id="总结与选型建议"><a href="#总结与选型建议" class="headerlink" title="总结与选型建议"></a>总结与选型建议</h3><table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left"><strong>使用向量数据库当…</strong></th>
+<th align="left"><strong>使用传统数据库当…</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>核心需求</strong></td>
+<td align="left">你需要根据<strong>语义相似性</strong>或<strong>内容</strong>来搜索数据。</td>
+<td align="left">你需要根据<strong>精确值</strong>（ID、名称、日期、价格）来查询、更新和删除数据。</td>
+</tr>
+<tr>
+<td align="left"><strong>数据形式</strong></td>
+<td align="left">你的数据可以被机器学习模型转换为<strong>向量嵌入</strong>（如文本、图像、音频）。</td>
+<td align="left">你的数据是结构化的（用户信息、交易记录、产品库存）。</td>
+</tr>
+<tr>
+<td align="left"><strong>查询类型</strong></td>
+<td align="left">你的问题是：“找到像这样的东西”或“推荐相关的内容”。</td>
+<td align="left">你的问题是：“找到用户 123 的订单”或“计算上个月的总销售额”。</td>
+</tr>
+</tbody></table>
+<p><strong>重要提示</strong>：现代应用常常同时使用两者！这种模式称为 <strong>“多模态”</strong> 或 <strong>“混合”</strong> 数据库架构。</p>
+<ul>
+<li><strong>例如</strong>：一个电商推荐系统。<ol>
+<li>使用 <strong>传统数据库</strong>（如 PostgreSQL）来存储用户信息、订单、商品库存和价格。</li>
+<li>使用 <strong>向量数据库</strong>（如 Weaviate， Qdrant）来存储商品描述、图片的向量，用于实现“找相似商品”和“个性化推荐”。</li>
+<li>应用服务器协调两者，提供完整的服务。</li>
+</ol>
+</li>
+</ul>
+<p><strong>主流向量数据库示例</strong>：Pinecone, Weaviate, Qdrant, Milvus&#x2F;Zilliz, Chroma, Vespa 等。许多传统数据库（如 PostgreSQL with <code>pgvector</code>， Redis with RedisVL）也通过扩展添加了向量搜索能力。</p>
 </li>
 <li><p><strong>MoE（Mixture of Experts，专家混合模型）</strong></p>
 </li>
 <li><p>AI-3-核函数&#x2F;熵&#x2F;激活函数</p>
 </li>
+<li><p>Summary of Core Mutimodal Challenges</p>
+<img src="/2025/07/29/ai/Machine-Learning/image-20250921145131804.png" class="" title="image-20250921145131804"></li>
 </ul>
 
   </div>
@@ -396,7 +538,7 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
     <a href="/2025/07/30/ai/%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%EF%BC%88Supervised%20Learning%EF%BC%89%E8%AF%A6%E8%A7%A3/">
         <div class="post-paging-last">
             <span>上一篇</span>
-            <p>LangChain</p>
+            <p>监督学习（Supervised Learning）详解</p>
         </div>
     </a>
     

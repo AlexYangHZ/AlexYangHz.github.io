@@ -318,15 +318,15 @@
   <div id="article" class="post-content-info">
     
 
-    <h1 id="AI-5-LLMs-from-scratch"><a href="#AI-5-LLMs-from-scratch" class="headerlink" title="AI-5-LLMs-from-scratch"></a>AI-5-LLMs-from-scratch</h1><h2 id="1-Three-main-steps-of-construct-a-LLM"><a href="#1-Three-main-steps-of-construct-a-LLM" class="headerlink" title="1 Three main steps of construct a LLM"></a>1 Three main steps of construct a LLM</h2>
+    <h1 id="AI-5-LLMs-from-scratch"><a href="#AI-5-LLMs-from-scratch" class="headerlink" title="AI-5-LLMs-from-scratch"></a>AI-5-LLMs-from-scratch</h1><h2 id="1-Three-main-steps-of-construct-a-LLM"><a href="#1-Three-main-steps-of-construct-a-LLM" class="headerlink" title="1 Three main steps of construct a LLM"></a>1 Three main steps of construct a LLM</h2><img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250414113329583.png" class="" title="image-20250414113329583">
 
-<h3 id="Step-1-1-Text-analysis"><a href="#Step-1-1-Text-analysis" class="headerlink" title="Step 1-1 Text analysis"></a>Step 1-1 Text analysis</h3><h4 id="1-Text-split-into-individual-word-elements"><a href="#1-Text-split-into-individual-word-elements" class="headerlink" title="1) Text split into individual word elements"></a>1) Text split into individual word elements</h4>
+<h3 id="Step-1-1-Text-analysis"><a href="#Step-1-1-Text-analysis" class="headerlink" title="Step 1-1 Text analysis"></a>Step 1-1 Text analysis</h3><h4 id="1-Text-split-into-individual-word-elements"><a href="#1-Text-split-into-individual-word-elements" class="headerlink" title="1) Text split into individual word elements"></a>1) Text split into individual word elements</h4><img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250414113943767.png" class="" title="image-20250414113943767">
 
-<h4 id="2-Construct-the-word-dictionary"><a href="#2-Construct-the-word-dictionary" class="headerlink" title="2) Construct the word dictionary"></a>2) Construct the word dictionary</h4>
+<h4 id="2-Construct-the-word-dictionary"><a href="#2-Construct-the-word-dictionary" class="headerlink" title="2) Construct the word dictionary"></a>2) Construct the word dictionary</h4><img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250414114709182.png" class="" title="image-20250414114709182">
 
-<h4 id="3-BEP-algorithm"><a href="#3-BEP-algorithm" class="headerlink" title="3)BEP algorithm"></a>3)BEP algorithm</h4>
+<h4 id="3-BEP-algorithm"><a href="#3-BEP-algorithm" class="headerlink" title="3)BEP algorithm"></a>3)BEP algorithm</h4><img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250414143428314.png" class="" title="image-20250414143428314">
 
-
+<img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250414144541942.png" class="" title="image-20250414144541942">
 
 <h4 id="4-Embedding-Layer"><a href="#4-Embedding-Layer" class="headerlink" title="4) Embedding Layer"></a>4) Embedding Layer</h4><p>在大模型（如GPT、BERT等）的训练过程中，将词元（Token）的ID转换为嵌入向量（Embedding Vector）是输入处理的核心步骤。这一过程通过<strong>嵌入层（Embedding Layer）</strong>实现，其核心思想是将离散的词元符号映射到连续的向量空间，从而能够被神经网络处理。以下是详细的原理和步骤：</p>
 <p>【大模型靠啥理解文字？通俗解释：词嵌入embedding】 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1bfoQYCEHC/?share_source=copy_web&vd_source=4bbce1829495fde2f31b5349c79e3deb">https://www.bilibili.com/video/BV1bfoQYCEHC/?share_source=copy_web&amp;vd_source=4bbce1829495fde2f31b5349c79e3deb</a></p>
@@ -377,7 +377,7 @@
 <li><strong>扩展应用</strong>：结合位置编码、多模态嵌入（如图像&#x2F;文本联合嵌入）等。</li>
 </ul>
 <p>这一过程是几乎所有现代NLP模型的基石，为后续的注意力机制、前馈网络等提供了可处理的输入形式。</p>
-<h3 id="Step-1-2-Attention-mechansim"><a href="#Step-1-2-Attention-mechansim" class="headerlink" title="Step 1-2 Attention mechansim"></a>Step 1-2 Attention mechansim</h3>
+<h3 id="Step-1-2-Attention-mechansim"><a href="#Step-1-2-Attention-mechansim" class="headerlink" title="Step 1-2 Attention mechansim"></a>Step 1-2 Attention mechansim</h3><img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250415145504728.png" class="" title="image-20250415145504728">
 
 <ul>
 <li>Attention score: multiplying two vectors element-wise and then summing the products</li>
@@ -414,40 +414,40 @@
 </li>
 </ul>
 <h4 id="1-自注意力机制的内部工作原理"><a href="#1-自注意力机制的内部工作原理" class="headerlink" title="1)自注意力机制的内部工作原理"></a>1)自注意力机制的内部工作原理</h4><p>​		在自注意力机制中，“自”指的是该机制通过关联单个输入序列中的不同位置来计算注意力权重的能力。它可以评估并学习输入本身各个部分之间的关系和依赖，比如句子中的单词或图像中的像素。</p>
-
+<img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250415150314766.png" class="" title="image-20250415150314766">
 
 <h4 id="2-带可训练权重的自注意力机制"><a href="#2-带可训练权重的自注意力机制" class="headerlink" title="2)带可训练权重的自注意力机制"></a>2)带可训练权重的自注意力机制</h4><p>引入了在模型训练期间更新的权重矩阵, 引入 3 个可训练的权重矩阵 <strong>W</strong><em>q</em>、<strong>W</strong><em>k</em>和 <strong>W</strong><em>v</em>，一步一步地实现自注意力机制.这 3个矩阵用于将嵌入的输入词元 <em>x</em> (<em>i</em>) 分别映射为查询向量、键向量和值向量，如图所示。</p>
+<img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250421163618680.png" class="" title="image-20250421163618680">
 
-
-
+<img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250421165050301.png" class="" title="image-20250421165050301">
 
 <h4 id="3-利用因果注意力隐藏未来词汇"><a href="#3-利用因果注意力隐藏未来词汇" class="headerlink" title="3)利用因果注意力隐藏未来词汇"></a>3)利用因果注意力隐藏未来词汇</h4><p>​		因果机制的作用是调整注意力机制，防止模型访问序列中未来的信息，这在语言建模等任务中尤为重要，因为每个词的预测只能依赖之前出现的词。</p>
 <p>​		对于许多大语言模型任务，你希望自注意力机制在预测序列中的下一个词元时仅考虑当前位置之前的词元。因果注意力（也称为掩码注意力）是一种特殊的自注意力形式。它限制模型在处理任何给定词元时，只能基于序列中的先前和当前输入来计算注意力分数，而标准的自注意力机制可以一次性访问整个输入序列。</p>
-
+<img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250421165616149.png" class="" title="image-20250421165616149">
 
 <h4 id="4-将单头注意力扩展到多头注意力"><a href="#4-将单头注意力扩展到多头注意力" class="headerlink" title="4)将单头注意力扩展到多头注意力"></a>4)将单头注意力扩展到多头注意力</h4><p>​		多头机制涉及将注意力机制分成多个“头”。每个头会学习数据的不同特征，使模型能够在不同的位置同时关注来自不同表示子空间的信息。这能够提升模型在复杂任务中的性能。</p>
 <p>​		“多头”这一术语指的是将注意力机制分成多个“头”，每个“头”独立工作。在这种情况下，单个因果注意力模块可以被看作单头注意力，因为它只有一组注意力权重按顺序处理输入。</p>
 <p>​		多头注意力的主要思想是多次（并行）运行注意力机制，每次使用学到的不同的线性投影——这些投影是通过将输入数据（比如注意力机制中的查询向量、键向量和值向量）乘以权重矩阵得到的。</p>
-
+<img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250421170626305.png" class="" title="image-20250421170626305">
 
 
 
 <h1 id="Chapter-4-Generate-a-GPT-Model"><a href="#Chapter-4-Generate-a-GPT-Model" class="headerlink" title="Chapter 4 Generate a GPT Model"></a>Chapter 4 Generate a GPT Model</h1><h2 id="非线性激活函数-ReLU（修正线性单元）"><a href="#非线性激活函数-ReLU（修正线性单元）" class="headerlink" title="非线性激活函数 ReLU（修正线性单元）"></a>非线性激活函数 ReLU（修正线性单元）</h2><p>ReLU 是神经网络中的一种标准激活函数。如果你不熟悉 ReLU，可以这样来理解：它只是简单地将负输入值设为 0，从而确保层的输出值都是正值，这也解释了为什么结果层的输出中不包含负值。</p>
 <h2 id="具有-GELU-激活函数的前馈神经网络"><a href="#具有-GELU-激活函数的前馈神经网络" class="headerlink" title="具有 GELU 激活函数的前馈神经网络"></a>具有 GELU 激活函数的前馈神经网络</h2><p>GELU 和 SwiGLU 是更为复杂且平滑的激活函数，分别结合了高斯分布和 sigmoid 门控线性单元。与较为简单的 ReLU 激活函数相比，它们能够提升深度学习模型的性能。</p>
 <p>GELU 激活函数可以通过多种方式实现，其精确的定义为 G LU( ) ( E <em>x</em>   <em>x x</em> <em></em> ) ，其中<em></em> ( ) <em>x</em> 是标准高斯分布的累积分布函数。然而，在实际操作中，通常我们会使用一种计算量较小的近似实现（原始的 GPT-2 模型也是使用这种通过曲线拟合得到的近似方法进行训练的）</p>
-
+<img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250422162741451.png" class="" title="image-20250422162741451">
 
 <p><strong>GeLU vs ReLU</strong>GELU 的平滑特性可以在训练过程中带来更好的优化效果，因为它允许模型参数进行更细微的调整。相比之下，ReLU 在零点处有一个尖锐的拐角（参见图 4-8 的右图），有时会使得优化过程更加困难，特别是在深度或复杂的网络结构中。此外，ReLU 对负输入的输出为 0，而 GELU对负输入会输出一个小的非零值。这意味着在训练过程中，接收到负输入的神经元仍然可以参与学习，只是贡献程度不如正输入大。</p>
-
+<img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250422163145267.png" class="" title="image-20250422163145267">
 
 
 
 <p>FeedForward 模块在提升模型学习和泛化能力方面非常关键。虽然该模块的输入和输出维度保持一致，但它通过第一个线性层将嵌入维度扩展到了更高的维度，如图 4-10 所示。扩展之后，应用非线性 GELU 激活函数，然后通过第二个线性变换将维度缩回原始大小。这种设计允许模型探索更丰富的表示空间</p>
+<img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250422163440094.png" class="" title="image-20250422163440094">
 
+<img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250422163530018.png" class="" title="image-20250422163530018">
 
-
-
-
+<img src="/2025/04/26/AI-5-LLMs-from-scratch/image-20250427153901165.png" class="" title="image-20250427153901165">
 
 
   </div>
@@ -509,10 +509,10 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 
     <div class="post-paging">
     
-    <a href="/2025/04/27/ai/DeepLearningFromScratch/">
+    <a href="/2025/04/27/ai/From-function-to-netural-network/">
         <div class="post-paging-last">
             <span>上一篇</span>
-            <p>Deep Learning From Scratch</p>
+            <p>From Function to Netural Network</p>
         </div>
     </a>
     

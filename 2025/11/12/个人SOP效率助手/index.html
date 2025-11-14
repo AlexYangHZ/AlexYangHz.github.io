@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>个人SOP效率助手-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="算法,模型,">
+<meta name="description" content="AI">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/算法">算法</a></li>
+            
+            <li><a href="/tags/模型">模型</a></li>
+            
+            
+        </ul>
+        
+        <h1>个人SOP效率助手</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Science/" target="_blank" >Science</a>
+                    
+                </div>
+                <p>2025-11-12 11:10:51</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h2 id="个人SOP效率助手"><a href="#个人SOP效率助手" class="headerlink" title="个人SOP效率助手"></a>个人SOP效率助手</h2><h3 id="🎯-核心价值主张"><a href="#🎯-核心价值主张" class="headerlink" title="🎯 核心价值主张"></a>🎯 核心价值主张</h3><p>“让AI成为你的个人流程优化师，把高频事务变得像刷牙一样简单”</p>
+<h2 id="用户旅程地图"><a href="#用户旅程地图" class="headerlink" title="用户旅程地图"></a>用户旅程地图</h2><h3 id="阶段一：SOP创建与优化"><a href="#阶段一：SOP创建与优化" class="headerlink" title="阶段一：SOP创建与优化"></a>阶段一：SOP创建与优化</h3><p><strong>史诗：智能SOP创建</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">用户故事</th>
+<th align="left">功能描述</th>
+<th align="left">优先级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">作为用户，我可以通过语音描述我的流程</td>
+<td align="left">语音输入 → 实时转文字显示</td>
+<td align="left">MUST</td>
+</tr>
+<tr>
+<td align="left">作为用户，我可以在说话时看到实时转写结果</td>
+<td align="left">边说话边显示文字，支持暂停&#x2F;继续</td>
+<td align="left">MUST</td>
+</tr>
+<tr>
+<td align="left">作为用户，AI能自动将我的描述拆解成步骤</td>
+<td align="left">智能识别动作节点，生成初步流程图</td>
+<td align="left">MUST</td>
+</tr>
+<tr>
+<td align="left">作为用户，我可以手动调整步骤顺序</td>
+<td align="left">拖拽排序，添加&#x2F;删除步骤</td>
+<td align="left">MUST</td>
+</tr>
+<tr>
+<td align="left">作为用户，AI能给我的流程提出优化建议</td>
+<td align="left">基于最佳实践给出”这个步骤可以合并”等建议</td>
+<td align="left">SHOULD</td>
+</tr>
+<tr>
+<td align="left">作为用户，我可以为每个步骤添加详细说明</td>
+<td align="left">点击步骤添加注意事项、预期时间等</td>
+<td align="left">COULD</td>
+</tr>
+</tbody></table>
+<p><strong>技术实现要点：</strong></p>
+<ul>
+<li>语音识别：浏览器Web Speech API（免费快速启动）</li>
+<li>NLP处理：直接调用GPT-4 API进行步骤解析</li>
+<li>流程图：简单的拖拽库如react-beautiful-dnd</li>
+</ul>
+<h3 id="阶段二：SOP执行与记录"><a href="#阶段二：SOP执行与记录" class="headerlink" title="阶段二：SOP执行与记录"></a>阶段二：SOP执行与记录</h3><p><strong>史诗：便捷执行跟踪</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">用户故事</th>
+<th align="left">功能描述</th>
+<th align="left">优先级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">作为用户，我可以一键开始执行SOP</td>
+<td align="left">进入”执行模式”，清晰的步骤导航</td>
+<td align="left">MUST</td>
+</tr>
+<tr>
+<td align="left">作为用户，我可以标记每个步骤的完成状态</td>
+<td align="left">简单的勾选操作，有完成成就感</td>
+<td align="left">MUST</td>
+</tr>
+<tr>
+<td align="left">作为用户，我可以记录关键数据</td>
+<td align="left">每个步骤旁添加数据记录字段</td>
+<td align="left">SHOULD</td>
+</tr>
+<tr>
+<td align="left">作为用户，系统能自动记录我的用时</td>
+<td align="left">自动计时，生成执行时间线</td>
+<td align="left">SHOULD</td>
+</tr>
+<tr>
+<td align="left">作为用户，我可以备注执行中的问题</td>
+<td align="left">快速文字备注或语音备注</td>
+<td align="left">COULD</td>
+</tr>
+</tbody></table>
+<p><strong>界面设计思路：</strong></p>
+<p>text</p>
+<p>复制下载</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-section">🏃 正在执行：健身房训练流程</span><br><span class="hljs-section">--------------------------------</span><br>✅ [已完成] 换运动服 (用时2分钟)<br>✅ [已完成] 热身拉伸 (用时5分钟)  <br>⏳ [进行中] 力量训练 - 第3组<br><span class="hljs-code">   📝 记录：重量 40kg，次数 12次</span><br><span class="hljs-code">   ❓ 遇到问题：感觉手腕有点疼</span><br>◻️ [待完成] 有氧运动<br>◻️ [待完成] 整理放松<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="阶段三：数据分析与优化"><a href="#阶段三：数据分析与优化" class="headerlink" title="阶段三：数据分析与优化"></a>阶段三：数据分析与优化</h3><p><strong>史诗：智能洞察反馈</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">用户故事</th>
+<th align="left">功能描述</th>
+<th align="left">优先级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">作为用户，我可以查看历史执行数据</td>
+<td align="left">简单的数据看板，折线图显示用时趋势</td>
+<td align="left">SHOULD</td>
+</tr>
+<tr>
+<td align="left">作为用户，AI能分析我的执行模式</td>
+<td align="left">“发现你总是在力量训练步骤超时”</td>
+<td align="left">SHOULD</td>
+</tr>
+<tr>
+<td align="left">作为用户，AI能基于数据给出个性化建议</td>
+<td align="left">“建议把热身时间从5分钟增加到8分钟”</td>
+<td align="left">COULD</td>
+</tr>
+<tr>
+<td align="left">作为用户，我可以比较不同版本的SOP效果</td>
+<td align="left">A&#x2F;B测试视图，版本对比</td>
+<td align="left">COULD</td>
+</tr>
+</tbody></table>
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+
+    
+    <a href="/2025/08/27/ai/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%88Reinforcement%20Learning%EF%BC%89%E8%AF%A6%E8%A7%A3/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>强化学习（Reinforcement Learning）详解</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"Ov23lijMO8Y1d5CxdOnz","clientSecret":"77a460fa3d181dd6d26faa420511e0fec5a8d49b","repo":"https://github.com/AlexYangHZ/gtalk","owner":"AlexYangHZ","admin":"AlexYangHZ"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

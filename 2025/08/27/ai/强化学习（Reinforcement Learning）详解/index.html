@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>强化学习（Reinforcement Learning）详解-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="ideas,">
+<meta name="description" content="AI">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/ideas">ideas</a></li>
+            
+            
+        </ul>
+        
+        <h1>强化学习（Reinforcement Learning）详解</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Science/" target="_blank" >Science</a>
+                    
+                </div>
+                <p>2025-08-27 10:55:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="强化学习（Reinforcement-Learning）详解"><a href="#强化学习（Reinforcement-Learning）详解" class="headerlink" title="强化学习（Reinforcement Learning）详解"></a>强化学习（Reinforcement Learning）详解</h1><h4 id="一、核心理论"><a href="#一、核心理论" class="headerlink" title="一、核心理论"></a>一、核心理论</h4><h5 id="本质定义"><a href="#本质定义" class="headerlink" title="本质定义"></a>本质定义</h5><p>强化学习（RL）是机器学习的一种范式，智能体（Agent）通过与环境（Environment）的<strong>持续交互</strong>，学习采取<strong>最优行动序列</strong>以最大化<strong>长期累积奖励</strong>的决策过程。</p>
+<p>![image-20250827161547169](非监督学习（Unsupervised Learning）详解 (copy)&#x2F;image-20250827161547169.png)</p>
+<h5 id="核心要素"><a href="#核心要素" class="headerlink" title="核心要素"></a>核心要素</h5><ol>
+<li><strong>智能体（Agent）</strong>：学习者和决策者</li>
+<li><strong>环境（Environment）</strong>：智能体交互的外部世界</li>
+<li><strong>状态（State, s）</strong>：环境的当前状况</li>
+<li><strong>动作（Action, a）</strong>：智能体可执行的操作</li>
+<li><strong>奖励（Reward, r）</strong>：环境对动作的即时反馈</li>
+<li><strong>策略（Policy, π）</strong>：状态到动作的映射规则</li>
+<li><strong>价值函数（Value Function）</strong>：评估状态的长期价值</li>
+</ol>
+<h5 id="数学基础：马尔可夫决策过程（MDP）"><a href="#数学基础：马尔可夫决策过程（MDP）" class="headerlink" title="数学基础：马尔可夫决策过程（MDP）"></a>数学基础：马尔可夫决策过程（MDP）</h5><p>强化学习通常建模为MDP，由五元组定义：<br><code>(S, A, P, R, γ)</code></p>
+<ul>
+<li><code>S</code>：状态集合</li>
+<li><code>A</code>：动作集合</li>
+<li><code>P</code>：状态转移概率 <code>P(s&#39;|s,a)</code></li>
+<li><code>R</code>：奖励函数 <code>R(s,a,s&#39;)</code></li>
+<li><code>γ</code>：折扣因子（0≤γ&lt;1），平衡即时&#x2F;未来奖励</li>
+</ul>
+<p><strong>目标</strong>：找到最优策略 <code>π*</code> 最大化期望回报：<br><code>Gₜ = Rₜ₊₁ + γRₜ₊₂ + γ²Rₜ₊₃ + ...</code></p>
+<h4 id="二、主要任务类型"><a href="#二、主要任务类型" class="headerlink" title="二、主要任务类型"></a>二、主要任务类型</h4><table>
+<thead>
+<tr>
+<th align="left">方法类型</th>
+<th align="left">代表算法</th>
+<th align="left">特点</th>
+<th align="left">适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>基于价值</strong></td>
+<td align="left">Q-learning, DQN</td>
+<td align="left">学习价值函数</td>
+<td align="left">离散动作空间</td>
+</tr>
+<tr>
+<td align="left"><strong>基于策略</strong></td>
+<td align="left">REINFORCE, PPO</td>
+<td align="left">直接优化策略</td>
+<td align="left">连续动作空间</td>
+</tr>
+<tr>
+<td align="left"><strong>Actor-Critic</strong></td>
+<td align="left">A3C, SAC</td>
+<td align="left">结合价值与策略</td>
+<td align="left">复杂环境</td>
+</tr>
+<tr>
+<td align="left"><strong>模型基础</strong></td>
+<td align="left">Dyna-Q</td>
+<td align="left">学习环境模型</td>
+<td align="left">样本效率要求高</td>
+</tr>
+</tbody></table>
+<h4 id="三、经典案例：训练智能体玩CartPole游戏"><a href="#三、经典案例：训练智能体玩CartPole游戏" class="headerlink" title="三、经典案例：训练智能体玩CartPole游戏"></a>三、经典案例：训练智能体玩CartPole游戏</h4><h4 id="四、实际应用场景"><a href="#四、实际应用场景" class="headerlink" title="四、实际应用场景"></a>四、实际应用场景</h4><ol>
+<li><strong>游戏AI</strong>：<ul>
+<li>AlphaGo（围棋）</li>
+<li>OpenAI Five（Dota 2）</li>
+<li>DeepMind Atari AI</li>
+</ul>
+</li>
+<li><strong>机器人控制</strong>：</li>
+<li><strong>自动驾驶</strong>：<ul>
+<li>路径规划</li>
+<li>决策控制</li>
+<li>交通流优化</li>
+</ul>
+</li>
+<li><strong>推荐系统</strong>：<ul>
+<li>动态调整推荐策略</li>
+<li>最大化用户长期满意度</li>
+</ul>
+</li>
+<li><strong>金融交易</strong>：</li>
+<li><strong>工业优化</strong>：<ul>
+<li>能源管理系统</li>
+<li>生产线调度</li>
+<li>供应链优化</li>
+</ul>
+</li>
+</ol>
+
+  </div>
+  <div id="gitalk-container"></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2025/11/12/%E4%B8%AA%E4%BA%BASOP%E6%95%88%E7%8E%87%E5%8A%A9%E6%89%8B/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>个人SOP效率助手</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2025/08/26/ai/%E9%9D%9E%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%EF%BC%88Unsupervised%20Learning%EF%BC%89%E8%AF%A6%E8%A7%A3/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>非监督学习（Unsupervised Learning）详解</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"Ov23lijMO8Y1d5CxdOnz","clientSecret":"77a460fa3d181dd6d26faa420511e0fec5a8d49b","repo":"https://github.com/AlexYangHZ/gtalk","owner":"AlexYangHZ","admin":"AlexYangHZ"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('true')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+

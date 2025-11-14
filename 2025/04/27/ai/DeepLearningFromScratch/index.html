@@ -316,24 +316,92 @@
   <div id="article" class="post-content-info">
     
 
-    <h1 id="Deep-Learning-From-Scratch"><a href="#Deep-Learning-From-Scratch" class="headerlink" title="Deep Learning From Scratch"></a>Deep Learning From Scratch</h1><h2 id="2-感知机Perceptron"><a href="#2-感知机Perceptron" class="headerlink" title="2 感知机Perceptron"></a>2 感知机Perceptron</h2>
+    <h1 id="Deep-Learning-From-Scratch"><a href="#Deep-Learning-From-Scratch" class="headerlink" title="Deep Learning From Scratch"></a>Deep Learning From Scratch</h1><h2 id="2-感知机Perceptron"><a href="#2-感知机Perceptron" class="headerlink" title="2 感知机Perceptron"></a>2 感知机Perceptron</h2><img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250513145753639.png" class="" title="image-20250513145753639">
 
 
 
-
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250513150146833.png" class="" title="image-20250513150146833">
 
 
 
 <p><strong>感知机的局限性就在于它只能表示由一条直线分割的空间</strong></p>
 <h2 id="3-神经网络"><a href="#3-神经网络" class="headerlink" title="3 神经网络"></a>3 神经网络</h2><p>​		机器学习的问题大致可以分为分类问题和回归问题，分类问题是数据属于哪一个类别，回归问题是根据某个输入预测一个（连续的）数值问题。一般而言，回归问题用恒等函数，将输入按原样输出；分类问题使用Softmax函数（0.0到1.0之间的实数），也就是概率函数。</p>
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250521145059593.png" class="" title="image-20250521145059593">
+
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250521145126730.png" class="" title="image-20250521145126730">
+
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250521145218598.png" class="" title="image-20250521145218598">
+
+
+
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250522102318024.png" class="" title="image-20250522102318024">
+
+
+
+<p>​		在神经网络的学习中，寻找最优参数（权重和偏置）时，要寻找使损失函数的值尽可能小的参数。为了找到使损失函数的值尽可能小</p>
+<p>的地方，需要计算参数的导数（确切地讲是梯度），然后以这个导数为指引，逐步更新参数的值。</p>
+<p>​		假设有一个神经网络，现在我们来关注这个神经网络中的某一个权重参数。此时，对该权重参数的损失函数求导，表示的是“如果稍微改变这个权重参数的值，损失函数的值会如何变化”。如果导数的值为负，通过使该权重参数向正方向改变，可以减小损失函数的值；反过来，如果导数的值为正，则通过使该权重参数向负方向改变，可以减小损失函数的值。不过，当导数的值为0时，无论权重参数向哪个方向变化，损失函数的值都不会改变，此时该权重参数的更新会停在此处。</p>
+<p>​		之所以不能用识别精度作为指标，是因为这样一来绝大多数地方的导数都会变为0，导致参数无法更新。识别精度对微小的参数变化基本上没有什么反应，即便有反应，它的值也是不连续地、突然地变化。</p>
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250522104141109.png" class="" title="image-20250522104141109">
+
+
+
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250522110143404.png" class="" title="image-20250522110143404">
+
+<p>​		梯度指示的方向是各点处的函数值减小最多的方向. 高等数学告诉我们，方向导数&#x3D; cos(<em>θ</em>) <em>×</em> 梯度（<em>θ</em>是方向导数的方向与梯度方向的夹角）。因此，所有的下降方向中，梯度方向下降最多。</p>
+<p>​		机器学习的主要任务是在学习时寻找最优参数。同样地，神经网络也必须在学习时找到最优参数（权重和偏置）。这里所说的最优参数是指损失函数取最小值时的参数。但是，一般而言，损失函数很复杂，参数空间庞大，我们不知道它在何处能取得最小值。而通过巧妙地使用梯度来寻找函数最小值（或者尽可能小的值）的方法就是梯度法。这里需要注意的是，梯度表示的是各点处的函数值减小最多的方向。因此，无法保证梯度所指的方向就是函数的最小值或者真正应该前进的方向。实际上，在复杂的函数中，梯度指示的方向基本上都不是函数值最小处. </p>
+<p>​	在梯度法中，函数的取值从当前位置沿着梯度方向前进一定距离，然后在新的地方重新求梯度，再沿着新梯度方向前进，如此反复，不断地沿梯度方向前进。像这样，通过不断地沿梯度方向前进，逐渐减小函数值的过程就是梯度法（gradient method）。梯度法是解决机器学习中最优化问题的常用方法，特别是在神经网络的学习中经常被使用。严格地讲，寻找最小值的梯度法称为梯度下降法（gradient descent method），寻找最大值的梯度法称为梯度上升法（gradient ascent method）。但是通过反转损失函数的符号，求最小值的问题和求最大值的问题会变成相同的问题，因此“下降”还是“上升”的差异本质上并不重要。一般来说，神经网络（深度学习）中，梯度法主要是指梯度下降法. </p>
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250522110743152.png" class="" title="image-20250522110743152">
+
+
+
+<p>​		像学习率这样的参数称为超参数。这是一种和神经网络的参数（权重和偏置）性质不同的参数。相对于神经网络的权重参数是通过训练数据和学习算法自动获得的，学习率这样的超参数则是人工设定的。一般来说，超参数需要尝试多个值，以便找到一种可以使学习顺利</p>
+<p>进行的设定。</p>
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250526142755223.png" class="" title="image-20250526142755223"><img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250526143115808.png" class="" title="image-20250526143115808">
 
 
 
 
 
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250526143200983.png" class="" title="image-20250526143200983">
+
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250526143345328.png" class="" title="image-20250526143345328">
 
 
 
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250526143509967.png" class="" title="image-20250526143509967">1、加法节点的反向传播：输入信号原样输出
+
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250526150728779.png" class="" title="image-20250526150728779">
+
+<p>2、乘法节点的反向传播：乘法的反向传播会将上游的值乘以正向传播时的输入信号的“翻转值”后传递给下游</p>
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250526150755124.png" class="" title="image-20250526150755124">
+
+
+
+<p><strong>SGD随机梯度下降法（stochastic gradient descent）</strong></p>
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250527144636957.png" class="" title="image-20250527144636957">
+
+
+
+<p><strong>Momentum</strong></p>
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250527144759460.png" class="" title="image-20250527144759460">
+
+
+
+<p><strong>AdaGrad</strong></p>
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250527144919282.png" class="" title="image-20250527144919282">
+
+
+
+<p><strong>CNN</strong></p>
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250527154121275.png" class="" title="image-20250527154121275">
+
+
+
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250527154202718.png" class="" title="image-20250527154202718">
+
+<p>使用填充主要是为了调整输出的大小。比如，对大小为(4, 4)的输入数据应用(3, 3)的滤波器时，输出大小变为(2, 2)，相当于输出大小比输入大小缩小了 2个元素。这在反复进行多次卷积运算的深度网络中会成为问题。为什么呢？因为如果每次进行卷积运算都会缩小空间，那么在某个时刻输出大小就有可能变为 1，导致无法再应用卷积运算。为了避免出现这样的情况，就要使用填充。在刚才的例子中，将填充的幅度设为 1，那么相对于输入大小(4, 4)，输出大小也保持为原来的(4, 4)。因此，卷积运算就可以在保持空间大小不变的情况下将数据传给下一层。</p>
+<img src="/2025/04/27/ai/DeepLearningFromScratch/image-20250527154440856.png" class="" title="image-20250527154440856">
 
   </div>
   <div id="gitalk-container"></div>
@@ -394,19 +462,19 @@ Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
 
     <div class="post-paging">
     
-    <a href="/2025/04/27/ai/From-function-to-netural-network/">
+    <a href="/2025/04/27/The-Coach-Model/">
         <div class="post-paging-last">
             <span>上一篇</span>
-            <p>From Function to Netural Network</p>
+            <p>The Coach Model(V1)</p>
         </div>
     </a>
     
 
     
-    <a href="/2025/04/26/AI-5-LLMs-from-scratch/">
+    <a href="/2025/04/27/ai/From-function-to-netural-network/">
         <div class="post-paging-next">
             <span>下一篇</span>
-            <p>AI-5-LLMs-from-scratch</p>
+            <p>From Function to Netural Network</p>
         </div>
     </a>
     
