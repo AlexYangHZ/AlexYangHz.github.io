@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>少而精地学习，而不是多而浅的接触大量信息-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="Reading,">
+<meta name="description" content="AI">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/Reading">Reading</a></li>
+            
+            
+        </ul>
+        
+        <h1>少而精地学习，而不是多而浅的接触大量信息</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Weekly/" target="_blank" >Weekly</a>
+                    
+                </div>
+                <p>2025-12-05 15:00:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="少而精地学习，而不是多而浅的接触大量信息"><a href="#少而精地学习，而不是多而浅的接触大量信息" class="headerlink" title="少而精地学习，而不是多而浅的接触大量信息"></a>少而精地学习，而不是多而浅的接触大量信息</h1><p>&emsp;&emsp;<strong>鑫怡钓鱼。</strong>时隔许久，再次去鑫怡，喜欢这的环境，人少，钱塘江边不吵，就当资助下，希望老板别倒闭了。这些年喜欢的鱼塘接二连三的关门，想起来也是惘然若失。果然是资助，全程没什么口，上来一条小爬地虎，就当晒太阳了，又少了一个鱼塘。</p>
+<p>&emsp;&emsp;<strong>听Pearl妹妹讲课。</strong>半堂企业管理基础课，听下来收获挺多的，这种研讨的氛围，本身就是一种学习和滋养。</p>
+<p>&emsp;&emsp;<strong>全视角领导力课程。</strong>艳秋总分享了两件近事，一个是检测出糖前，全面调整饮食模式。不吃碳水，生酮模式。这挺意外的，艳秋总每日坚持健身七年，但身体机能的衰老，不以人力意志为专题，看着苍白而消瘦的脸庞，莫名的叹了一口气。另一个是自己女儿提前三个月放弃中考，转走国际高中路线。从为名校努力的意气风发，到与现实低头，女儿就是背不进语文和历史，偏科厉害，然而自己焦急可本人若无其事，最终也与现实和解。</p>
+<h2 id="《如何将知识转化为行动》-美-肯-·-布兰佳"><a href="#《如何将知识转化为行动》-美-肯-·-布兰佳" class="headerlink" title="《如何将知识转化为行动》[美]肯 · 布兰佳"></a>《如何将知识转化为行动》[美]肯 · 布兰佳</h2><blockquote>
+<p>确保你在学习上的投资有所汇报，并产生可衡量的结果</p>
+</blockquote>
+<ul>
+<li>学习本身是一段从“知道”到“做到”的旅程，将知识进行实际应用，需要做三件事情<ul>
+<li>坚持记笔记</li>
+<li>在24小时内重读笔记</li>
+<li>把自己学到的知识，传达给别人</li>
+</ul>
+</li>
+<li>没能学以致用的原因：缺失的一环 -&gt; 克服的关键是重复、重复，间隔性 <ul>
+<li>信息过载<ul>
+<li>间隔性重付彻底阅读少量资料，要超过泛读产生的影响。</li>
+<li>泛读是在训练自己获取信息，而少而精地学习，而不是多而浅的接触大量信息不是学以致用</li>
+<li>要掌握一样东西，你必须慢慢的咀嚼、消化，直到它变成自己的一部分</li>
+<li>人应该少而精地学习，而不是多而浅的接触大量信息</li>
+</ul>
+</li>
+<li>消极过滤<ul>
+<li>不要带着焦虑、消极、犹豫不决、先入为主或者坚持固有思维的态度去接收信息，这样只有10%</li>
+<li>尝试100%去听说什么，100%去阅读什么</li>
+<li>积极聆听：不带偏见，学习态度，积极期待，准备记录，带着欲望，形成积极过滤系统</li>
+<li>在给任何消极反馈之前， 我们一定要给出积极的反馈</li>
+</ul>
+</li>
+<li>缺少跟进<ul>
+<li>分解短期目标，较小，较容易实现的目标</li>
+<li>跟我说明，做给我看，让我尝试，观察我，表扬进步并进行修正</li>
+<li>告知、演示、尝试、观察、表扬或修正是一种简单有力的跟进计划，它可以帮助那些可能的赢家变成真正的赢家。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>成功通常是这么回事<ul>
+<li>把自己的才能、金钱、时间或精力，在短期内集中起来，投入一个优先的事项中，然后得到自己想要的结果</li>
+</ul>
+</li>
+</ul>
+<h2 id="共读书单"><a href="#共读书单" class="headerlink" title="共读书单"></a>共读书单</h2><h3 id="掌控人生"><a href="#掌控人生" class="headerlink" title="掌控人生"></a>掌控人生</h3><p>以下是历年来我们的读者推荐的各类兼具权威性和实用性的书籍。</p>
+<p>《早起的奇迹》哈尔·埃尔罗德</p>
+<p>《奇迹公式》哈尔·埃尔罗德</p>
+<p>《重启吧！我的健康人生》兰根·查特吉</p>
+<p>《野蛮进化》蒂姆·S. 格罗弗、莎莉·莱塞·温克</p>
+<p>《跑步的力量》斯科特·道格拉斯</p>
+<p>《睡眠进化》W. 克里斯·温特</p>
+<p>《活出最佳自我》迈克尔·拜尔</p>
+<p>《自律力》艾伦·韦斯、马歇尔·古德史密斯</p>
+<p>《轻疗愈》尼克·奥特纳</p>
+<p>《感恩日记》贾尼丝·卡普兰</p>
+<p>《穿过内心那片深海》谢莉娜·艾雅娜</p>
+<p>《恰到好处的亲密》基拉·阿萨特里安</p>
+<p>《呼吸疗愈》丽贝卡·丹尼斯</p>
+<p>《复原的力量》邦妮·圣约翰、艾伦·海恩斯</p>
+<h3 id="职场进阶"><a href="#职场进阶" class="headerlink" title="职场进阶"></a>职场进阶</h3><p>《时间管理的奇迹》罗里·瓦登</p>
+<p>《高效沟通的艺术》莎丽·哈莉</p>
+<p>《微表情解析》保罗·艾克曼、华莱士·V. 弗里森</p>
+<p>《向上的奇迹》马歇尔·古德史密斯、马克·莱特尔</p>
+<p>《知道做到自学的科学》彼得·霍林斯</p>
+<p>《知道做到快速获取新技能的科学》彼得·霍林斯</p>
+<p>《唤醒吧！职场多巴胺》布鲁斯·戴斯利</p>
+<p>《关键7问》迈克尔·邦吉·斯坦尼尔</p>
+<p>《建议陷阱》迈克尔·邦吉·斯坦尼尔</p>
+<h3 id="经济管理"><a href="#经济管理" class="headerlink" title="经济管理"></a>经济管理</h3><p>《真北》比尔·乔治</p>
+<p>《聘谁》杰夫·斯玛特、兰迪·斯特里特</p>
+<p>《数据化决策》道格拉斯·W. 哈伯德</p>
+<p>《乔布斯商业创新底层逻辑》马克·佩恩</p>
+<p>《数字商业底层逻辑》文卡·文卡查曼</p>
+<p>《巴菲特致管理者的信》杰夫·格拉姆</p>
+<p>《拥抱你的客户》杰克·米切尔</p>
+<p>《黄金服务》科林·考伊</p>
+<p>《流程！》迈克·帕顿、丽莎·冈萨雷斯</p>
+<h3 id="致富之道"><a href="#致富之道" class="headerlink" title="致富之道"></a>致富之道</h3><p>《财富流》罗杰·詹姆斯·汉密尔顿</p>
+<p>《富爸爸的财富花园》约翰·索福里克</p>
+<p>《巴菲特的护城河》帕特·多尔西</p>
+<p>《财务自由笔记》安德鲁·哈勒姆</p>
+<p>《强势成长股》路易斯·纳维里尔</p>
+<p>《财富自由笔记》琳赛·蒂格·莫雷诺</p>
+<p>《有钱人穷的时候都在做什么》克丽丝特尔·佩因</p>
+<p>《杰出投资者的底层认知》J. 戴维·斯坦恩</p>
+<p>《以交易为生》迈克·贝拉菲奥雷</p>
+
+  </div>
+  <div id=""></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+
+    
+    <a href="/2025/12/03/25.12.03-%E6%8A%95%E8%B5%84%E5%AE%9E%E5%BD%95%EF%BC%88%E5%85%AB%EF%BC%89%E3%80%8A%E5%85%AC%E5%8F%B8%E9%87%91%E8%9E%8D%E5%AD%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%BA%AA%E8%A6%81/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>投资实录（八）《公司金融学》学习纪要</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"Ov23lijMO8Y1d5CxdOnz","clientSecret":"77a460fa3d181dd6d26faa420511e0fec5a8d49b","repo":"https://github.com/AlexYangHZ/gtalk","owner":"AlexYangHZ","admin":"AlexYangHZ"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('false')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+
