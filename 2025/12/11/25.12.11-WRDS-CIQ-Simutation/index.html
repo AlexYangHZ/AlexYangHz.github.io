@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>WRDS-CIQ-Simulation-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="Reading,">
+<meta name="description" content="AI">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/Reading">Reading</a></li>
+            
+            
+        </ul>
+        
+        <h1>WRDS-CIQ-Simulation</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Weekly/" target="_blank" >Weekly</a>
+                    
+                </div>
+                <p>2025-12-11 09:00:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="WRDS-CIQ-Simulation"><a href="#WRDS-CIQ-Simulation" class="headerlink" title="WRDS-CIQ-Simulation"></a>WRDS-CIQ-Simulation</h1><h2 id="一、整体架构设计"><a href="#一、整体架构设计" class="headerlink" title="一、整体架构设计"></a>一、整体架构设计</h2><p>┌─────────────────────────────────────────────────┐<br>│                   用户界面                        │<br>│  (Web应用或API接口)                               │<br>└───────────────┬─────────────────────────────────┘<br>                │<br>┌───────────────▼─────────────────────────────────┐<br>│                 API服务层                         │<br>│  (Flask&#x2F;FastAPI，处理业务逻辑)                    │<br>└───────────────┬─────────────────────────────────┘<br>                │<br>┌───────────────▼─────────────────────────────────┐<br>│              大模型服务层                         │<br>│  (DeepSeek API集成 + 本地特征提取)                │<br>└───────────────┬─────────────────────────────────┘<br>                │<br>┌───────────────▼─────────────────────────────────┐<br>│              数据存储层                          │<br>│  (向量数据库 + 关系数据库 + 文件存储)              │<br>└─────────────────────────────────────────────────┘</p>
+<p>特征提取的三级体系</p>
+<p>第一级：表层特征（基于规则和统计）<br>├── 文本统计特征<br>│   ├── 平均句长、段落长度<br>│   ├── 词汇丰富度（不同词汇数&#x2F;总词汇数）<br>│   ├── 专业术语密度<br>│   └── 标点符号使用习惯<br>├── 结构特征<br>│   ├── 开头&#x2F;结尾模式<br>│   ├── 段落组织方式<br>│   └── 过渡词使用频率<br>└── 语言风格特征<br>    ├── 正式度评分<br>    ├── 情感倾向<br>    └── 语气强度</p>
+<p>第二级：中层特征（基于NLP技术）<br>├── 主题分布（LDA&#x2F;Topic Modeling）<br>├── 实体识别（人物、组织、产品）<br>├── 关键词提取（TF-IDF&#x2F;TextRank）<br>└── 句法复杂度分析</p>
+<p>第三级：深层特征（基于大模型）<br>├── 风格指纹提取<br>├── 修辞手法识别<br>├── 论证逻辑分析<br>└── 价值观倾向识别</p>
+<p>大模型选择策略</p>
+<h1 id="多层模型应用策略"><a href="#多层模型应用策略" class="headerlink" title="多层模型应用策略"></a>多层模型应用策略</h1><p>模型策略 &#x3D; {<br>    “基础分析层”: {<br>        “模型”: “DeepSeek-chat”,<br>        “用途”: “文本理解、基础特征提取”,<br>        “成本”: “低”<br>    },<br>    “深度分析层”: {<br>        “模型”: “DeepSeek-coder或GPT-4”,<br>        “用途”: “复杂特征提取、模式识别”,<br>        “成本”: “中”<br>    },<br>    “生成建议层”: {<br>        “模型”: “DeepSeek-chat”,<br>        “用途”: “基于特征的个性化建议生成”,<br>        “成本”: “低”<br>    }<br>}</p>
+<h2 id="二、Presentation-Embedding-speech-vectorizer"><a href="#二、Presentation-Embedding-speech-vectorizer" class="headerlink" title="二、Presentation Embedding(speech-vectorizer)"></a>二、Presentation Embedding(speech-vectorizer)</h2><h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps:"></a>Steps:</h3><h4 id="1-Connect-to-MySQL-Select-presentation-componenttext-from-ciq-records"><a href="#1-Connect-to-MySQL-Select-presentation-componenttext-from-ciq-records" class="headerlink" title="1. Connect to MySQL, Select presentation componenttext from ciq records."></a>1. Connect to MySQL, Select presentation componenttext from ciq records.</h4><p>transcriptcomponenttypeid &#x3D; 2</p>
+<p>create a view to sum presenters from ciqs. </p>
+<p><strong>select</strong> <strong>count</strong>(*) <strong>from</strong> ciq_v_presenter <em>cvp</em>  –144244</p>
+<h4 id="2-Load-FinBert-Model-and-tokenizer-embedding-every-presentation-sentences"><a href="#2-Load-FinBert-Model-and-tokenizer-embedding-every-presentation-sentences" class="headerlink" title="2. Load FinBert Model and tokenizer, embedding every presentation sentences"></a>2. Load FinBert Model and tokenizer, embedding every presentation sentences</h4><p>Deal methods when text length &gt; 512</p>
+<ul>
+<li><strong>均值 (mean): 所有分段向量的平均值，最平衡</strong></li>
+<li><strong>加权平均 (weighted)</strong>: 根据分段长度加权，长段落影响更大</li>
+<li><strong>首段 (first)</strong>: 仅使用第一个分段，适合标题式内容</li>
+<li><strong>最大值 (max)</strong>: 取各维度最大值，强调最强特征</li>
+<li><strong>最小值 (min)</strong>: 取各维度最小值，较少使用</li>
+</ul>
+<h4 id="3-Sotre-embeddings-and-meta-data-into-ChromaDB"><a href="#3-Sotre-embeddings-and-meta-data-into-ChromaDB" class="headerlink" title="3. Sotre embeddings and meta data into ChromaDB"></a>3. Sotre embeddings and meta data into ChromaDB</h4><p>meta data: companyid, transcriptid, transcriptcomponentid, mostimportantdateutc, transcriptpersonid, transcriptpersonname</p>
+<p><strong>Chroma</strong> 是一款开源的向量数据库，专为高效存储和检索高维向量数据设计。其核心能力在于语义相似性搜索，支持文本、图像等嵌入向量的快速匹配，广泛应用于大模型上下文增强（RAG）、推荐系统、多模态检索等场景。与传统数据库不同，Chroma 基于向量距离（如余弦相似度、欧氏距离）衡量数据关联性，而非关键词匹配。</p>
+<p>GitHub地址：<a target="_blank" rel="noopener" href="https://github.com/chroma-core/chroma">https://github.com/chroma-core/chroma</a></p>
+<p>官方文档：<a target="_blank" rel="noopener" href="https://docs.trychroma.com/">https://docs.trychroma.com/</a></p>
+<p>核心优势</p>
+<ul>
+<li>轻量易用：以 Python&#x2F;JS 包形式嵌入代码，无需独立部署，适合快速原型开发。</li>
+<li>灵活集成：支持自定义嵌入模型（如 OpenAI、HuggingFace），兼容 LangChain 等框架。</li>
+<li>高性能检索：采用 HNSW 算法优化索引，支持百万级向量毫秒级响应。</li>
+<li>多模式存储：内存模式用于开发调试，持久化模式支持生产环境数据落地。</li>
+</ul>
+<p>集合名称: speech_vectors<br>文档数量: 18776</p>
+<p>样本元数据字段:</p>
+<ul>
+<li>companyid</li>
+<li>companyname</li>
+<li>embedding_strategy</li>
+<li>mostimportantdateutc</li>
+<li>processed_at</li>
+<li>source</li>
+<li>text_column</li>
+<li>text_length</li>
+<li>transcriptcomponentid</li>
+<li>transcriptid</li>
+<li>transcriptpersonid</li>
+<li>transcriptpersonname</li>
+</ul>
+<p>第一个样本详情:<br>  embedding_strategy: mean<br>  transcriptpersonid: 18077<br>  text_column: componenttext<br>  transcriptcomponentid: 222561<br>  source: MySQL_ciq_v_presenter<br>  transcriptpersonname: Sandra Rodriguez<br>  text_length: 980<br>  mostimportantdateutc: 2007-10-23<br>  processed_at: 2025-12-12 16:39:46<br>  companyname: Albemarle Corporation<br>  transcriptid: 504<br>  companyid: 18671</p>
+<h2 id="三、Speech-Feature-Extract-and-Analysis"><a href="#三、Speech-Feature-Extract-and-Analysis" class="headerlink" title="三、Speech Feature Extract and Analysis"></a>三、Speech Feature Extract and Analysis</h2><h3 id="1-项目结构"><a href="#1-项目结构" class="headerlink" title="1. 项目结构"></a>1. 项目结构</h3><figure class="highlight nix"><table><tr><td class="code"><pre><code class="hljs nix">speech-analysis<span class="hljs-symbol">/</span><br>├── feature_extractor.py     <span class="hljs-comment"># 特征提取器</span><br>├── pattern_analyzer.py      <span class="hljs-comment"># 模式分析器</span><br>├── style_profiler.py        <span class="hljs-comment"># 风格画像生成器</span><br>├── visualization.py         <span class="hljs-comment"># 可视化工具</span><br>├── report_generator.py      <span class="hljs-comment"># 报告生成器</span><br>└── requirements.txt         <span class="hljs-comment"># 新增依赖</span><br></code></pre></td></tr></table></figure>
+
+<p>12312</p>
+<h3 id="三、分析维度总结"><a href="#三、分析维度总结" class="headerlink" title="三、分析维度总结"></a>三、分析维度总结</h3><h4 id="1-向量空间分析"><a href="#1-向量空间分析" class="headerlink" title="1. 向量空间分析"></a>1. <strong>向量空间分析</strong></h4><ul>
+<li>向量分布特征</li>
+<li>相似度分布</li>
+<li>主成分分析</li>
+</ul>
+<h4 id="2-聚类分析"><a href="#2-聚类分析" class="headerlink" title="2. 聚类分析"></a>2. <strong>聚类分析</strong></h4><ul>
+<li>发现自然分组</li>
+<li>分析每个聚类的特征</li>
+<li>识别异常值</li>
+</ul>
+<h4 id="3-典型发言稿识别"><a href="#3-典型发言稿识别" class="headerlink" title="3. 典型发言稿识别"></a>3. <strong>典型发言稿识别</strong></h4><ul>
+<li>代表性发言稿</li>
+<li>独特发言稿</li>
+<li>影响力大的发言稿</li>
+</ul>
+<h4 id="4-发言人风格分析"><a href="#4-发言人风格分析" class="headerlink" title="4. 发言人风格分析"></a>4. <strong>发言人风格分析</strong></h4><ul>
+<li>个人风格签名</li>
+<li>风格一致性</li>
+<li>风格演变趋势</li>
+</ul>
+<h4 id="5-文本模式分析"><a href="#5-文本模式分析" class="headerlink" title="5. 文本模式分析"></a>5. <strong>文本模式分析</strong></h4><ul>
+<li>关键词提取</li>
+<li>修辞模式</li>
+<li>结构特征</li>
+</ul>
+<h4 id="6-对比分析"><a href="#6-对比分析" class="headerlink" title="6. 对比分析"></a>6. <strong>对比分析</strong></h4><ul>
+<li>发言人对比</li>
+<li>聚类间对比</li>
+<li>时间趋势对比</li>
+</ul>
+<h3 id="四、使用建议"><a href="#四、使用建议" class="headerlink" title="四、使用建议"></a>四、使用建议</h3><ol>
+<li><strong>初步探索</strong>：运行<code>main.py</code>获取整体分析报告</li>
+<li><strong>深入分析</strong>：针对特定聚类或发言人进行详细分析</li>
+<li><strong>可视化</strong>：使用可视化工具探索数据</li>
+<li><strong>迭代优化</strong>：根据分析结果调整特征提取策略</li>
+</ol>
+<p>这个系统可以帮你深入理解发言稿的特征模式，识别优秀发言稿的共同特征，并为发言稿改进提供数据支持。</p>
+
+  </div>
+  <div id=""></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+    <a href="/2025/12/15/25.12.15-%E4%BB%8E%E2%80%9C%E6%BF%80%E8%BF%9B%E2%80%9D%E5%88%B0%E2%80%9C%E5%9D%87%E8%A1%A1%E4%B8%8E%E6%B8%A9%E5%92%8C%E2%80%9D/">
+        <div class="post-paging-last">
+            <span>上一篇</span>
+            <p>从“激进”到“均衡与温和”</p>
+        </div>
+    </a>
+    
+
+    
+    <a href="/2025/12/10/25.12.10-%E4%BC%81%E4%B8%9A%E5%91%98%E5%B7%A5%E5%9F%B9%E8%AE%ADvs%E5%AD%A6%E5%8E%86%E6%95%99%E8%82%B2%E5%9F%B9%E8%AE%ADvs%E8%81%8C%E4%B8%9A%E6%95%99%E8%82%B2%E5%9F%B9%E8%AE%AD/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>企业员工培训vs学历教育培训vs职业教育培训</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2025 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"Ov23lijMO8Y1d5CxdOnz","clientSecret":"77a460fa3d181dd6d26faa420511e0fec5a8d49b","repo":"https://github.com/AlexYangHZ/gtalk","owner":"AlexYangHZ","admin":"AlexYangHZ"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('false')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+
