@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+<title>Layers of AI &amp; DNN/CNN/RNN/GAN-2025</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/x-icon" href="/image/favicon.ico">
+
+<link rel="stylesheet" href="/css/index.css">
+
+
+
+<meta name="keywords" content="Reading,">
+<meta name="description" content="AI">
+
+
+<script src="/js/jquery.min.js"></script>
+
+
+<script src="/js/index.js"></script>
+
+
+<script src="/js/fancybox.umd.js"></script>
+
+
+<script src="/js/fancybox-images.js"></script>
+
+
+<script src="/js/gitalk.min.js"></script>
+
+
+<script src="/js/hljs.min.js"></script>
+ 
+<script>hljs.highlightAll();</script>
+
+	<meta name="generator" content="Hexo 7.3.0"></head>
+
+	<body>
+		
+	<div class="header">
+		<div class="header-top" id="header-top">
+			<div class="h-left">
+				<a href="/">
+					<img src="/image/logo.png" alt="Quiet">
+				</a>
+			</div>
+			<div class="h-right">
+				<ul>
+					
+						
+								<li>
+									<a href="/">
+										HOME
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/archives">
+										ARCHIVE
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/categories">
+										CATEGORIES
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/tags">
+										TAGS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/links">
+										LINKS
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+						
+								<li>
+									<a href="/about">
+										ABOUT
+									</a>
+									<span class="dot"></span>
+								</li>
+								
+									
+				</ul>
+			</div>
+			<div class="h-right-close">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+					<path fill="none" d="M0 0h24v24H0z" />
+					<path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z" fill="rgba(68,68,68,1)" />
+				</svg>
+			</div>
+		</div>
+	</div>
+	<div class="sidebar">
+    <div class="topo">
+        <h2>Alex</h2>
+    </div>
+    <ul>
+        
+        <li>
+            <a href="/">HOME</a>
+        </li>
+        
+        <li>
+            <a href="/archives">ARCHIVE</a>
+        </li>
+        
+        <li>
+            <a href="/categories">CATEGORIES</a>
+        </li>
+        
+        <li>
+            <a href="/tags">TAGS</a>
+        </li>
+        
+        <li>
+            <a href="/links">LINKS</a>
+        </li>
+        
+        <li>
+            <a href="/about">ABOUT</a>
+        </li>
+        
+    </ul>
+    <div class="my_foot">
+        
+        <a target="_blank" rel="noopener" href="https://github.com">
+            <img src="/image/github.png" alt="Quiet主题">
+        </a>
+        
+    </div>
+</div>
+<div class='shelter'>
+</div>
+<style>
+    .shelter{
+        background-color: #333;
+        opacity:0.5;
+        cursor: pointer;
+        display: none; 
+        position: fixed;
+        left: 0;
+        top: 0; 
+        right: 0;
+        bottom: 0;
+        z-index: 1998;
+    }
+    .sidebar {
+        width: 66%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        bottom: 0;
+        background: #fff;
+        z-index: 1999;
+        text-align: center;
+        box-shadow: -6px 0 20px rgba(98, 94, 94, .815);
+    }
+
+    .topo {
+        width: 100%;
+        height: 200px;
+        background: url(https://api.ixiaowai.cn/gqapi/gqapi.php) no-repeat;
+        background-size: 100% 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-end
+    }
+
+    .topo h2 {
+        color: #fff;
+        z-index: 1;
+        position: relative;
+        margin: 0 0 10px 10px;
+        font-size: 1.2em;
+        box-sizing: border-box
+    }
+
+    .topo:before {
+        content: '';
+        background-image: url(/image/pattern.png);
+        background-repeat: repeat;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1
+    }
+
+    .sidebar ul {
+        width: 100%;
+        margin-top: 50px
+    }
+
+    .sidebar ul li {
+        height: 50px;
+        list-style: none;
+        font-size: 1.2em;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .sidebar ul li a {
+        display: grid;
+        color: #5d606a;
+        text-overflow: ellipsis;
+        width: 100%;
+        text-decoration: none
+    }
+
+    .my_foot {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        position: absolute;
+        bottom: 0
+    }
+
+    .my_foot a {
+        text-decoration: none;
+        margin-right: 10px;
+        display: inline-block
+    }
+
+    .my_foot a img {
+        width: 30px;
+        height: 30px
+    }
+</style>
+
+<script>
+    $( function () {
+	$( '.h-right-close>svg' )
+		.click( function () {
+			$( '.sidebar' )
+				.animate( {
+					right: "0"
+				}, 500 );
+			$( '.shelter' )
+				.fadeIn( "slow" )
+		} );
+	$( '.shelter' )
+		.click( function ( e ) {
+			$( '.sidebar' )
+				.animate( {
+					right: "-100%"
+				}, 500 );
+			$( '.shelter' )
+				.fadeOut( "slow" )
+		} )
+} )
+
+</script>
+
+<div class="post">
+    <div class="post-header-background post-header-img"
+    style="background: url('/image/default.png')" 
+>
+    <div class="post-header-background-content">
+        <ul class="post-header-tag">
+            
+            
+            <li><a href="/tags/Reading">Reading</a></li>
+            
+            
+        </ul>
+        
+        <h1>Layers of AI & DNN/CNN/RNN/GAN</h1>
+        <div class="post-header-info">
+            <div class="post-header-info-author">
+                
+                    <svg t="1604839279282" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="2901" width="20" height="20">
+                        <path
+                            d="M513 956.3c-247.7 0-448-200.3-448-448S265.3 66.2 513 66.2s448 200.3 448 448-200.3 442.1-448 442.1z m0-830.9c-212.2 0-388.8 170.7-388.8 388.8C124.2 726.3 294.9 903 513 903c212.2 0 388.8-170.7 388.8-388.8S725.2 125.4 513 125.4z m0 430.2c-94.2 0-170.7-76.5-170.7-170.7S418.8 207.8 513 207.8s170.7 76.5 170.7 170.7S607.2 555.6 513 555.6z m0-289.1c-64.6 0-112 52.8-112 112s47.4 117.9 112 117.9 112-52.8 112-112-47.4-117.9-112-117.9z m0 689.8c-135.7 0-259-58.7-341.9-158.9l-11.8-17.8 11.8-17.8c76.5-117.9 206.2-188.5 347.8-188.5 135.7 0 265 64.6 341.9 182.6l11.8 17.8-11.8 17.8C778 897.1 648.7 956.3 513 956.3zM230.3 773.2C300.9 849.7 406.9 897 513 897c112 0 218.1-47.4 288.6-129.8-70.5-88.2-170.7-135.6-282.7-135.6s-218.1 53.3-288.6 141.6z"
+                            p-id="2902" fill="#ffffff"></path>
+                    </svg>
+                    
+                <span class="post-header-info-author-text"> <a target="_blank" rel="noopener" href="https://github.com/79E/hexo-theme-quiet">Alex.Y</a></span>
+                <div class="post-header-info-author-categories">
+                    
+                         <a href="../../categories/Science/" target="_blank" >Science</a>
+                    
+                </div>
+                <p>2026-01-23 16:00:00</p>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="post-content" id="content">
+  
+  <div id="article" class="post-content-info">
+    
+
+    <h1 id="AzureVM-and-Flask-APP"><a href="#AzureVM-and-Flask-APP" class="headerlink" title="AzureVM and Flask APP"></a>AzureVM and Flask APP</h1><h2 id="1-Register-on-https-portal-azure-com"><a href="#1-Register-on-https-portal-azure-com" class="headerlink" title="1. Register on https://portal.azure.com/#"></a>1. Register on <a target="_blank" rel="noopener" href="https://portal.azure.com/#">https://portal.azure.com/#</a></h2><h2 id="2-Create-VM-with-properties-below"><a href="#2-Create-VM-with-properties-below" class="headerlink" title="2. Create VM with properties below"></a>2. Create VM with properties below</h2>
+
+
+
+<h2 id="3-VM’s-Operations"><a href="#3-VM’s-Operations" class="headerlink" title="3. VM’s Operations"></a>3. VM’s Operations</h2><p><strong>Download the Private Key File:</strong> </p>
+<p>​	chmod 600 &#x2F;home&#x2F;AlexYang&#x2F;Tools&#x2F;Pearl_2022.pem</p>
+<p><strong>Login</strong>: </p>
+<p>​	ssh -i &#x2F;home&#x2F;AlexYang&#x2F;Tools&#x2F;Pearl_2022.pem <a href="mailto:&#121;&#x61;&#110;&#x67;&#120;&#x62;&#64;&#49;&#55;&#50;&#46;&#49;&#56;&#x39;&#x2e;&#x35;&#x37;&#x2e;&#49;&#49;&#52;">&#121;&#x61;&#110;&#x67;&#120;&#x62;&#64;&#49;&#55;&#50;&#46;&#49;&#56;&#x39;&#x2e;&#x35;&#x37;&#x2e;&#49;&#49;&#52;</a></p>
+<p><strong>Upload Files:</strong> </p>
+<p>​	scp -i &#x2F;home&#x2F;AlexYang&#x2F;Tools&#x2F;Pearl_2022.pem &#x2F;home&#x2F;AlexYang&#x2F;workspace&#x2F;online_quiz.zip <a href="mailto:&#121;&#x61;&#110;&#x67;&#120;&#x62;&#64;&#49;&#55;&#x32;&#x2e;&#x31;&#x38;&#57;&#x2e;&#x35;&#x37;&#46;&#49;&#x31;&#52;">&#121;&#x61;&#110;&#x67;&#120;&#x62;&#64;&#49;&#55;&#x32;&#x2e;&#x31;&#x38;&#57;&#x2e;&#x35;&#x37;&#46;&#49;&#x31;&#52;</a>:&#x2F;home&#x2F;yangxb&#x2F;</p>
+<h2 id="4-Python-Flask-Enviroments"><a href="#4-Python-Flask-Enviroments" class="headerlink" title="4. Python &amp; Flask Enviroments"></a>4. Python &amp; Flask Enviroments</h2><p><strong>Flask App Folder:</strong> </p>
+<p>​	&#x2F;home&#x2F;yangxb&#x2F;online_quiz</p>
+<p><strong>Create New Virtue Enviroments:</strong></p>
+<p>​	yangxb@Alex2026:~&#x2F;online_quiz$ python3 -m venv quiz_env</p>
+<p>​	yangxb@Alex2026:~&#x2F;online_quiz$ source quiz_env&#x2F;bin&#x2F;activate</p>
+<p><strong>Set up requirements:</strong></p>
+<p>​	pip install numpy&#x3D;&#x3D;1.21.0 –no-cache-dir</p>
+<p>​	pip install -r requirements.txt –no-cache-dir</p>
+<h2 id="5-Gunicorn-Nginx-Configuration"><a href="#5-Gunicorn-Nginx-Configuration" class="headerlink" title="5. Gunicorn &amp; Nginx Configuration"></a>5. Gunicorn &amp; Nginx Configuration</h2><figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-comment"># deploy_all.sh - 完整部署脚本</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;开始部署Online Quiz应用...&quot;</span><br><br><span class="hljs-comment"># 1. 安装Nginx</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;安装Nginx...&quot;</span><br><span class="hljs-built_in">sudo</span> apt update -q<br><span class="hljs-built_in">sudo</span> apt install nginx -y -q<br><br><span class="hljs-comment"># 2. 部署Gunicorn应用</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;部署Gunicorn应用...&quot;</span><br><span class="hljs-built_in">cd</span> /home/yangxb/online_quiz<br><span class="hljs-built_in">source</span> quiz_env/bin/activate<br>pip install gevent -q<br><br><span class="hljs-built_in">cat</span> &gt; gunicorn_config.py &lt;&lt; <span class="hljs-string">&#x27;EOF&#x27;</span><br><span class="hljs-built_in">bind</span> = <span class="hljs-string">&quot;unix:/home/yangxb/online_quiz/online_quiz.sock&quot;</span><br>workers = 8<br>worker_class = <span class="hljs-string">&quot;gevent&quot;</span><br><span class="hljs-built_in">timeout</span> = 120<br>accesslog = <span class="hljs-string">&quot;/home/yangxb/online_quiz/logs/access.log&quot;</span><br>errorlog = <span class="hljs-string">&quot;/home/yangxb/online_quiz/logs/error.log&quot;</span><br>loglevel = <span class="hljs-string">&quot;info&quot;</span><br>EOF<br><br><span class="hljs-comment"># 3. 配置Nginx</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;配置Nginx...&quot;</span><br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">tee</span> /etc/nginx/sites-available/online_quiz &lt;&lt; <span class="hljs-string">&#x27;EOF&#x27;</span><br>server &#123;<br>    listen 80;<br>    server_name _;<br>    <br>    location / &#123;<br>        proxy_pass http://unix:/home/yangxb/online_quiz/online_quiz.sock;<br>        proxy_set_header Host <span class="hljs-variable">$host</span>;<br>        proxy_set_header X-Real-IP <span class="hljs-variable">$remote_addr</span>;<br>        proxy_set_header X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;<br>    &#125;<br>&#125;<br>EOF<br><br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">ln</span> -sf /etc/nginx/sites-available/online_quiz /etc/nginx/sites-enabled/<br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">rm</span> -f /etc/nginx/sites-enabled/default<br><span class="hljs-built_in">sudo</span> nginx -t<br><br><span class="hljs-comment"># 4. 配置systemd服务</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;配置systemd服务...&quot;</span><br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">tee</span> /etc/systemd/system/online_quiz.service &lt;&lt; <span class="hljs-string">&#x27;EOF&#x27;</span><br>[Unit]<br>Description=Online Quiz Flask Application<br>After=network.target<br><br>[Service]<br>User=yangxb<br>Group=yangxb<br>WorkingDirectory=/home/yangxb/online_quiz<br>Environment=<span class="hljs-string">&quot;PATH=/home/yangxb/online_quiz/quiz_env/bin&quot;</span><br>ExecStart=/home/yangxb/online_quiz/quiz_env/bin/gunicorn -c gunicorn_config.py app:app<br>Restart=always<br>RestartSec=10<br><br>[Install]<br>WantedBy=multi-user.target<br>EOF<br><br><span class="hljs-comment"># 5. 设置权限</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;设置权限...&quot;</span><br><span class="hljs-built_in">sudo</span> <span class="hljs-built_in">chown</span> yangxb:yangxb /home/yangxb/online_quiz -R<br><span class="hljs-built_in">mkdir</span> -p logs<br><span class="hljs-built_in">chmod</span> 755 logs<br><br><span class="hljs-comment"># 6. 启动服务</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;启动服务...&quot;</span><br><span class="hljs-built_in">sudo</span> systemctl daemon-reload<br><span class="hljs-built_in">sudo</span> systemctl <span class="hljs-built_in">enable</span> online_quiz<br><span class="hljs-built_in">sudo</span> systemctl start online_quiz<br><span class="hljs-built_in">sudo</span> systemctl restart nginx<br><br><span class="hljs-comment"># 7. 开放防火墙</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;开放防火墙端口...&quot;</span><br><span class="hljs-built_in">sudo</span> ufw allow 80 --<span class="hljs-built_in">yes</span><br><span class="hljs-built_in">sudo</span> ufw allow ssh --<span class="hljs-built_in">yes</span><br><span class="hljs-built_in">sudo</span> ufw --force <span class="hljs-built_in">enable</span><br><br><span class="hljs-comment"># 8. 获取服务器IP</span><br>SERVER_IP=$(curl -s ifconfig.me)<br><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;========================================&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;✅ 部署完成！&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;🌐 访问地址：http://<span class="hljs-variable">$SERVER_IP</span>&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;========================================&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;📋 管理命令：&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;   查看状态：sudo systemctl status online_quiz&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;   查看日志：sudo journalctl -u online_quiz -f&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;   重启服务：sudo systemctl restart online_quiz&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;   查看Nginx日志：sudo tail -f /var/log/nginx/error.log&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><code class="hljs sh"><span class="hljs-built_in">chmod</span> +x deploy_all.sh<br>./deploy_all.sh<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-Flask-APP-Management-Commands"><a href="#6-Flask-APP-Management-Commands" class="headerlink" title="6. Flask APP Management Commands"></a>6. Flask APP Management Commands</h2><h3 id="Daily-Operations"><a href="#Daily-Operations" class="headerlink" title="Daily Operations"></a>Daily Operations</h3><ul>
+<li>Start: <code>sudo systemctl start online_quiz</code></li>
+<li>Stop: <code>sudo systemctl stop online_quiz</code></li>
+<li>Restart: <code>sudo systemctl restart online_quiz</code></li>
+<li>Status: <code>sudo systemctl status online_quiz</code></li>
+</ul>
+<h3 id="Nginx-Management"><a href="#Nginx-Management" class="headerlink" title="Nginx Management"></a>Nginx Management</h3><ul>
+<li>Restart: <code>sudo systemctl restart nginx</code></li>
+<li>Reload: <code>sudo systemctl reload nginx</code></li>
+</ul>
+<h3 id="Log-Inspection"><a href="#Log-Inspection" class="headerlink" title="Log Inspection"></a>Log Inspection</h3><ul>
+<li>App logs: <code>sudo journalctl -u online_quiz -f</code></li>
+<li>Nginx errors: <code>sudo tail -f /var/log/nginx/error.log</code></li>
+<li>Access logs: <code>sudo tail -f /var/log/nginx/access.log</code></li>
+</ul>
+<h3 id="Quick-Checks"><a href="#Quick-Checks" class="headerlink" title="Quick Checks"></a>Quick Checks</h3><ul>
+<li>Port listening: <code>sudo netstat -tulpn | grep :80</code></li>
+<li>Process status: <code>ps aux | grep gunicorn</code></li>
+</ul>
+<h3 id="Site-URL"><a href="#Site-URL" class="headerlink" title="Site URL"></a>Site URL</h3><p>http:&#x2F;&#x2F;$(curl -s ifconfig.me)</p>
+<h2 id="7-GitHub-Deploy"><a href="#7-GitHub-Deploy" class="headerlink" title="7. GitHub Deploy"></a>7. GitHub Deploy</h2><h3 id="1-生成-SSH-密钥（推荐）"><a href="#1-生成-SSH-密钥（推荐）" class="headerlink" title="1) 生成 SSH 密钥（推荐）"></a>1) 生成 SSH 密钥（推荐）</h3><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">生成 SSH 密钥</span><br>ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">或使用 RSA</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">ssh-keygen -t rsa -b 4096 -C <span class="hljs-string">&quot;your_email@example.com&quot;</span></span><br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看公钥</span><br>cat ~/.ssh/id_ed25519.pub<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">添加到 GitHub</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">1. 登录 GitHub → Settings → SSH and GPG keys → New SSH key</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">2. 粘贴公钥内容</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-本地-Git-初始化"><a href="#2-本地-Git-初始化" class="headerlink" title="2) 本地 Git 初始化"></a>2) 本地 Git 初始化</h3><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">进入项目目录</span><br>cd /path/to/your/project<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">初始化 Git 仓库</span><br>git init<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看状态</span><br>git status<br></code></pre></td></tr></table></figure>
+
+<h4 id="创建-gitignore-文件"><a href="#创建-gitignore-文件" class="headerlink" title="创建 .gitignore 文件"></a>创建 .gitignore 文件</h4><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">创建 .gitignore 文件（非常重要！）</span><br>cat &gt; .gitignore &lt;&lt; &#x27;EOF&#x27;<br><span class="hljs-meta prompt_"># </span><span class="language-bash">系统文件</span><br>.DS_Store<br>Thumbs.db<br>*.swp<br>*~<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">编辑器/IDE</span><br>.vscode/<br>.idea/<br>*.sublime-*<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">运行时文件</span><br>*.pyc<br>__pycache__/<br>*.so<br>*.dylib<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">日志文件</span><br>*.log<br>logs/<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">依赖目录</span><br>node_modules/<br>venv/<br>env/<br>.env<br>.env.local<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">构建输出</span><br>dist/<br>build/<br>*.egg-info/<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">数据库文件</span><br>*.db<br>*.sqlite3<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">临时文件</span><br>/tmp/<br>*.tmp<br>EOF<br></code></pre></td></tr></table></figure>
+
+<h4 id="添加文件到仓库"><a href="#添加文件到仓库" class="headerlink" title="添加文件到仓库"></a><strong>添加文件到仓库</strong></h4><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">添加所有文件（排除 .gitignore 中指定的）</span><br>git add .<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">提交到本地仓库</span><br>git commit -m &quot;Initial commit: 项目初始化&quot;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">关联远程仓库</span><br>git remote add origin git@github.com:用户名/仓库名.git<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">第一次推送</span><br>git push -u origin main<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-日常开发工作流"><a href="#3-日常开发工作流" class="headerlink" title="3) 日常开发工作流"></a>3) 日常开发工作流</h3><h4 id="1-基本操作"><a href="#1-基本操作" class="headerlink" title="(1). 基本操作"></a>(1). <strong>基本操作</strong></h4><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">查看状态</span><br>git status<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看提交历史</span><br>git log --oneline --graph<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">添加文件</span><br>git add file1.py file2.py<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">提交更改</span><br>git commit -m &quot;Add feature X&quot;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">推送更改</span><br>git push<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">拉取最新代码</span><br>git pull<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-分支管理"><a href="#2-分支管理" class="headerlink" title="(2). 分支管理"></a>(2). <strong>分支管理</strong></h4><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">创建并切换分支</span><br>git checkout -b feature/new-feature<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">查看分支</span><br>git branch<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">切换分支</span><br>git checkout main<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">合并分支</span><br>git merge feature/new-feature<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">删除分支</span><br>git branch -d feature/new-feature<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-撤销操作"><a href="#3-撤销操作" class="headerlink" title="(3). 撤销操作"></a>(3). <strong>撤销操作</strong></h4><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">撤销未提交的修改（危险！）</span><br>git checkout -- file.py<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">撤销暂存的文件</span><br>git reset HEAD file.py<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">修改上次提交</span><br>git commit --amend -m &quot;新的提交信息&quot;<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">回退到某个提交</span><br>git reset --hard commit_id<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="7-Config-Domains"><a href="#7-Config-Domains" class="headerlink" title="7. Config Domains"></a>7. Config Domains</h2><p>Domain Server: <a target="_blank" rel="noopener" href="http://www.namecheap.com/">www.namecheap.com</a></p>
+<p>My Domain: yangxb.org</p>
+
+  </div>
+  <div id=""></div>
+</div>
+
+<script>
+  
+Fancybox.bind('[data-fancybox="fancybox-gallery-img"]', {
+  dragToClose: true,
+  Toolbar: true,
+  closeButton: "top",
+  Image: {
+    zoom: true,
+  },
+  on: {
+    initCarousel: (fancybox) => {
+      const slide = fancybox.Carousel.slides[fancybox.Carousel.page];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+    "Carousel.change": (fancybox, carousel, to, from) => {
+      const slide = carousel.slides[to];
+      fancybox.$container.style.setProperty(
+        "--bg-image",
+        `url("${slide.$thumb.src}")`
+      );
+    },
+  },
+});
+</script>
+
+<style>
+    #noneimg img {
+        display: none;
+        z-index: 9999;
+        /* width: 600px !important; */
+        min-width: 0%;
+        max-width: 90%;
+        max-height: 80%;
+        border-radius: 0px;
+        position: fixed;
+        box-shadow: 0 0 0px #c3c3c300 !important;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto !important;
+    }
+
+    @media screen and (max-width:600px) {
+        #noneimg img {
+            max-width: 88%
+        }
+    }
+</style>
+
+    <div class="post-paging">
+    
+
+    
+    <a href="/2026/01/22/26.01.22-AI2026-LayersOfAI/">
+        <div class="post-paging-next">
+            <span>下一篇</span>
+            <p>Layers of AI &amp; DNN/CNN/RNN/GAN</p>
+        </div>
+    </a>
+    
+</div>
+</div>
+		
+<div class="footer">
+	<div class="Copyright">
+		©2026 By Alex. 主题：<a
+			style="text-decoration: none;display: contents; color: #898F9F;"
+			target="_blank" rel="noopener" href="https://github.com/79e/hexo-theme-quiet">Quiet</a>
+	</div>
+	<div class="contact">
+		
+		<a target="_blank" rel="noopener" href="https://github.com">
+			<img src="/image/github.png" alt="Quiet主题">
+		</a>
+		
+	</div>
+</div>
+
+<script src="/js/gotop.js"></script>
+
+
+<style type="text/css">
+    @media screen and (min-width: 600px) {
+        .goTop>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            opacity: 0.8;
+            background: rgba(18, 24, 58, 0.06);
+            text-align: center;
+            transition: border .5s;
+            border: 1px solid rgba(18, 24, 58, 0.06);
+
+            -moz-transition: border .5s;
+            /* Firefox 4 */
+            -webkit-transition: border .5s;
+            /* Safari 和 Chrome */
+            -o-transition: border .5s;
+            /* Opera */
+        }
+
+        .goTop>span:hover {
+            border: 1px solid #6680B3;
+        }
+
+
+        .goTop {
+            position: fixed;
+            right: 30px;
+            bottom: 80px;
+        }
+
+        .goTop>span>svg {
+            width: 20px;
+            height: 20px;
+            opacity: 0.7;
+        }
+
+    }
+
+    @media screen and (max-width: 600px) {
+        .goTop {
+            display: none;
+        }
+    }
+</style>
+<div class="goTop" id="js-go_top">
+    <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <g>
+                <path d="M13 12v8h-2v-8H4l8-8 8 8z"></path>
+            </g>
+        </svg>
+    </span>
+</div>
+<script>
+    $( '#js-go_top' )
+	.gotoTop( {
+		offset: 500,
+		speed: 300,
+		animationShow: {
+			'transform': 'translate(0,0)',
+			'transition': 'transform .5s ease-in-out'
+		},
+		animationHide: {
+			'transform': 'translate(100px,0)',
+			'transition': 'transform .5s ease-in-out'
+		}
+	} );
+</script>
+
+
+    <!-- Gitalk -->
+    <script>
+        const data = '{"clientID":"Ov23lijMO8Y1d5CxdOnz","clientSecret":"77a460fa3d181dd6d26faa420511e0fec5a8d49b","repo":"https://github.com/AlexYangHZ/gtalk","owner":"AlexYangHZ","admin":"AlexYangHZ"}'
+        const gitalk = new Gitalk({
+            ...JSON.parse( data),
+            id:location.pathname,
+            distractionFreeMode:false
+        })
+        
+        if(Boolean('false')){
+            gitalk.render('gitalk-container')
+        }
+    </script>
+
+<script>
+	console.log('\n %c Hexo-Quiet 主题 %c https://github.com/79e/hexo-theme-quiet \n', 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+</script>
+	</body>
+</html>
+
